@@ -17,11 +17,13 @@ public class MoimDao implements DAO<String,Moim>{
 	
 	@Override
 	public void insert(Moim v) throws Exception {
+		mmapper.insertDetail(v);
 		mmapper.insert(v);
 	}
 
 	@Override
 	public void update(Moim v) throws Exception {
+		mmapper.updateDetail(v);
 		mmapper.update(v);
 	}
 

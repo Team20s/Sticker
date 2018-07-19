@@ -22,6 +22,7 @@ public class Moim {
 	private String detailImg3;
 	private String detailImg4;
 	private String detailImg5;
+	private MultipartFile mImg;
 	private MultipartFile img1;
 	private MultipartFile img2;
 	private MultipartFile img3;
@@ -191,6 +192,14 @@ public class Moim {
 		this.detailImg5 = detailImg5;
 	}
 
+	public MultipartFile getmImg() {
+		return mImg;
+	}
+
+	public void setmImg(MultipartFile mImg) {
+		this.mImg = mImg;
+	}
+
 	public MultipartFile getImg1() {
 		return img1;
 	}
@@ -239,5 +248,5 @@ public class Moim {
 				+ content + ", detailImg1=" + detailImg1 + ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3
 				+ ", detailImg4=" + detailImg4 + ", detailImg5=" + detailImg5 + "]";
 	}
-		
+	
 }
