@@ -14,7 +14,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>Sticker</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style>
 /* Header */
@@ -70,7 +70,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <header id="header" class="hoc clear"> 
       <div class="group demo">
         <div class="one_third first"><div id="logo" class="fl_left">
-          <h1><a href="index.html"><img src="../images/logo.png" id="mainLogo"> Sticker</a></h1>
+          <h1><a href="index.html"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
         </div></div>
         <div class="one_third "><div id="logo">
           <input id="search"  type="text">
@@ -115,9 +115,9 @@ Licence URI: http://www.os-templates.com/template-terms
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 
 <!-- JAVASCRIPTS -->
-<script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/jquery.backtotop.js"></script>
-<script src="../layout/scripts/jquery.mobilemenu.js"></script>
-<script src="../layout/scripts/jquery.flexslider-min.js"></script>
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="layout/scripts/jquery.flexslider-min.js"></script>
 </body>
 </html>
