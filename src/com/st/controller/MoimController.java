@@ -1,7 +1,5 @@
 package com.st.controller;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -25,7 +23,12 @@ public class MoimController {
 		return mv;
 	}
 
-	
-	
+	@RequestMapping("/createmoimimpl.hw")
+	public ModelAndView createmoimimpl() {//moim get method-select
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("centerpage","moim/create");
+		return mv;
+	}
 	
 }
