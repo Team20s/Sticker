@@ -15,17 +15,17 @@
       <ul class="slides">
         <li>
           <article>
-            <img src="../images/demo/banner.png">
+            <img src="images/demo/banner.png">
           </article>
         </li>
         <li>
           <article>
-            <img src="../images/demo/banner.png">
+            <img src="images/demo/banner.png">
           </article>
         </li>
         <li>
           <article>
-            <img src="../images/demo/banner.png">
+            <img src="images/demo/banner.png">
           </article>
         </li>
       </ul>
@@ -42,7 +42,7 @@
         <h4>친목도모</h4>
         <li class="one_quarter first">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
                 <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -52,7 +52,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -62,7 +62,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -72,7 +72,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -96,7 +96,7 @@
         <h4>스터디 및 취업정보</h4>
         <li class="one_quarter first">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -106,7 +106,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -116,7 +116,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="mages/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
@@ -126,7 +126,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="../images/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
