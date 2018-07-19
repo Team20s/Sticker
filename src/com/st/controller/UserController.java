@@ -17,7 +17,7 @@ public class UserController {
 	@Resource(name="uservice")
 	Service<String, User> service;
 	
-	@RequestMapping("/userlist.hw")
+	@RequestMapping("/userlist.st")
 	public ModelAndView searchuser() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
