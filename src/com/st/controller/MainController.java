@@ -19,12 +19,12 @@ public class MainController {
 	
 	@RequestMapping("/main.hw")
 	public String mm() {
-		return "main"; //main.jsp를 의미
+		return "main"; //main.jsp
 	}
 	
 	@RequestMapping("/login.hw")
 	public ModelAndView login() {
-		//model과 view를 같이 보내는 객체
+		//model
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		mv.addObject("centerpage","login");
