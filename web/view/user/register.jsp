@@ -231,7 +231,7 @@ h1 {
 	<div class="container">
 		<h1>
 			<img src="../../images/logo.png" id="mainLogo"><a
-				href="index.html"> Sticker</a>
+				href="main.st"> Sticker</a>
 		</h1>
 		<div>
 			<div>
