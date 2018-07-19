@@ -17,7 +17,7 @@ public class MoimController {
 	@Resource(name="mservice")
 	Service<String, User> service;
 	
-	@RequestMapping("/createmoim.hw")
+	@RequestMapping("/createmoim.st")
 	public ModelAndView createmoim() {//move createmoim page
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
