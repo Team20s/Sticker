@@ -24,8 +24,8 @@ public class UserService implements Service<String, User>{
 	}
 
 	@Override
-	public void remove(String t) throws Exception {
-		dao.delete(t);
+	public void remove(User v) throws Exception {
+		dao.delete(v);
 	}
 
 	@Override
