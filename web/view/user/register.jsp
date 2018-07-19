@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet"
+<link href="../../layout/styles/layout.css" rel="stylesheet"
 	type="text/css" media="all">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -111,16 +111,16 @@ h1 {
 		}
 
 		if (pwd.value.length >= 8) {
-			var exp = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])/;
+			var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 			if (!exp.test(pwd.value)) {
-				spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>'
+				spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
 				return;
 			} else {
 				spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
 				return;
 			}
 		} else {
-			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>'
+			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
 			return;
 		}
 	};
@@ -129,7 +129,7 @@ h1 {
 	function checkPwdCheck(){
 		var pwd = document.querySelector('#pwd');
 		var pwdCheck = document.querySelector('#pwdCheck');
-		var exp = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])/;
+		var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 		
 		if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
 			spwdCheck.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
@@ -137,7 +137,7 @@ h1 {
 			return;
 		}
 		
-		if(pwd.value != pwdCheck.value && !exp.test(pwd.value)){
+		if(pwd.value != pwdCheck.value){
 			spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
 			console.log(pwd.value);
 			console.log(pwdCheck.value);
@@ -182,39 +182,16 @@ h1 {
 	}
 	;
 
-	function gender(g) {
-		var man = document.querySelector('#man');
-		var woman = document.querySelector('#woman');
-		var sex = document.querySelector('#sex');
-
-		if (g == 1) {
-			man.innerHTML = '<button type="button" class="btn btn-dark btn-block" onclick="gender(1);">남자</button>';
-			woman.innerHTML = '<button type="button" class="btn btn-outline-dark btn-block" onclick="gender(2);">여자</button>';
-			sex.value = 'man';
-			console.log(sex.value);
-		}
-
-		if (g == 2) {
-			man.innerHTML = '<button type="button" class="btn btn-outline-dark btn-block" onclick="gender(1);">남자</button>';
-			woman.innerHTML = '<button type="button" class="btn btn-dark btn-block" onclick="gender(2);">여자</button>';
-			sex.value = 'woman';
-			console.log(sex.value);
-		}
-
-	}
-	;
-
 	function register(f) {
 		var id = document.querySelector('#id');
 		var pwd = document.querySelector('#pwd');
 		var year = document.querySelector('#year');
 		var month = document.querySelector('#month');
 		var day = document.querySelector('#day');
-		var sex = document.querySelector('#sex');
 		var sregister = document.querySelector('#sregister');
 
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
-			month.value.length != 0 && day.value.length != 0 && sex.value.length != 0 && pwdFlag == 1) {
+			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1) {
 			f.method = 'post';
 			f.action = 'register';
 			f.submit();
@@ -253,7 +230,7 @@ h1 {
 	<!-- ################################################################################################ -->
 	<div class="container">
 		<h1>
-			<img src="images/logo.png" id="mainLogo"><a
+			<img src="../../images/logo.png" id="mainLogo"><a
 				href="index.html"> Sticker</a>
 		</h1>
 		<div>
@@ -311,21 +288,6 @@ h1 {
 				</div>
 
 				<div class="form-group">
-					성별 : <input type="hidden" id="sex" name="sex">
-					<div class="row">
-						<div id="man" class="col-6">
-							<button type="button" name="man"
-								class="btn btn-outline-dark btn-block" onclick="gender(1);">남자</button>
-						</div>
-						<div id="woman" class="col-6">
-							<button type="button" name="woman"
-								class="btn btn-outline-dark btn-block" onclick="gender(2);">여자</button>
-						</div>
-					</div>
-					<div id="sgender"></div>
-				</div>
-
-				<div class="form-group">
 					<button type="button" class="btn btn-dark btn-lg btn-block"
 						onclick="register(this.form);">회원가입</button>
 					<div id="sregister"></div>
@@ -337,10 +299,10 @@ h1 {
 	</div>
 
 	<!-- JAVASCRIPTS -->
-	<script src="layout/scripts/jquery.min.js"></script>
-	<script src="layout/scripts/jquery.backtotop.js"></script>
-	<script src="layout/scripts/jquery.mobilemenu.js"></script>
-	<script src="layout/scripts/jquery.flexslider-min.js"></script>
+	<script src="../../layout/scripts/jquery.min.js"></script>
+	<script src="../../layout/scripts/jquery.backtotop.js"></script>
+	<script src="../../layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="../../layout/scripts/jquery.flexslider-min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script
