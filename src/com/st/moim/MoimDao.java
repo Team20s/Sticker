@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.st.frame.DAO;
 import com.st.mapper.MoimMapper;
 
-@Repository("mdoa")
+@Repository("mdao")
 public class MoimDao implements DAO<String,Moim>{
 
 	@Resource(name="mmapper")
@@ -26,8 +26,9 @@ public class MoimDao implements DAO<String,Moim>{
 	}
 
 	@Override
-	public void delete(String t) throws Exception {
-		mmapper.delete(t);
+	public void delete(Moim v) throws Exception {
+		mmapper.deleteDetail(v.getDetailId());
+		mmapper.delete(v.getMoimId());
 	}
 
 	@Override
