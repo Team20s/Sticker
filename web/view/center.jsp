@@ -116,7 +116,7 @@
         </li>
         <li class="one_quarter">
           <article>
-            <img src="mages/demo/gallery/01.png" alt="">
+            <img src="images/demo/gallery/01.png" alt="">
             <div>
               <p>취업정보<span class="fl_right">7.20(금)</span></p>
               <h6 class="heading">효율적인 포트폴리오 작성법</h6>
