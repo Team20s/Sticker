@@ -24,8 +24,8 @@ public class MoimService implements Service<String,Moim>{
 	}
 
 	@Override
-	public void remove(String t) throws Exception {
-		mdao.delete(t);
+	public void remove(Moim v) throws Exception {
+		mdao.delete(v);
 	}
 
 	@Override
