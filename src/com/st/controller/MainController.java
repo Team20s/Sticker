@@ -77,7 +77,7 @@ public class MainController {
 		mv.setViewName("main");
 		try {
 			service.register(user);
-			mv.addObject("centerpage","registerok");			
+			mv.addObject("centerpage","main");			
 		} catch (Exception e) {
 			mv.addObject("centerpage","register");			
 			e.printStackTrace();
