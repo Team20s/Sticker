@@ -2,38 +2,45 @@ package com.st.moim;
 
 import java.util.ArrayList;
 
-import com.st.frame.DAO;
+import javax.annotation.Resource;
 
+import org.springframework.stereotype.Repository;
+
+import com.st.frame.DAO;
+import com.st.mapper.MoimMapper;
+
+@Repository("mdao")
 public class MoimDao implements DAO<String,Moim>{
 
+	@Resource(name="mmapper")
+	MoimMapper mmapper;
+	
 	@Override
 	public void insert(Moim v) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mmapper.insertDetail(v);
+		mmapper.insert(v);
 	}
 
 	@Override
 	public void update(Moim v) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mmapper.updateDetail(v);
+		mmapper.update(v);
 	}
 
 	@Override
-	public void delete(String t) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void delete(Moim v) throws Exception {
+		mmapper.deleteDetail(v.getDetailId());
+		mmapper.delete(v.getMoimId());
 	}
 
 	@Override
 	public Moim select(String t) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mmapper.select(t);
 	}
 
 	@Override
 	public ArrayList<Moim> select() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mmapper.selectall();
 	}
 
 }
