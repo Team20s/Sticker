@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="pwd" property="pwd"/>
 		<result column="name" property="name"/>
 		<result column="birth" property="birth"/>
+		<result column="userStatus" property="userStatus"/>
 	</resultMap>
 	
 	<select id="select" parameterType="String" resultMap="userResult">

@@ -79,7 +79,7 @@ public class MainController {
 			service.register(user);
 			mv.addObject("centerpage","registerok");			
 		} catch (Exception e) {
-			mv.addObject("centerpage","registerfail");			
+			mv.addObject("centerpage","register");			
 			e.printStackTrace();
 		}		
 		return mv;
