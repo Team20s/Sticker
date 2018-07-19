@@ -70,7 +70,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <header id="header" class="hoc clear"> 
       <div class="group demo">
         <div class="one_third first"><div id="logo" class="fl_left">
-          <h1><a href="index.html"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
+          <h1><a href="main.st"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
         </div></div>
         <div class="one_third "><div id="logo">
           <input id="search"  type="text">

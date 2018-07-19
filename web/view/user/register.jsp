@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../layout/styles/layout.css" rel="stylesheet"
+<link href="layout/styles/layout.css" rel="stylesheet"
 	type="text/css" media="all">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -31,9 +31,30 @@ h1 {
 	color: black;
 }
 
-#pageintro {
-	margin-top: 70px;
+/* 회원가입 박스 사이즈 조정 */
+@media (min-width: 1200px){
+	.container {
+	    max-width: 700px;
+	}
 }
+
+@media (min-width: 992px){
+	.container {
+	    max-width: 700px;
+	}
+}
+
+@media (min-width: 768px){
+	.container {
+	    max-width: 700px;
+	}
+}
+
+.container > div > div > h1{
+	text-align: center;
+}
+
+/* 박스 안 버튼 색깔 조정 */
 
 .btn-outline-dark:visited, .btn-dark:hover, .btn-outline-dark:active,
 	.btn-outline-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited
@@ -45,8 +66,11 @@ h1 {
 .btn-outline-dark {
 	border-color: #AE32C7;
 }
+
+
 </style>
 <script>
+
 	function checkId() {
 		// 영어로 시작하고 6자리 이상
 		// 영문과 숫자가 반드시 입력
@@ -99,31 +123,28 @@ h1 {
 			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>'
 			return;
 		}
-
-
-	}
-	;
-
-	function checkMail() {
-		var mail = document.querySelector('#mail');
-		var smail = document.querySelector('#smail');
-
-		if (mail.value.length == 0) {
-			smail.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+	};
+	
+	var pwdFlag = 0;
+	function checkPwdCheck(){
+		var pwd = document.querySelector('#pwd');
+		var pwdCheck = document.querySelector('#pwdCheck');
+		var exp = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])/;
+		
+		if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
+			spwdCheck.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			pwdFlag = 1;
 			return;
 		}
-
-		var exp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		if (!exp.test(mail.value)) {
-			smail.innerHTML = '<span class="text-danger">Email형식이 맞지않습니다.</span>'
-			return;
-		} else {
-			smail.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+		
+		if(pwd.value != pwdCheck.value && !exp.test(pwd.value)){
+			spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
+			console.log(pwd.value);
+			console.log(pwdCheck.value);
 			return;
 		}
-
+		
 	}
-	;
 
 	function checkName() {
 		var name = document.querySelector('#name');
@@ -183,41 +204,17 @@ h1 {
 	}
 	;
 
-	function checkPhone() {
-		var phone = document.querySelector('#phone');
-		var sphone = document.querySelector('#sphone');
-
-		if (phone.value.length == 0) {
-			sphone.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
-			return;
-		}
-
-		var exp = /^\d{3}-\d{3,4}-\d{4}$/;
-
-		if (!exp.test(phone.value)) {
-			sphone.innerHTML = '<span class="text-danger">010-1234-5678 형식으로 입력해주세요.</span>'
-			return;
-		} else {
-			sphone.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
-			return;
-		}
-
-	}
-	;
-
 	function register(f) {
 		var id = document.querySelector('#id');
 		var pwd = document.querySelector('#pwd');
-		var mail = document.querySelector('#mail');
 		var year = document.querySelector('#year');
 		var month = document.querySelector('#month');
 		var day = document.querySelector('#day');
-		var phone = document.querySelector('#phone');
 		var sex = document.querySelector('#sex');
 		var sregister = document.querySelector('#sregister');
 
-		if (id.value.length != 0 && pwd.value.length != 0 && mail.value.length != 0 && year.value.length != 0 &&
-			month.value.length != 0 && day.value.length != 0 && phone.value.length != 0 && sex.value.length != 0) {
+		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
+			month.value.length != 0 && day.value.length != 0 && sex.value.length != 0 && pwdFlag == 1) {
 			f.method = 'post';
 			f.action = 'register';
 			f.submit();
@@ -254,9 +251,9 @@ h1 {
 
 	<!-- Center -->
 	<!-- ################################################################################################ -->
-	<div id="pageintro" class="hoc clear">
+	<div class="container">
 		<h1>
-			<img src="../../images/logo.png" id="mainLogo"><a
+			<img src="images/logo.png" id="mainLogo"><a
 				href="index.html"> Sticker</a>
 		</h1>
 		<div>
@@ -276,11 +273,11 @@ h1 {
 						class="form-control" onblur="checkPwd();">
 					<div id="spwd"></div>
 				</div>
-
+				
 				<div class="form-group">
-					이메일 :<input type="email" name="mail" id="mail" class="form-control"
-						onblur="checkMail();">
-					<div id="smail"></div>
+					비밀번호 확인 :<input type="password" name="pwdCheck" id="pwdCheck"
+						class="form-control" onblur="checkPwdCheck();">
+					<div id="spwdCheck"></div>
 				</div>
 
 				<div class="form-group">
@@ -328,13 +325,6 @@ h1 {
 					<div id="sgender"></div>
 				</div>
 
-
-				<div class="form-group">
-					휴대전화 :<input type="text" name="phone" id="phone"
-						class="form-control" onblur="checkPhone();">
-					<div id="sphone"></div>
-				</div>
-
 				<div class="form-group">
 					<button type="button" class="btn btn-dark btn-lg btn-block"
 						onclick="register(this.form);">회원가입</button>
@@ -347,10 +337,10 @@ h1 {
 	</div>
 
 	<!-- JAVASCRIPTS -->
-	<script src="../../layout/scripts/jquery.min.js"></script>
-	<script src="../../layout/scripts/jquery.backtotop.js"></script>
-	<script src="../../layout/scripts/jquery.mobilemenu.js"></script>
-	<script src="../../layout/scripts/jquery.flexslider-min.js"></script>
+	<script src="layout/scripts/jquery.min.js"></script>
+	<script src="layout/scripts/jquery.backtotop.js"></script>
+	<script src="layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="layout/scripts/jquery.flexslider-min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script
