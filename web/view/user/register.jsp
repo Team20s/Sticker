@@ -263,7 +263,7 @@ h1 {
 			<div>
 				<h1>회원가입</h1>
 			</div>
-			<form>
+			<form action="registerimpl.hw" method="post">
 
 				<div class="form-group">
 					아이디 :<input type="text" name="id" id="id" class="form-control"

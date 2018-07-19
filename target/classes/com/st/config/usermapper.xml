@@ -23,8 +23,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="user">
 		UPDATE USERS SET PWD=#{pwd},NAME=#{name},BIRTH=#{birth} WHERE ID=#{id}
 	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM USERS WHERE ID=#{obj}
+	<delete id="delete" parameterType="user">
+		DELETE FROM USERS WHERE ID=#{id},PWD=#{pwd}
 	</delete>
 	
 </mapper>
