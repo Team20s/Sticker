@@ -17,12 +17,12 @@ public class MainController {
 	@Resource(name="uservice")
 	Service<String, User> service;
 	
-	@RequestMapping("/main.hw")
+	@RequestMapping("/main.st")
 	public String mm() {
 		return "main"; //main.jsp
 	}
 	
-	@RequestMapping("/login.hw")
+	@RequestMapping("/login.st")
 	public ModelAndView login() {
 		//model
 		ModelAndView mv = new ModelAndView();
@@ -31,7 +31,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/loginimpl.hw")
+	@RequestMapping("/loginimpl.st")
 	public ModelAndView loginimpl(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
@@ -49,7 +49,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/logout.hw")
+	@RequestMapping("/logout.st")
 	public ModelAndView logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -63,7 +63,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/register.hw")
+	@RequestMapping("/register.st")
 	public ModelAndView register() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
@@ -71,7 +71,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/registerimpl.hw")
+	@RequestMapping("/registerimpl.st")
 	public ModelAndView registerimpl(User user) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
