@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../layout/styles/layout.css" rel="stylesheet"
-	type="text/css" media="all">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 <style>
 a {
@@ -56,17 +53,10 @@ h1 {
 
 /* 박스 안 버튼 색깔 조정 */
 
-.btn-outline-dark:visited, .btn-dark:hover, .btn-outline-dark:active,
-	.btn-outline-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited
-	{
+ .btn-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited {
 	background-color: #AE32C7;
 	border-color: white;
 }
-
-.btn-outline-dark {
-	border-color: #AE32C7;
-}
-
 
 </style>
 <script>
