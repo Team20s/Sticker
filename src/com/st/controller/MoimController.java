@@ -31,11 +31,6 @@ public class MoimController {
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
 		
-		//text convert Korean
-		moim.setTitle(Util.convertKr(moim.getTitle()));
-		moim.setPlace(Util.convertKr(moim.getPlace()));
-		moim.setContent(Util.convertKr(moim.getContent()));
-		
 		//test 용 id 입력
 		moim.setUserId("u1");
 		
