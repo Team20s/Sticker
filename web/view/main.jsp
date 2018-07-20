@@ -49,7 +49,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <ul>
         <li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
         <c:choose>
-        	<c:when test="${userId == null} ">
+        	<c:when test="${userId == null}">
         		<li><a href="login.st">로그인</a></li>
         		<li><a href="register.st">회원가입</a></li>
         	</c:when>

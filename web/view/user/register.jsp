@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 <style>
@@ -183,7 +183,7 @@ h1 {
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
 			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1) {
 			f.method = 'post';
-			f.action = 'register';
+			f.action = 'registerimpl.st';
 			f.submit();
 		} else {
 			sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
@@ -220,14 +220,14 @@ h1 {
 	<!-- ################################################################################################ -->
 	<div class="container">
 		<h1>
-			<img src="../../images/logo.png" id="mainLogo"><a
+			<img src="images/logo.png" id="mainLogo"><a
 				href="main.st"> Sticker</a>
 		</h1>
 		<div>
 			<div>
 				<h1>회원가입</h1>
 			</div>
-			<form>
+			<form action="registerimpl.st" method="post">
 
 				<div class="form-group">
 					아이디(닉네임) :<input type="text" name="id" id="id" class="form-control"
@@ -289,10 +289,10 @@ h1 {
 	</div>
 
 	<!-- JAVASCRIPTS -->
-	<script src="../../layout/scripts/jquery.min.js"></script>
-	<script src="../../layout/scripts/jquery.backtotop.js"></script>
-	<script src="../../layout/scripts/jquery.mobilemenu.js"></script>
-	<script src="../../layout/scripts/jquery.flexslider-min.js"></script>
+	<script src="layout/scripts/jquery.min.js"></script>
+	<script src="layout/scripts/jquery.backtotop.js"></script>
+	<script src="layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="layout/scripts/jquery.flexslider-min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script

@@ -13,76 +13,83 @@ import com.st.user.User;
 
 @Controller
 public class MainController {
-	
-	@Resource(name="uservice")
+
+	@Resource(name = "uservice")
 	Service<String, User> service;
-	
+
 	@RequestMapping("/main.st")
 	public String mm() {
-		return "main"; //main.jsp
+		return "main"; // main.jsp
 	}
-	
+
 	@RequestMapping("/login.st")
-	public ModelAndView login() {
-		//model
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("centerpage","login");
-		return mv;
+	public String login() {
+		// model
+		return "user/login";
 	}
-	
+
 	@RequestMapping("/loginimpl.st")
-	public ModelAndView loginimpl(HttpServletRequest request) {
+	public String loginimpl(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		
-		if(id.equals("qq") && pwd.equals("11")) {			
-			mv.addObject("centerpage","loginok");
-			HttpSession session = request.getSession();
-			session.setAttribute("loginid", id);
-		}else {
-			mv.addObject("centerpage","loginfail");			
+		String loginState = "0";
+
+		// 해당 ID를 서버에 요청하여 User 정보가 있는지 확인
+		// 존재 한다면
+		// User정보의 PWD와 입력 한 PWD를 비교 하여
+		// 로그인 처리
+		// session에 "loginuser"로 넣음.
+		User user = null;
+		try {
+			user = service.get(id);
+			if (pwd.equals(user.getPwd())) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userId", user.getId());
+				System.out.println(id+pwd);
+				return "main";
+			} else {
+				request.setAttribute("loginState", loginState);
+				System.out.println("로그인 실패!");
+				System.out.println(id+pwd);
+				return "user/login";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("loginState", loginState);
+			return "user/login";
 		}
-		return mv;
 	}
-	
+
 	@RequestMapping("/logout.st")
 	public ModelAndView logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		
-		if(session != null) {
+
+		if (session != null) {
 			session.invalidate();
 		}
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","center");
 		return mv;
 	}
-	
+
 	@RequestMapping("/register.st")
-	public ModelAndView register() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("centerpage","register");
-		return mv;
+	public String register() {
+		return "user/register";
 	}
-	
+
 	@RequestMapping("/registerimpl.st")
-	public ModelAndView registerimpl(User user) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
+	public String registerimpl(User user) {
+		user.setBirth(user.getYear() + user.getMonth() + user.getDay());
 		try {
+			System.out.println(user);
 			service.register(user);
-			mv.addObject("centerpage","registerok");			
+			return "user/login";
 		} catch (Exception e) {
-			mv.addObject("centerpage","registerfail");			
 			e.printStackTrace();
-		}		
-		return mv;
+			return "user/register";
+		}
+
 	}
-	
+
 }

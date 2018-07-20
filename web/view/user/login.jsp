@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../../layout/styles/layout.css" rel="stylesheet"
+<link href="layout/styles/layout.css" rel="stylesheet"
 	type="text/css" media="all">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -100,14 +100,14 @@ h1 {
 	<!-- ################################################################################################ -->
 	<div class="container">
 		<h1>
-			<img src="../../images/logo.png" id="mainLogo"><a
+			<img src="images/logo.png" id="mainLogo"><a
 				href="main.st"> Sticker</a>
 		</h1>
 		<div>
 			<div>
 				<h1>로그인</h1>
 			</div>
-			<form>
+			<form action="loginimpl.st" method="post">
 
 				<div class="form-group">
 					아이디(닉네임) :<input type="text" name="id" id="id" class="form-control">
@@ -124,7 +124,7 @@ h1 {
 				</div>
 
 				<div class="form-group">
-					<button type="button" class="btn btn-dark btn-lg btn-block">로그인</button>
+					<input type="submit" class="btn btn-dark btn-lg btn-block" value="로그인">
 				</div>
 
 			</form>
@@ -133,10 +133,10 @@ h1 {
 	</div>
 
 	<!-- JAVASCRIPTS -->
-	<script src="../../layout/scripts/jquery.min.js"></script>
-	<script src="../../layout/scripts/jquery.backtotop.js"></script>
-	<script src="../../layout/scripts/jquery.mobilemenu.js"></script>
-	<script src="../../layout/scripts/jquery.flexslider-min.js"></script>
+	<script src="layout/scripts/jquery.min.js"></script>
+	<script src="layout/scripts/jquery.backtotop.js"></script>
+	<script src="layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="layout/scripts/jquery.flexslider-min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<script
