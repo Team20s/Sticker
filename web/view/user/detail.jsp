@@ -87,15 +87,45 @@ span, p{
 						<td>
 							<div class="table_content">
 								<div>
-									<input type="button" class="btn" disabled value="진행 중">
+									<button type="button" class="btn" disabled>
+										<c:choose>
+											<c:when test="${item.edate == item.sdate }">
+												<c:choose>
+													<c:when test="${item.edate > item.sdate }">
+														모임종료
+													</c:when>
+													<c:when test="${item.sdate > currentDate }">
+														진행 전
+													</c:when>
+													<c:otherwise>
+														진행 중
+													</c:otherwise>
+												</c:choose>
+											</c:when>
+											<c:otherwise>
+												<c:choose>
+													<c:when test="${item.sdate > currentDate }">
+														진행 전
+													</c:when>
+													<c:otherwise>
+														모임종료
+													</c:otherwise>
+												</c:choose>
+											</c:otherwise>
+										</c:choose>
+									</button>
 								</div>
 								<div>
 									<span>모임기간 : </span>
-			  						<span id="sdate">8월 20일(월)9시 00분</span> ~ 
-			  						<span id="edate">8월 31일(금)17시 00분</span>
+			  						<span id="sdate">${item.sdate } ${item.stime }</span> 
+			  						
+			  						<c:if test="${item.edate == item.sdate }">
+			  						~ <span id="edate">${item.edate } ${item.etime }</span>
+			  						</c:if>
+			  						
 								</div>
 								<div>
-			  						<span>모임장소 : </span><span>경기도 성남시 분당구 판교로 289번길 20층</span>
+			  						<span>모임장소 : </span><span>${item.place }</span>
 			  					</div>
 								<input id="btn_cancel" type="button" class="btn btn_danger" value="신청취소">
 							</div>

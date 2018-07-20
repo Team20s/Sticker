@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -44,18 +45,44 @@ span, p{
   					<h3 id="title">${moim.title }</h3>
   					<div>
   						<span>모임기간 : </span>
-  						<span id="sdate">${moim.sdate } ${moim.stime }</span> ~ 
-  						<span id="edate">${moim.edate } ${moim.etime }</span>
+  						<span id="sdate">${moim.sdate } ${moim.stime }</span>
+  						<c:if test="${moim.edate != moim.sdate }">
+  						 ~ <span id="edate">${moim.edate } ${moim.etime }</span>
+  						</c:if>
   					</div>
   					<div>
-  						<span>모임장소 : </span><span>경기도 성남시 분당구 판교로 289번길 20층</span>
+  						<span>모임장소 : </span><span>${moim.place }</span>
   					</div>
   					<div>
   						<span>신청기간 : </span>
   						<span id="applySdate">${moim.applySdate } ${moim.applyStime }</span> ~ 
   						<span id="applyEdate">${moim.applyEdate } ${moim.applyEtime }</span>
   					</div>
-  					<input type="button" value="신청하기" class="btn">
+						<c:choose>
+							<c:when test="${moim.edate == moim.sdate }">
+								<c:choose>
+									<c:when test="${moim.applyEdate > moim.applySdate && moim.applyEtime > moim.applyStime}">
+										<button type="button" class="btn" disabled>신청종료</button>
+									</c:when>
+									<c:when test="${moim.applySdate > currentDate && moim.applyStime > currentTime}">
+										<button type="button" class="btn" disabled>신청기간 전</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn">신청하기</button>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${moim.applySdate > applyEdate && moim.applyStime > applyEtime }">
+										<button type="button" class="btn" disabled>신청종료</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn" disabled>신청종료</button>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
 	        	</div>
   			</li>
   		</ul>
