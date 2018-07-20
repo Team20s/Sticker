@@ -69,7 +69,7 @@ File: Layout CSS
 .sectiontitle *{margin:0;}
 
 #introblocks{position:relative; z-index:1;}
-#introblocks > ul{display:block;}
+#introblocks > ul{display:block; margin-bottom: 20px;}
 #introblocks > ul > li{text-align:center;border: 1px #D7D7D7 solid;}
 #introblocks > ul > li > article{display:inline-block; width:100%; max-width:320px; text-align:left;}
 #introblocks > ul > li > article > div{padding:10px 20px;}
@@ -327,8 +327,8 @@ input:focus, textarea:focus, *:required:focus{border-color:#6677BC;}
 table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#D7D7D7;}
 #comments input:focus, #comments textarea:focus, #comments *:required:focus{border-color:#6677BC;}
 th{color:#FFFFFF; background-color:#373737;}
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
-tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color:#F7F7F7;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:white;}
+tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color:white;}
 table a, #comments a{background-color:inherit;}
 
 
