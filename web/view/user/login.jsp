@@ -124,7 +124,7 @@ h1 {
 				</div>
 
 				<div class="form-group">
-					<button type="button" class="btn btn-dark btn-lg btn-block">로그인</button>
+					<input type="submit" class="btn btn-dark btn-lg btn-block" value="로그인">
 				</div>
 
 			</form>

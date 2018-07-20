@@ -23,16 +23,13 @@ public class MainController {
 	}
 
 	@RequestMapping("/login.st")
-	public ModelAndView login() {
+	public String login() {
 		// model
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("main", "user/login");
-		return mv;
+		return "user/login";
 	}
 
 	@RequestMapping("/loginimpl.st")
-	public ModelAndView loginimpl(HttpServletRequest request) {
+	public String loginimpl(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String loginState = "0";
@@ -42,26 +39,24 @@ public class MainController {
 		// User정보의 PWD와 입력 한 PWD를 비교 하여 
 		// 로그인 처리
 		//session에 "loginuser"로 넣음.
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		
 		User user = null;
 		try {
 			user = service.get(id);
 			if(pwd.equals(user.getPwd())) {
 				HttpSession session = request.getSession();
-				session.setAttribute("loginUser", user);
+				session.setAttribute("userId", user.getId());
+				System.out.println(user);
+				return "main";
 			}else {
 				request.setAttribute("loginState", loginState);
-				mv.addObject("main", "user/login");
+				System.out.println("로그인 실패!");
+				return "user/login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("loginState", loginState);
-			mv.addObject("main", "user/login");
-		}
-		
-		return mv;
+			return "user/login";
+		}			
 	}
 
 	@RequestMapping("/logout.st")
@@ -83,20 +78,17 @@ public class MainController {
 	}
 
 	@RequestMapping("/registerimpl.st")
-	public ModelAndView registerimpl(User user) {
+	public String registerimpl(User user) {
 		//String birth = user.getYear()+user.getMonth()+user.getDay();
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
 		try {
 			System.out.println(user);
 			service.register(user);
-			mv.addObject("centerpage", "main");
+			return "user/login";
 		} catch (Exception e) {
-			mv.addObject("main", "user/register");
 			e.printStackTrace();
+			return "user/register";
 		}
-		return mv;
+		
 	}
 
 }
