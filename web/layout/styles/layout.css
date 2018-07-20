@@ -69,7 +69,7 @@ File: Layout CSS
 .sectiontitle *{margin:0;}
 
 #introblocks{position:relative; z-index:1;}
-#introblocks > ul{display:block;}
+#introblocks > ul{display:block; margin-bottom: 20px;}
 #introblocks > ul > li{text-align:center;border: 1px #D7D7D7 solid;}
 #introblocks > ul > li > article{display:inline-block; width:100%; max-width:320px; text-align:left;}
 #introblocks > ul > li > article > div{padding:10px 20px;}
