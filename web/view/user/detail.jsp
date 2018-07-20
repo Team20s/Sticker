@@ -53,11 +53,11 @@ span, p{
         <table class="table">
 			<tr>
 				<td class="table_title">아이디(닉네임)</td>
-				<td>admin</td>
+				<td>${user.id }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">이름</td>
-				<td>김다은</td>
+				<td>${user.name }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">비밀번호</td>
@@ -65,7 +65,7 @@ span, p{
 			</tr>        
 			<tr>
 				<td class="table_title">생년월일</td>
-				<td>1992.12.8</td>
+				<td>${user.birth }</td>
 			</tr>        
         </table>
     </div>
@@ -81,9 +81,9 @@ span, p{
 					</div>		  
 			</div>
 			<table class="table">
-<%-- 				<c:forEach items="${moim }" var="item"> --%>
+				<c:forEach items="${moim }" var="item">
 					<tr>
-						<td class="table_title"><a href="#"><img src="images/demo/gallery/01.png" id="moim_image"></a></td>
+						<td class="table_title"><a href="#"><img src="${item.imgname }" id="moim_image"></a></td>
 						<td>
 							<div class="table_content">
 								<div>
@@ -101,64 +101,7 @@ span, p{
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td class="table_title"><a href="#"><img src="images/demo/gallery/01.png" id="moim_image"></a></td>
-						<td>
-							<div class="table_content">
-								<div>
-									<input type="button" class="btn" disabled value="진행 중">
-								</div>
-								<div>
-									<span>모임기간 : </span>
-			  						<span id="sdate">8월 20일(월)9시 00분</span> ~ 
-			  						<span id="edate">8월 31일(금)17시 00분</span>
-								</div>
-								<div>
-			  						<span>모임장소 : </span><span>경기도 성남시 분당구 판교로 289번길 20층</span>
-			  					</div>
-								<input id="btn_cancel" type="button" class="btn btn_danger" value="신청취소">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="table_title"><a href="#"><img src="images/demo/gallery/01.png" id="moim_image"></a></td>
-						<td>
-							<div class="table_content">
-								<div>
-									<input type="button" class="btn" disabled value="진행 중">
-								</div>
-								<div>
-									<span>모임기간 : </span>
-			  						<span id="sdate">8월 20일(월)9시 00분</span> ~ 
-			  						<span id="edate">8월 31일(금)17시 00분</span>
-								</div>
-								<div>
-			  						<span>모임장소 : </span><span>경기도 성남시 분당구 판교로 289번길 20층</span>
-			  					</div>
-								<input id="btn_cancel" type="button" class="btn btn_danger" value="신청취소">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="table_title"><a href="#"><img src="images/demo/gallery/01.png" id="moim_image"></a></td>
-						<td>
-							<div class="table_content">
-								<div>
-									<input type="button" class="btn" disabled value="진행 중">
-								</div>
-								<div>
-									<span>모임기간 : </span>
-			  						<span id="sdate">8월 20일(월)9시 00분</span> ~ 
-			  						<span id="edate">8월 31일(금)17시 00분</span>
-								</div>
-								<div>
-			  						<span>모임장소 : </span><span>경기도 성남시 분당구 판교로 289번길 20층</span>
-			  					</div>
-								<input id="btn_cancel" type="button" class="btn btn_danger" value="신청취소">
-							</div>
-						</td>
-					</tr>
-<%-- 				</c:forEach> --%>
+				</c:forEach>
 			</table>
 		</div>
     <p class="center" id="btn_more"><a class="btn inverse" href="#">더 보기</a></p>
