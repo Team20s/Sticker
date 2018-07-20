@@ -31,15 +31,14 @@
       </ul>
     </div>
   </div>
-</div>
 <!-- 친목도모 Section -->
 <!-- ################################################################################################ -->
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
     <!-- main body -->
     <div id="introblocks">
-      <ul class="nospace group">
         <h4>친목도모</h4>
+      <ul class="nospace group">
         <li class="one_quarter first">
           <article>
             <img src="images/demo/gallery/01.png" alt="">
@@ -92,8 +91,8 @@
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
     <div id="introblocks">
-      <ul class="nospace group">
         <h4>스터디 및 취업정보</h4>
+      <ul class="nospace group">
         <li class="one_quarter first">
           <article>
             <img src="images/demo/gallery/01.png" alt="">
