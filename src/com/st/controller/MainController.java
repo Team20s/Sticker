@@ -91,5 +91,18 @@ public class MainController {
 		}
 
 	}
+	
+	@RequestMapping("/mypage.st")
+	public ModelAndView mypage(User user) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		try {
+			service.get();
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
+	}
 
 }
