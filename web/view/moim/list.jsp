@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <style>
+
 .one_quarter{
 margin-left: 0;
 margin-right: 2%;
@@ -32,7 +33,12 @@ margin-bottom: 20px;
          <article>
            <img src="${item.imgname }" alt="">
            <div>
-             <p>${item.category }<span class="fl_right">${item.sdate } ~ ${item.edate }</span></p>
+             <p>${item.category }<span class="fl_right">${item.sdate }
+		             
+		             <c:if test="${item.edate == item.sdate }">
+		              ~ ${item.edate } </c:if>
+		              
+		              </span></p>
              <h6 class="heading">${item.title }</h6>
            </div>
            <footer><a href="moim.st?cmd=detail&id=${item.id }">More Detail</a></footer>
