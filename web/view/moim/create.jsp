@@ -27,7 +27,7 @@ tr{
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
   	<div id="introblocks">
-  	<form>
+  	<form action="createmoimimpl.hw" method="post" enctype="multipart/form-data">
   	 	<ul class="nospace group">
   			<h4>개설하기</h4>
   			<li  class="one_quarter first">
@@ -53,7 +53,7 @@ tr{
 	        			</tr>
 	        			<tr>
 	        				<td>모임일시</td>
-	        				<td><input type="date"></td>
+	        				<td><input type="date" name="sDate"></td>
 	        				<td><input type="time"></td>
 	        				<td>부터</td>
 	        				<td><input type="date"></td>
@@ -87,7 +87,7 @@ tr{
   		<div>
   			<textarea class="form-control"></textarea>
   		</div>
-  		<button class="btn">개설하기</button>
+  		<input type="submit" value="개설하기" class="btn"><br>
   		</form>
     </div>
   </main>
