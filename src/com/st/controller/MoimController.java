@@ -23,7 +23,7 @@ public class MoimController {
 	public ModelAndView createmoim() {//move createmoim page
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","moim/createTest");
+		mv.addObject("centerpage","moim/create");
 		return mv;
 	}
 
@@ -43,7 +43,7 @@ public class MoimController {
 			moim = new Moim("moim01","test.jpg","test",new Date(),new Date(),new Date(),new Date(),new Date(),"placeTest","c1","id01","ENJOY","detailId","content","detailImg1","detailImg2","detailImg3","detailImg4","detailImg5");
 			
 			service.register(moim);
-			mv.addObject("centerpage","moim/createTest");
+			mv.addObject("centerpage","moim/create");
 		} catch (Exception e) {
 			e.printStackTrace();
 			mv.addObject("centerpage","main");
