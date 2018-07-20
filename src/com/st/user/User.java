@@ -9,35 +9,42 @@ public class User {
 	private String id;
 	private String pwd;
 	private String name;
-	private String birth;
+	private String year;
+	private String month;
+	private String day;
 	private String userStatus;
 	ArrayList<Moim> moim;
 	
 		
 	public User() {
 	}
+
 	
 
-	public User(String id, String pwd, String name, String birth, String userStatus) {
+	public User(String id, String pwd, String name, String year, String month, String day, String userStatus) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
-		this.birth = birth;
+		this.year = year;
+		this.month = month;
+		this.day = day;
 		this.userStatus = userStatus;
 	}
 
 
-	public User(String id, String pwd, String name, String birth, String userStatus, ArrayList<Moim> moim) {
+	public User(String id, String pwd, String name, String year, String month, String day, String userStatus,
+			ArrayList<Moim> moim) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
-		this.birth = birth;
+		this.year = year;
+		this.month = month;
+		this.day = day;
 		this.userStatus = userStatus;
 		this.moim = moim;
 	}
-
 
 
 	public String getId() {
@@ -76,14 +83,38 @@ public class User {
 
 
 
-	public String getBirth() {
-		return birth;
+	public String getYear() {
+		return year;
 	}
 
 
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
+
+	public String getMonth() {
+		return month;
+	}
+
+
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+
+
+	public String getDay() {
+		return day;
+	}
+
+
+
+	public void setDay(String day) {
+		this.day = day;
 	}
 
 
@@ -114,8 +145,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth + ", userStatus=" + userStatus
-				+ ", moim=" + moim + "]";
+		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", year=" + year + ", month=" + month + ", day="
+				+ day + ", userStatus=" + userStatus + ", moim=" + moim + "]";
 	}
 
 	
