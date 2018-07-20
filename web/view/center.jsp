@@ -46,6 +46,7 @@ margin-bottom: 20px;
     <!-- main body -->
     <div id="introblocks">
         <h4>친목도모</h4>
+        <!-- 
       <ul class="nospace group">
       
              <c:forEach items="${moim }" var="item">
@@ -66,7 +67,7 @@ margin-bottom: 20px;
 		       </li>
 		      </c:forEach>
 		      
-      </ul>
+      </ul> -->
     </div>
     <p class="center" id="btn_more"><a class="btn inverse" href="#">더 보기</a></p>
     <div class="clear"></div>

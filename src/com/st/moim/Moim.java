@@ -21,7 +21,6 @@ public class Moim {
 	private String categoryId;
 	private String userId;
 	private String categoryKind;
-	private String detailId;
 	private String content;
 	private String detailImg1;
 	private String detailImg2;
@@ -36,14 +35,12 @@ public class Moim {
 	private MultipartFile img5;
 	
 	public Moim() {
-		super();
 	}
 
 	public Moim(String moimId, String moimImg, String title, String sDate, String eDate, String sTime, String eTime,
 			Date regDate, String applySDate, String applyEDate, String applySTime, String applyETime, String place,
-			String categoryId, String userId, String categoryKind, String detailId, String content, String detailImg1,
-			String detailImg2, String detailImg3, String detailImg4, String detailImg5) {
-		super();
+			String categoryId, String userId, String categoryKind, String content, String detailImg1, String detailImg2,
+			String detailImg3, String detailImg4, String detailImg5) {
 		this.moimId = moimId;
 		this.moimImg = moimImg;
 		this.title = title;
@@ -60,7 +57,6 @@ public class Moim {
 		this.categoryId = categoryId;
 		this.userId = userId;
 		this.categoryKind = categoryKind;
-		this.detailId = detailId;
 		this.content = content;
 		this.detailImg1 = detailImg1;
 		this.detailImg2 = detailImg2;
@@ -197,14 +193,6 @@ public class Moim {
 		this.categoryKind = categoryKind;
 	}
 
-	public String getDetailId() {
-		return detailId;
-	}
-
-	public void setDetailId(String detailId) {
-		this.detailId = detailId;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -257,8 +245,8 @@ public class Moim {
 		return moimMultiImg;
 	}
 
-	public void setMoimMultiImg(MultipartFile mImg) {
-		this.moimMultiImg = mImg;
+	public void setMoimMultiImg(MultipartFile moimMultiImg) {
+		this.moimMultiImg = moimMultiImg;
 	}
 
 	public MultipartFile getImg1() {
@@ -307,9 +295,9 @@ public class Moim {
 				+ eDate + ", sTime=" + sTime + ", eTime=" + eTime + ", regDate=" + regDate + ", applySDate="
 				+ applySDate + ", applyEDate=" + applyEDate + ", applySTime=" + applySTime + ", applyETime="
 				+ applyETime + ", place=" + place + ", categoryId=" + categoryId + ", userId=" + userId
-				+ ", categoryKind=" + categoryKind + ", detailId=" + detailId + ", content=" + content + ", detailImg1="
-				+ detailImg1 + ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3 + ", detailImg4="
-				+ detailImg4 + ", detailImg5=" + detailImg5 + ", mImg=" + moimMultiImg + ", img1=" + img1 + ", img2=" + img2
+				+ ", categoryKind=" + categoryKind + ", content=" + content + ", detailImg1=" + detailImg1
+				+ ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3 + ", detailImg4=" + detailImg4
+				+ ", detailImg5=" + detailImg5 + ", moimMultiImg=" + moimMultiImg + ", img1=" + img1 + ", img2=" + img2
 				+ ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + "]";
 	}
 	

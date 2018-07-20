@@ -34,7 +34,7 @@ public class MoimController {
 		//test 용 id 입력
 		moim.setUserId("u1");
 		
-		FileSave.save("C:\\springs\\Sticker\\web\\img\\", mp, moimImg);
+		FileSave.save("C:\\Users\\student\\git\\Sticker\\web\\img\\", mp, moimImg);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
@@ -42,7 +42,7 @@ public class MoimController {
 		try {
 			
 			service.register(moim);
-			mv.addObject("centerpage","main");
+			mv.addObject("centerpage","moim/createok");
 		} catch (Exception e) {
 			e.printStackTrace();
 			mv.addObject("centerpage","moim/create");
