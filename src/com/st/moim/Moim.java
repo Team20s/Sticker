@@ -14,6 +14,8 @@ public class Moim {
 	private Date applySDate;
 	private Date applyEDate;
 	private String place;
+	private String categoryId;
+	private String userId;
 	private String categoryKind;
 	private String detailId;
 	private String content;
@@ -34,8 +36,9 @@ public class Moim {
 	}
 
 	public Moim(String moimId, String moimImg, String title, Date sDate, Date eDate, Date regDate, Date applySDate,
-			Date applyEDate, String place, String categoryKind, String detailId, String content, String detailImg1,
-			String detailImg2, String detailImg3, String detailImg4, String detailImg5) {
+			Date applyEDate, String place, String categoryId, String userId, String categoryKind, String detailId,
+			String content, String detailImg1, String detailImg2, String detailImg3, String detailImg4,
+			String detailImg5) {
 		super();
 		this.moimId = moimId;
 		this.moimImg = moimImg;
@@ -46,6 +49,8 @@ public class Moim {
 		this.applySDate = applySDate;
 		this.applyEDate = applyEDate;
 		this.place = place;
+		this.categoryId = categoryId;
+		this.userId = userId;
 		this.categoryKind = categoryKind;
 		this.detailId = detailId;
 		this.content = content;
@@ -126,6 +131,22 @@ public class Moim {
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getCategoryKind() {
@@ -244,9 +265,10 @@ public class Moim {
 	public String toString() {
 		return "Moim [moimId=" + moimId + ", moimImg=" + moimImg + ", title=" + title + ", sDate=" + sDate + ", eDate="
 				+ eDate + ", regDate=" + regDate + ", applySDate=" + applySDate + ", applyEDate=" + applyEDate
-				+ ", place=" + place + ", categoryKind=" + categoryKind + ", detailId=" + detailId + ", content="
-				+ content + ", detailImg1=" + detailImg1 + ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3
-				+ ", detailImg4=" + detailImg4 + ", detailImg5=" + detailImg5 + "]";
+				+ ", place=" + place + ", categoryId=" + categoryId + ", userId=" + userId + ", categoryKind="
+				+ categoryKind + ", detailId=" + detailId + ", content=" + content + ", detailImg1=" + detailImg1
+				+ ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3 + ", detailImg4=" + detailImg4
+				+ ", detailImg5=" + detailImg5 + "]";
 	}
 	
 }
