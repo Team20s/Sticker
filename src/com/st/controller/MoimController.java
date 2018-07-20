@@ -52,4 +52,20 @@ public class MoimController {
 		return mv;
 	}
 	
+	@RequestMapping("/moimdetail.st")
+	public ModelAndView moimdetail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("centerpage","moim/detail");
+		return mv;
+	}
+	
+	@RequestMapping("/moimlist.st")
+	public ModelAndView moimlist() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("centerpage","moim/list");
+		return mv;
+	}
+	
 }
