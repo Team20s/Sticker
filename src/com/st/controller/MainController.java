@@ -1,5 +1,7 @@
 package com.st.controller;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -93,11 +95,12 @@ public class MainController {
 	}
 	
 	@RequestMapping("/mypage.st")
-	public ModelAndView mypage(User user) {
+	public ModelAndView mypage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		ArrayList<User> list = null;
 		try {
-			service.get();
+			list= (ArrayList<User>)service.get();
 			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {
 			e.printStackTrace();
