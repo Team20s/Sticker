@@ -27,13 +27,13 @@ tr{
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
   	<div id="introblocks">
-  	<form action="createmoimimpl.hw" method="post" enctype="multipart/form-data">
+  	<form action="createmoimimpl.st" method="post" enctype="multipart/form-data">
   	 	<ul class="nospace group">
   			<h4>개설하기</h4>
   			<li  class="one_quarter first">
   				<div>
 					<img src="images/demo/gallery/01.png" id="moim_image">
-					<input type="file">
+					<input type="file" name="moimMultiImg">
 	        	</div>
   			</li>
   			<li  class="three_quarter">
@@ -42,41 +42,41 @@ tr{
 	        			<tr>
 	        				<td>카테고리/모임명</td>
 	        				<td>
-								<select>
-									<option value="enjoy">친목모임</option>
-									<option value="study">스터디 및 정보공유</option>
+								<select name="categoryId">
+									<option value="c1">친목모임</option>
+									<option value="c2">스터디 및 정보공유</option>
 								</select>
 							</td>
 	        				<td colspan="5">
-	        					<input type="text" style="width:100%">
+	        					<input type="text" style="width:100%" name="title">
 	        				</td>
 	        			</tr>
 	        			<tr>
 	        				<td>모임일시</td>
 	        				<td><input type="date" name="sDate"></td>
-	        				<td><input type="time"></td>
+	        				<td><input type="time" name="sTime"></td>
 	        				<td>부터</td>
-	        				<td><input type="date"></td>
-	        				<td><input type="time"></td>
+	        				<td><input type="date" name="eDate"></td>
+	        				<td><input type="time" name="eTime"></td>
 	        				<td>까지</td>
 	        			</tr>
 	        			<tr>
 	        				<td>접수기간</td>
-	        				<td><input type="date"></td>
-	        				<td><input type="time"></td>
+	        				<td><input type="date" name="applySDate"></td>
+	        				<td><input type="time" name="applySTime"></td>
 	        				<td>부터</td>
-	        				<td><input type="date"></td>
-	        				<td><input type="time"></td>
+	        				<td><input type="date" name="applyEDate"></td>
+	        				<td><input type="time" name="applyETime"></td>
 	        				<td>까지</td>
 	        			</tr>
 	        			<tr>
 	        				<td>모임장소</td>
 	        				<td colspan="6">
 		        				<div class="input-group mb-3">
-								  <input type="text" class="form-control" placeholder="Search">
-								  <div class="input-group-append">
+								  <input type="text" class="form-control" placeholder="Search" name="place">
+								  <!-- <div class="input-group-append">
 								    <button class="btn" type="submit">Go</button> 
-								  </div>
+								  </div>-->
 								</div>
 	        				</td>
 	        			</tr>
@@ -85,7 +85,7 @@ tr{
   			</li>
   		</ul>
   		<div>
-  			<textarea class="form-control"></textarea>
+  			<textarea class="form-control" name="content"></textarea>
   		</div>
   		<input type="submit" value="개설하기" class="btn"><br>
   		</form>

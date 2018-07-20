@@ -39,11 +39,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<insert id="insert" parameterType="moim">
 		INSERT INTO MOIM VALUES
-		(#{moimId},#{moimImg},#{title},#{sDate},#{eDate},#{regDate},#{applySDate},#{applyEDate},#{place},#{categoryId},#{userId})
+		(TO_CHAR(SEQ_MOIM.NEXTVAL),#{moimImg},#{title},#{sDate},#{eDate},SYSDATE,#{applySDate},#{applyEDate},#{place},#{categoryId},#{userId},#{sTime},#{eTime},#{applySTime},#{applyETime})
 	</insert>
 	<update id="update" parameterType="moim">
 		UPDATE MOIM SET
-		MOIM_IMG=#{moimImg},TITLE=#{title},SDATE=#{sDate},SDATE=#{eDate} WHERE
+		MOIM_IMG=#{moimImg},TITLE=#{title},SDATE=#{sDate},EDATE=#{eDate},
+		STIME=#{sTime}, ETIME=#{eTime}, REG_DATE=#{regDate},
+		APPLY_SDATE=#{applySDate},APPLY_EDATE=#{applyEDate},APPLY_STIME=#{applySTime},APPLY_ETIME=#{applyETime},PLACE=#{place}
+		WHERE
 		MOIM_ID=#{moimId}
 	</update>
 	<delete id="delete" parameterType="String">
@@ -52,12 +55,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 
 	<insert id="insertDetail" parameterType="moim">
-		INSERT INTO DETAIL VALUES
+		INSERT INTO DETAIL
+		VALUES
 		(#{detailId},#{moimId},#{content},#{detailImg1},#{detailImg2},#{detailImg3},#{detailImg4},#{detailImg5})
 	</insert>
 	<update id="updateDetail" parameterType="moim">
 		UPDATE DETAIL SET
-		CONTENT=#{content},DETAIL_IMG1=#{detailImg1},DETAIL_IMG2=#{detailImg2},DETAIL_IMG3=#{detailImg3},DETAIL_IMG4=#{detailImg4},DETAIL_IMG5=#{detailImg5} WHERE
+		CONTENT=#{content},DETAIL_IMG1=#{detailImg1},DETAIL_IMG2=#{detailImg2},DETAIL_IMG3=#{detailImg3},DETAIL_IMG4=#{detailImg4},DETAIL_IMG5=#{detailImg5}
+		WHERE
 		DETAIL_ID=#{detailId}
 	</update>
 	<delete id="deleteDetail" parameterType="String">
