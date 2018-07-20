@@ -110,7 +110,7 @@ h1 {
 			<form>
 
 				<div class="form-group">
-					아이디 :<input type="text" name="id" id="id" class="form-control">
+					아이디(닉네임) :<input type="text" name="id" id="id" class="form-control">
 				</div>
 
 				<div class="form-group">
