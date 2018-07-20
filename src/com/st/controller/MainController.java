@@ -45,12 +45,12 @@ public class MainController {
 			if (pwd.equals(user.getPwd())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", user.getId());
-				System.out.println(user.toString());
+				System.out.println(id+pwd);
 				return "main";
 			} else {
 				request.setAttribute("loginState", loginState);
 				System.out.println("로그인 실패!");
-				System.out.println(user.toString());
+				System.out.println(id+pwd);
 				return "user/login";
 			}
 		} catch (Exception e) {
