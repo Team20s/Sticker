@@ -193,7 +193,7 @@ h1 {
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
 			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1) {
 			f.method = 'post';
-			f.action = 'register';
+			f.action = 'registerimpl.st';
 			f.submit();
 		} else {
 			sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
@@ -237,7 +237,7 @@ h1 {
 			<div>
 				<h1>회원가입</h1>
 			</div>
-			<form action="registerimpl.hw" method="post">
+			<form action="registerimpl.st" method="post">
 
 				<div class="form-group">
 					아이디 :<input type="text" name="id" id="id" class="form-control"

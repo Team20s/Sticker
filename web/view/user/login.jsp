@@ -107,7 +107,7 @@ h1 {
 			<div>
 				<h1>로그인</h1>
 			</div>
-			<form>
+			<form action="loginimpl.st" method="post">
 
 				<div class="form-group">
 					아이디 :<input type="text" name="id" id="id" class="form-control">

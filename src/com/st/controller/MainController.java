@@ -27,7 +27,7 @@ public class MainController {
 		//model
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","login");
+		mv.addObject("centerpage","user/login");
 		return mv;
 	}
 	
@@ -40,11 +40,11 @@ public class MainController {
 		mv.setViewName("main");
 		
 		if(id.equals("qq") && pwd.equals("11")) {			
-			mv.addObject("centerpage","loginok");
+			mv.addObject("centerpage","main");
 			HttpSession session = request.getSession();
-			session.setAttribute("loginid", id);
+			session.setAttribute("loginId", id);
 		}else {
-			mv.addObject("centerpage","loginfail");			
+			mv.addObject("centerpage","user/login");			
 		}
 		return mv;
 	}
@@ -67,7 +67,7 @@ public class MainController {
 	public ModelAndView register() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","register");
+		mv.addObject("centerpage","user/register");
 		return mv;
 	}
 	
@@ -77,9 +77,9 @@ public class MainController {
 		mv.setViewName("main");
 		try {
 			service.register(user);
-			mv.addObject("centerpage","main");			
+			mv.addObject("centerpage","main");		
 		} catch (Exception e) {
-			mv.addObject("centerpage","register");			
+			mv.addObject("centerpage","user/register");			
 			e.printStackTrace();
 		}		
 		return mv;
