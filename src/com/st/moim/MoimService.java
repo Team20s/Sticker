@@ -15,6 +15,7 @@ public class MoimService implements Service<String,Moim>{
 	
 	@Override
 	public void register(Moim v) throws Exception {
+		System.out.println(v);
 		mdao.insert(v);
 	}
 
