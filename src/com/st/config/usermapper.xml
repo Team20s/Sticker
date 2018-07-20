@@ -12,19 +12,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="select" parameterType="String" resultMap="userResult">
-		SELECT * FROM USERS WHERE ID=#{obj}
+		SELECT * FROM USERS WHERE USER_ID=#{id}
 	</select>
 	<select id="selectall" resultType="user">
 		SELECT * FROM USERS
 	</select>
 	<insert id="insert" parameterType="user">
-		INSERT INTO USERS VALUES (#{id},#{pwd},#{name},#{birth})
+		INSERT INTO USERS VALUES (#{id},#{pwd},#{name},#{year}+#{month}+#{day})
 	</insert>
 	<update id="update" parameterType="user">
-		UPDATE USERS SET PWD=#{pwd},NAME=#{name},BIRTH=#{birth} WHERE ID=#{id}
+		UPDATE USERS SET PWD=#{pwd} WHERE ID=#{id}
 	</update>
 	<delete id="delete" parameterType="user">
-		DELETE FROM USERS WHERE ID=#{id},PWD=#{pwd}
+		DELETE FROM USERS WHERE USER_ID=#{id},PWD=#{pwd}
 	</delete>
 	
 </mapper>

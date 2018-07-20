@@ -50,6 +50,7 @@ public class MainController {
 			}else {
 				request.setAttribute("loginState", loginState);
 				System.out.println("로그인 실패!");
+				System.out.println(user);
 				return "user/login";
 			}
 		} catch (Exception e) {
@@ -79,7 +80,6 @@ public class MainController {
 
 	@RequestMapping("/registerimpl.st")
 	public String registerimpl(User user) {
-		//String birth = user.getYear()+user.getMonth()+user.getDay();
 		try {
 			System.out.println(user);
 			service.register(user);
