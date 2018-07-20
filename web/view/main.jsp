@@ -97,8 +97,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- Center -->
 <!-- ################################################################################################ -->
 	<c:choose>
-		<c:when test="${centerPage !=null }">
-			<jsp:include page="${centerPage }.jsp"></jsp:include>
+		<c:when test="${centerpage !=null }">
+			<jsp:include page="${centerpage }.jsp"></jsp:include>
 		</c:when>
 		<c:otherwise>
 			<jsp:include page="center.jsp"></jsp:include>
