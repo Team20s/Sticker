@@ -12,16 +12,18 @@ public class User {
 	private String year;
 	private String month;
 	private String day;
+	private String birth;
 	private String userStatus;
 	ArrayList<Moim> moim;
 	
 		
 	public User() {
 	}
-
 	
 
-	public User(String id, String pwd, String name, String year, String month, String day, String userStatus) {
+
+	public User(String id, String pwd, String name, String year, String month, String day, String birth,
+			String userStatus, ArrayList<Moim> moim) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -29,22 +31,12 @@ public class User {
 		this.year = year;
 		this.month = month;
 		this.day = day;
-		this.userStatus = userStatus;
-	}
-
-
-	public User(String id, String pwd, String name, String year, String month, String day, String userStatus,
-			ArrayList<Moim> moim) {
-		super();
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.year = year;
-		this.month = month;
-		this.day = day;
+		this.birth = birth;
 		this.userStatus = userStatus;
 		this.moim = moim;
 	}
+
+
 
 
 	public String getId() {
@@ -143,11 +135,32 @@ public class User {
 
 
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", year=" + year + ", month=" + month + ", day="
-				+ day + ", userStatus=" + userStatus + ", moim=" + moim + "]";
+
+	public String getBirth() {
+		return birth;
 	}
+
+
+
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
+
+
+
+	public User(String id, String pwd, String name, String birth, String userStatus, ArrayList<Moim> moim) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.birth = birth;
+		this.userStatus = userStatus;
+		this.moim = moim;
+	}
+
+
 
 	
 }

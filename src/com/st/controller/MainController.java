@@ -33,31 +33,31 @@ public class MainController {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String loginState = "0";
-		
+
 		// 해당 ID를 서버에 요청하여 User 정보가 있는지 확인
-		// 존재 한다면 
-		// User정보의 PWD와 입력 한 PWD를 비교 하여 
+		// 존재 한다면
+		// User정보의 PWD와 입력 한 PWD를 비교 하여
 		// 로그인 처리
-		//session에 "loginuser"로 넣음.
+		// session에 "loginuser"로 넣음.
 		User user = null;
 		try {
 			user = service.get(id);
-			if(pwd.equals(user.getPwd())) {
+			if (pwd.equals(user.getPwd())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", user.getId());
-				System.out.println(user);
+				System.out.println(user.toString());
 				return "main";
-			}else {
+			} else {
 				request.setAttribute("loginState", loginState);
 				System.out.println("로그인 실패!");
-				System.out.println(user);
+				System.out.println(user.toString());
 				return "user/login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("loginState", loginState);
 			return "user/login";
-		}			
+		}
 	}
 
 	@RequestMapping("/logout.st")
@@ -80,6 +80,7 @@ public class MainController {
 
 	@RequestMapping("/registerimpl.st")
 	public String registerimpl(User user) {
+		user.setBirth(user.getYear() + user.getMonth() + user.getDay());
 		try {
 			System.out.println(user);
 			service.register(user);
@@ -88,7 +89,7 @@ public class MainController {
 			e.printStackTrace();
 			return "user/register";
 		}
-		
+
 	}
 
 }
