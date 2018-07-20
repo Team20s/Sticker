@@ -37,20 +37,20 @@ public class MainController {
 		// 해당 ID를 서버에 요청하여 User 정보가 있는지 확인
 		// 존재 한다면
 		// User정보의 PWD와 입력 한 PWD를 비교 하여
-		// 로그인 처리
-		// session에 "loginuser"로 넣음.
+		// 로그인 처리, session에 login 정보를 넣음.
 		User user = null;
 		try {
 			user = service.get(id);
 			if (pwd.equals(user.getPwd())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", user.getId());
-				System.out.println(id+pwd);
+				System.out.println("로그인 성공!");
+				System.out.println("ID:"+id+"Pwd:"+pwd+"loginState:"+loginState);
 				return "main";
 			} else {
 				request.setAttribute("loginState", loginState);
 				System.out.println("로그인 실패!");
-				System.out.println(id+pwd);
+				System.out.println("ID:"+id+"Pwd:"+pwd+"loginState:"+loginState);
 				return "user/login";
 			}
 		} catch (Exception e) {
@@ -90,6 +90,19 @@ public class MainController {
 			return "user/register";
 		}
 
+	}
+	
+	@RequestMapping("/mypage.st")
+	public ModelAndView mypage(User user) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		try {
+			service.get();
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
 	}
 
 }
