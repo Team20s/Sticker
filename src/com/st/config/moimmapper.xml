@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<insert id="insert" parameterType="moim">
 		INSERT INTO MOIM VALUES
-		(TO_CHAR(SEQ_MOIM.NEXTVAL),#{moimImg},#{title},#{sDate},#{eDate},SYSDATE,#{applySDate},#{applyEDate},#{place},#{categoryId},#{userId},#{sTime},#{eTime},#{applySTime},#{applyETime})
+		(SEQ_MOIM.NEXTVAL,#{moimImg},#{title},#{sDate},#{eDate},SYSDATE,#{applySDate},#{applyEDate},#{place},#{categoryId},#{userId},#{sTime},#{eTime},#{applySTime},#{applyETime})
 	</insert>
 	<update id="update" parameterType="moim">
 		UPDATE MOIM SET
