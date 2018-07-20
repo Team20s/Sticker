@@ -7,6 +7,12 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <style>
+.one_quarter{
+margin-left: 0;
+margin-right: 2%;
+margin-bottom: 20px;
+}
+
 </style>
 <script></script>
 </head>
@@ -19,130 +25,21 @@
     <div id="introblocks">
         <h4 id="category">친목도모</h4>
       <ul class="nospace group">
-        <li class="one_quarter first">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-                <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
+      
+      
+      <c:forEach items="${moim }" var="item">
         <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-      </ul>
-      <ul class="nospace group">
-        <li class="one_quarter first">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-                <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-      </ul>
-      <ul class="nospace group">
-        <li class="one_quarter first">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-                <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
-        <li class="one_quarter">
-          <article>
-            <img src="images/demo/gallery/01.png" alt="">
-            <div>
-              <p>취업정보<span class="fl_right">7.20(금)</span></p>
-              <h6 class="heading">효율적인 포트폴리오 작성법</h6>
-            </div>
-            <footer><a href="#">More Details</a></footer>
-          </article>
-        </li>
+         <article>
+           <img src="${item.imgname }" alt="">
+           <div>
+             <p>${item.category }<span class="fl_right">${item.sdate } ~ ${item.edate }</span></p>
+             <h6 class="heading">${item.title }</h6>
+           </div>
+           <footer><a href="moim.st?cmd=detail&id=${item.id }">More Detail</a></footer>
+         </article>
+       </li>
+      </c:forEach>
+      
       </ul>
     </div>
     <div class="clear"></div>
