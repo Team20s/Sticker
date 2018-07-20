@@ -1,7 +1,5 @@
 package com.st.controller;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -12,10 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.st.frame.Service;
 import com.st.moim.Moim;
 import com.st.util.FileSave;
+import com.st.util.Util;
 
 @Controller
 public class MoimController {
-	
 	@Resource(name="mservice")
 	Service<String, Moim> service;
 	
@@ -29,24 +27,30 @@ public class MoimController {
 
 	@RequestMapping("/createmoimimpl.st")
 	public ModelAndView createmoimimpl(Moim moim) {//moim insert
-		/*MultipartFile mp = moim.getmImg();
+		MultipartFile mp = moim.getMoimMultiImg();
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
 		
+		//text convert Korean
+		moim.setTitle(Util.convertKr(moim.getTitle()));
+		moim.setPlace(Util.convertKr(moim.getPlace()));
+		moim.setContent(Util.convertKr(moim.getContent()));
+		
+		//test 용 id 입력
+		moim.setUserId("u1");
+		
 		FileSave.save("C:\\springs\\Sticker\\web\\img\\", mp, moimImg);
-		*/
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
 		try {
-			//moim id = Session에 저장시킨 user id와 sequence로 합쳐서 만들자. 일단 테스트로 user 정보 임의로 넣어놓고 insert 할것. 테스트 완료 후 데이터 삭제.
-			moim = new Moim("moim01","test.jpg","test",new Date(),new Date(),new Date(),new Date(),new Date(),"placeTest","c1","id01","ENJOY","detailId","content","detailImg1","detailImg2","detailImg3","detailImg4","detailImg5");
 			
 			service.register(moim);
-			mv.addObject("centerpage","moim/create");
+			mv.addObject("centerpage","main");
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv.addObject("centerpage","main");
+			mv.addObject("centerpage","moim/create");
 		}
 		
 		return mv;
