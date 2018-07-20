@@ -17,8 +17,6 @@ tr{
 	width:100%;
 	height: auto;
 }
-
-
 </style>
 <script></script>
 </head>
@@ -45,13 +43,12 @@ tr{
 	        				<td>카테고리/모임명</td>
 	        				<td>
 								<select>
-									<option value="volvo">Volvo</option>
-									<option value="saab">Saab</option>
-									<option value="opel">Opel</option>
+									<option value="enjoy">친목모임</option>
+									<option value="study">스터디 및 정보공유</option>
 								</select>
 							</td>
 	        				<td colspan="5">
-	        					<input type="text">
+	        					<input type="text" style="width:100%">
 	        				</td>
 	        			</tr>
 	        			<tr>
@@ -78,7 +75,7 @@ tr{
 		        				<div class="input-group mb-3">
 								  <input type="text" class="form-control" placeholder="Search">
 								  <div class="input-group-append">
-								    <button class="btn btn-success" type="submit">Go</button> 
+								    <button class="btn" type="submit">Go</button> 
 								  </div>
 								</div>
 	        				</td>
@@ -86,11 +83,11 @@ tr{
 	        		</table>
 	        	</div>
   			</li>
-  			
   		</ul>
   		<div>
   			<textarea class="form-control"></textarea>
   		</div>
+  		<button class="btn">개설하기</button>
   		</form>
     </div>
   </main>

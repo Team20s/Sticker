@@ -85,10 +85,10 @@ Licence URI: http://www.os-templates.com/template-terms
     <nav id="header" class="hoc clear">
       <nav id="mainav" class="fl_left">
         <ul class="clear">
-          <li><a href="#">친목도모</a></li>
-          <li><a href="#">스터디 및 취업정보</a></li>
+          <li><a href="moimlist.st">친목도모</a></li>
+          <li><a href="moimlist.st">스터디 및 취업정보</a></li>
           <li>|</li>
-          <li><a href="#">모임개설</a></li>
+          <li><a href="createmoim.st">모임개설</a></li>
         </ul>
       </nav>
     </nav>
