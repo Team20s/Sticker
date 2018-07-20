@@ -17,8 +17,8 @@ public class MoimDao implements DAO<String,Moim>{
 	
 	@Override
 	public void insert(Moim v) throws Exception {
-		mmapper.insertDetail(v);
 		mmapper.insert(v);
+		mmapper.insertDetail(v);
 	}
 
 	@Override
