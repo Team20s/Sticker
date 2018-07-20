@@ -7,9 +7,6 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <style>
-	ul{
-		margin-bottom: 20px;
-	}
 </style>
 <script></script>
 </head>

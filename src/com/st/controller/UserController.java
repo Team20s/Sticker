@@ -35,7 +35,13 @@ public class UserController {
 		return mv;
 	}
 
-	
+	@RequestMapping("/userdetail.st")
+	public ModelAndView userdetail() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("centerpage","user/detail");
+		return mv;
+	}
 	
 	
 }
