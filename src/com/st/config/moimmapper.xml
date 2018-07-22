@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="sdate" property="sDate" />
 		<result column="edate" property="eDate" />
 	</resultMap>
+	
+	<select id="selectCategory" parameterType="String" resultMap="moimList">
+		SELECT * FROM MOIM WHERE CATEGORY_ID = #{obj}
+	</select>
 
 	<select id="select" parameterType="String"
 		resultMap="moimDetail">
