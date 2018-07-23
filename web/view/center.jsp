@@ -15,7 +15,30 @@ margin-bottom: 20px;
 }
 
 </style>
-<script></script>
+<script>
+	$(document).ready(function(){
+		//setInterval(function(){},10000)
+		$.ajax({
+			url:'mainlist.st',
+			type:'POST',
+			success:function(data){
+				alert(data);
+			},
+			error:function (jqXHR, textStatus, errorThrown) {
+			    alert(errorThrown);
+			}
+		});
+		
+		function displayEnjoy(data){
+			
+		}
+		
+		function displayStudy(data){
+			
+		}
+	});
+
+</script>
 </head>
 <body>
   <div id="pageintro" class="hoc clear">
@@ -44,7 +67,7 @@ margin-bottom: 20px;
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
     <!-- main body -->
-    <div id="introblocks">
+    <div id="enjoy">
         <h4>친목도모</h4>
         <!-- 
       <ul class="nospace group">
@@ -69,7 +92,7 @@ margin-bottom: 20px;
 		      
       </ul> -->
     </div>
-    <p class="center" id="btn_more"><a class="btn inverse" href="#">더 보기</a></p>
+    <p class="center" id="btn_more"><a class="btn inverse" href="moimlist.st?cmd=c1">더 보기</a></p>
     <div class="clear"></div>
   </main>
 </div>
@@ -78,7 +101,7 @@ margin-bottom: 20px;
 <!-- ################################################################################################ -->
 <div class="wrapper row3 coloured">
   <main class="hoc container clear">
-    <div id="introblocks">
+    <div id="study">
         <h4>스터디 및 취업정보</h4>
       <ul class="nospace group">
       <!-- 
@@ -102,7 +125,7 @@ margin-bottom: 20px;
       
       </ul>
     </div>
-    <p class="center" id="btn_more"><a class="btn inverse" href="#">더 보기</a></p>
+    <p class="center" id="btn_more"><a class="btn inverse" href="moimlist.st?cmd=c2">더 보기</a></p>
     <div class="clear"></div>
   </main>
 </div>

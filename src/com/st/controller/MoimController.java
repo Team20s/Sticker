@@ -1,15 +1,19 @@
 package com.st.controller;
 
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -125,5 +129,51 @@ public class MoimController {
 		
 		return mv;
 	}
-	
+	@RequestMapping("/mainlist.st")
+	@ResponseBody
+	public void mainlist(HttpServletResponse response) {
+		//카테고리 구분 객체 하기.				
+		ArrayList<Moim> enjoyList = null;
+		ArrayList<Moim> studyList = null;
+		
+		//JSON과 AJAX data 넘겨주기
+		response.setContentType("text/json");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			//Data : from DB
+			JSONArray js = new JSONArray();
+			JSONObject jo = new JSONObject();
+			JSONArray joa = new JSONArray();
+			
+			//친목 모임 ArrayList
+			enjoyList = search.search("c1");
+			for(Moim enjoyMoim:enjoyList) {
+				joa.add(enjoyMoim);
+			}
+			jo.put("enjoy", joa);
+			
+			//스터디 모임 ArrayList
+			studyList = search.search("c2");
+			joa = new JSONArray();
+			for(Moim studyMoim:studyList) {
+				joa.add(studyMoim);
+			}
+			jo.put("study", joa);
+			
+			
+			System.out.println(jo);
+			
+			out.print(jo.toJSONString());
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			out.print("아오!!!");
+		} catch (Exception e) {
+			e.printStackTrace();		
+		}
+		
+		
+		out.close();
+	}
 }

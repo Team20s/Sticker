@@ -88,7 +88,14 @@ Licence URI: http://www.os-templates.com/template-terms
           <li><a href="moimlist.st?cmd=c1">친목도모</a></li>
           <li><a href="moimlist.st?cmd=c2">스터디 및 취업정보</a></li>
           <li>|</li>
-          <li><a href="createmoim.st">모임개설</a></li>
+          <c:choose>
+          	<c:when test="${userId == null}">          	
+          		<li><a href="#">모임개설</a></li>
+          	</c:when>
+          	<c:otherwise>          	
+          		<li><a href="createmoim.st">모임개설</a></li>
+          	</c:otherwise>
+          </c:choose>
         </ul>
       </nav>
     </nav>
