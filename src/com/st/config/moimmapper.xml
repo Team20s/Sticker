@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="detail_img3" property="detailImg3" />
 		<result column="detail_img4" property="detailImg4" />
 		<result column="detail_img5" property="detailImg5" />
+		<result column="name" property="userName"/>
 	</resultMap>
 
 	<resultMap type="moim" id="moimList">
@@ -33,7 +34,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="select" parameterType="String"
 		resultMap="moimDetail">
-		SELECT * FROM MOIM WHERE MOIM_ID=#{obj}
+		SELECT MOIM_ID,MOIM_IMG,TITLE,SDATE,EDATE,REG_DATE,APPLY_SDATE,APPLY_EDATE,PLACE,CATEGORY_KIND,CONTENT,DETAIL_IMG1,DETAIL_IMG2,DETAIL_IMG3,DETAIL_IMG4,DETAIL_IMG5,U.NAME FROM MOIM M,CATEGORY C,USERS U WHERE M.USER_ID = U.USER_ID AND M.CATEGORY_ID = C.CATEGORY_ID AND MOIM_ID=#{obj}
 	</select>
 	<select id="selectall" resultMap="moimList">
 		SELECT

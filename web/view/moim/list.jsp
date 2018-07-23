@@ -14,8 +14,14 @@ margin-right: 2%;
 margin-bottom: 20px;
 }
 
+img{
+	width:220px;
+	height:220px;
+}
+
 </style>
-<script></script>
+<script>
+</script>
 </head>
 <body>
 <!-- 친목도모 Section -->
