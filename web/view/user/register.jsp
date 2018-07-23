@@ -58,6 +58,10 @@ h1 {
 	border-color: white;
 }
 
+.form-group{
+	color:black;
+}
+
 </style>
 <script>
 
@@ -193,36 +197,9 @@ h1 {
 </script>
 </head>
 <body id="top">
-	<!-- Top Navigation -->
-	<!-- ################################################################################################ -->
-	<div class="wrapper row0">
-		<div id="topbar" class="hoc clear">
-			<div class="fl_right">
-				<ul>
-					<li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
-					<c:choose>
-						<c:when test="${userId == null} ">
-							<li><a href="login.st">로그인</a></li>
-							<li><a href="register.st">회원가입</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="logout.st">로그아웃</a></li>
-							<li><a href="mypage.st">마이페이지</a></li>
-						</c:otherwise>
-					</c:choose>
-					<li><a href="#">고객센터</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
 	<!-- Center -->
 	<!-- ################################################################################################ -->
 	<div class="container">
-		<h1>
-			<img src="images/logo.png" id="mainLogo"><a
-				href="main.st"> Sticker</a>
-		</h1>
 		<div>
 			<div>
 				<h1>회원가입</h1>
