@@ -5,9 +5,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css"
+	media="all">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 <style>
 a {
@@ -29,48 +32,79 @@ h1 {
 }
 
 /* 회원가입 박스 사이즈 조정 */
-@media (min-width: 1200px){
+@media ( min-width : 1200px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-@media (min-width: 992px){
+@media ( min-width : 992px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-@media (min-width: 768px){
+@media ( min-width : 768px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-.container > div > div > h1{
+.container>div>div>h1 {
 	text-align: center;
 }
 
 /* 박스 안 버튼 색깔 조정 */
-
- .btn-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited {
+.btn-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited {
 	background-color: #AE32C7;
 	border-color: white;
 }
 
-.form-group{
-	color:black;
+.form-group {
+	color: black;
 }
-
 </style>
 <script>
+
+//아이디 체크여부 확인 (중복=0,중복X=1)
+var idck=0;
+$(function(){
+	$("#idCheck").click(function(){		
+			//userid를 param
+			var userId = $("#id").val();
+			
+			$.ajax({
+				async: true,
+				type: 'POST',
+				data: userId,
+				url:"idCheck.st",
+				dataType: "JSON",
+				contentType="application/json; charset=UTF-8",
+				success : function(data) {
+					if(data.cnt > 0) {
+						alert("ID가 존재합니다. 다른 아이디를 입력하세요.");
+						$("#id").focus();
+					} else{
+						alert("사용가능한 ID입니다.");
+						$("#pwd").focus();
+						idck = 1;
+					}
+				},
+				error : function(error) {
+					alert("error : " + error);
+				}
+				
+			});
+		});	
+});
 
 	function checkId() {
 		// 영어로 시작하고 6자리 이상
 		// 영문과 숫자가 반드시 입력
 		var id = document.querySelector('#id');
 		var sid = document.querySelector('#sid');
-
+		
+		
 		if (id.value.length == 0) {
 			sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
 			return;
@@ -78,21 +112,21 @@ h1 {
 
 		if (id.value.length >= 6) {
 			var exp = /^[a-zA-Z][a-zA-Z0-9]+/; // ^[a-zA-Z] : 알파벳으로 시작해야 하며, [a-zA-Z0-9]+ : 영어나 숫자로 이루어져야 한다
+			
 			if (!exp.test(id.value)) {
 				sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
 				return;
-			} else {
+			} else {				
 				sid.innerHTML = '<span class="text-success">멋진 아이디네요!</span>'
 				return;
 			}
-		} else {
+		}else {
 			sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
 			return;
 		}
 
-
-	}
-	;
+	};
+	
 	function checkPwd() {
 		// 영어로 시작하고 8자리 이상
 		// 숫자와 특수문자가 반드시 포함
@@ -126,7 +160,7 @@ h1 {
 		var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 		
 		if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
-			spwdCheck.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			spwdCheck.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
 			pwdFlag = 1;
 			return;
 		}
@@ -204,20 +238,22 @@ h1 {
 			<div>
 				<h1>회원가입</h1>
 			</div>
-			<form action="registerimpl.st" method="post">
+			<form action="registerimpl.st" method="post" name="frm" id="frm">
 
 				<div class="form-group">
-					아이디(닉네임) :<input type="text" name="id" id="id" class="form-control"
-						onblur="checkId();">
+					<label style="display: block;">아이디(닉네임) :</label> <input
+						type="text" name="id" id="id" class="form-control"
+						onblur="checkId();" style="width: 80%; display: inline;">
+					<input type="button" name="idCheck" id="idCheck"
+						class="btn btn-link" value="ID중복체크" style="display: inline;">
 					<div id="sid"></div>
 				</div>
-
 				<div class="form-group">
 					비밀번호 :<input type="password" name="pwd" id="pwd"
 						class="form-control" onblur="checkPwd();">
 					<div id="spwd"></div>
 				</div>
-				
+
 				<div class="form-group">
 					비밀번호 확인 :<input type="password" name="pwdCheck" id="pwdCheck"
 						class="form-control" onblur="checkPwdCheck();">

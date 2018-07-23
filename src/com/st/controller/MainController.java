@@ -1,13 +1,17 @@
 package com.st.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.st.frame.Service;
@@ -31,7 +35,7 @@ public class MainController {
 		// model
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","user/login");
+		mv.addObject("centerpage", "user/login");
 		return mv;
 	}
 
@@ -51,21 +55,21 @@ public class MainController {
 		try {
 			user = service.get(id);
 			if (pwd.equals(user.getPwd())) {
-				mv.addObject("centerpage","center");
+				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
 				System.out.println("로그인 성공!");
-				System.out.println("ID:"+id+"Pwd:"+pwd);
+				System.out.println("ID:" + id + "Pwd:" + pwd);
 			} else {
 				request.setAttribute("loginState", loginState);
-				mv.addObject("centerpage","user/login");
+				mv.addObject("centerpage", "user/login");
 				System.out.println("로그인 실패!");
-				System.out.println("ID:"+id+"Pwd:"+pwd+"loginState:"+loginState);
+				System.out.println("ID:" + id + "Pwd:" + pwd + "loginState:" + loginState);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("loginState", loginState);
-			mv.addObject("centerpage","user/login");
+			mv.addObject("centerpage", "user/login");
 		}
 		return mv;
 	}
@@ -80,7 +84,7 @@ public class MainController {
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","center");
+		mv.addObject("centerpage", "center");
 		return mv;
 	}
 
@@ -88,34 +92,51 @@ public class MainController {
 	public ModelAndView register() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","user/register");
+		mv.addObject("centerpage", "user/register");
 		return mv;
 	}
 
+	@RequestMapping("/idCheck.st")
+	@ResponseBody
+	public Map<String, Integer> idCheck(@RequestBody String userId) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		try {
+			service.get(userId);
+			map.put("cnt", 1);
+		} catch (Exception e) {
+			map.put("cnt", 0);
+			e.printStackTrace();
+		}
+		return map;
+	}
+
 	@RequestMapping("/registerimpl.st")
-	public ModelAndView registerimpl(User user) {
+	public ModelAndView registerimpl(HttpServletRequest request, User user) {
 		user.setBirth(user.getYear() + user.getMonth() + user.getDay());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		HttpSession session = request.getSession();
 		try {
-			System.out.println(user);
 			service.register(user);
-			mv.addObject("centerpage","user/login");
+			session.setAttribute("userid", user.getId());
+			mv.addObject("centerpage", "user/login");
+
 		} catch (Exception e) {
+			mv.addObject("centerpage", "user/register");
+			mv.addObject("regfail", "fail");
 			e.printStackTrace();
-			mv.addObject("centerpage","user/register");
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping("/mypage.st")
 	public ModelAndView mypage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		ArrayList<User> list = null;
 		try {
-			list= (ArrayList<User>)service.get();
-			mv.addObject("centerpage","user/detail");
+			list = (ArrayList<User>) service.get();
+			mv.addObject("centerpage", "user/detail");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

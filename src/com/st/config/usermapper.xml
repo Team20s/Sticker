@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO USERS VALUES (#{id},#{pwd},#{name},#{birth},DEFAULT)
 	</insert>
 	<update id="update" parameterType="user">
-		UPDATE USERS SET PWD=#{pwd} WHERE ID=#{id}
+		UPDATE USERS SET PWD=#{pwd} WHERE PWD=#{pwd}
 	</update>
 	<delete id="delete" parameterType="user">
 		DELETE FROM USERS WHERE USER_ID=#{id},PWD=#{pwd}
