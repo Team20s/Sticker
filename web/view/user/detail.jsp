@@ -71,11 +71,11 @@ span, p{
         <table class="table">
 			<tr>
 				<td class="table_title">아이디(닉네임)</td>
-				<td>${user.id }</td>
+				<td>${userId }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">이름</td>
-				<td>${user.name }</td>
+				<td>${User.name }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">비밀번호</td>
@@ -87,7 +87,7 @@ span, p{
 			</tr>        
 			<tr>
 				<td class="table_title">생년월일</td>
-				<td>${user.birth }</td>
+				<td>${User.birth }</td>
 			</tr>        
         </table>
     </div>

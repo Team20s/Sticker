@@ -130,14 +130,18 @@ public class MainController {
 	}
 
 	@RequestMapping("/mypage.st")
-	public ModelAndView mypage() {
+	public ModelAndView mypage(HttpServletRequest request) {
+		String userId = request.getParameter("id");
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		ArrayList<User> list = null;
+		User user = null;
 		try {
-			list = (ArrayList<User>) service.get();
-			mv.addObject("centerpage", "user/detail");
+			user = service.get(userId);
+			mv.addObject("user",user);
+			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {
+			mv.addObject("centerpage","user/detail");
 			e.printStackTrace();
 		}
 		return mv;
