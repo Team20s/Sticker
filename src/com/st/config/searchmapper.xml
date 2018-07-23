@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.st.mapper.SearchMapper">
+
+	<resultMap type="moim" id="moimList">
+		<result column="moim_id" property="moimId"/>
+		<result column="moim_img" property="moimImg" />
+		<result column="title" property="title" />
+		<result column="sdate" property="sDate" />
+		<result column="edate" property="eDate" />
+		<result column="category_kind" property="categoryKind"/>
+	</resultMap>
+	
+	<select id="search" parameterType="String" resultMap="moimList">
+		SELECT * FROM MOIM M, CATEGORY C WHERE M.CATEGORY_ID = C.CATEGORY_ID AND C.CATEGORY_ID = #{obj}
+	</select>
+
+</mapper>
+
+
+
+
+
+
