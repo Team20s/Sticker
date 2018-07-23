@@ -51,4 +51,20 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>{
 		return smapper.search(t);
 	}
 
+	@Override
+	public ArrayList<Moim> searchMyMoim(String t) throws Exception {
+		return smapper.searchMyMoim(t);
+	}
+
+	@Override
+	public ArrayList<Moim> searchJoinMoim(String t) throws Exception {
+		return smapper.searchJoinMoim(t);
+	}
+
+	@Override
+	public void joinInsert() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

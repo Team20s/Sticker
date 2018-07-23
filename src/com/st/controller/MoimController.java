@@ -67,12 +67,12 @@ public class MoimController {
 		try {
 			
 			service.register(moim);
-			mv.addObject("centerpage","moim/createok");
+			mv.addObject("centerpage","center");
 		} catch (Exception e) {
 			e.printStackTrace();
 			//fail 이면 조건 줘서 alert 뛰우기
-			mv.addObject("fail","fail");
-			mv.addObject("centerpage","moim/center");
+			mv.addObject("fail","createfail");
+			mv.addObject("centerpage","center");
 		}
 		
 		return mv;
@@ -129,6 +129,7 @@ public class MoimController {
 		
 		return mv;
 	}
+	
 	@RequestMapping("/mainlist.st")
 	@ResponseBody
 	public void mainlist(HttpServletResponse response) {
@@ -175,5 +176,63 @@ public class MoimController {
 		
 		
 		out.close();
+	}
+	@RequestMapping("/deletemoim.st")
+	public ModelAndView deletemoim(Moim moim,HttpServletRequest request) {//moim insert
+		//delete는 user/detail에서 실행해서 하는게 좋을 거 같다.
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","user/detail");
+		}
+		
+		return mv;
+	}
+	@RequestMapping("/updatemoim.st")
+	public ModelAndView updatemoim(Moim moim,HttpServletRequest request) {//moim insert
+		//delete와 마찬가지
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","user/detail");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("/insertusermoim.st")
+	public ModelAndView insertusermoim(Moim moim,HttpServletRequest request) {//moim insert
+		//user가 신청한 moimId와 그 userId를 USER_MOIM 테이블에 값을 넣어야한다.(신청한 모임)
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","center");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","joinfail");
+			mv.addObject("centerpage","center");
+		}
+		
+		return mv;
 	}
 }
