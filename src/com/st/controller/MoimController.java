@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.st.frame.Search;
 import com.st.frame.Service;
 import com.st.moim.Moim;
 import com.st.util.FileSave;
@@ -18,6 +19,9 @@ import com.st.util.FileSave;
 public class MoimController {
 	@Resource(name="mservice")
 	Service<String, Moim> service;
+	
+	@Resource(name="mservice")
+	Search<String,Moim> search;
 	
 	@RequestMapping("/createmoim.st")
 	public ModelAndView createmoim() {//move createmoim page
@@ -76,9 +80,16 @@ public class MoimController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
+		try {
+			list = search.search(cmd);
+			mv.addObject("moimKind",cmd);
+			mv.addObject("moimlist",list);
+			mv.addObject("centerpage","moim/list");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("centerpage","moim/list");			
+		}
 		
-		
-		mv.addObject("centerpage","moim/list");
 		return mv;
 	}
 	

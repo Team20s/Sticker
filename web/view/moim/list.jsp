@@ -24,24 +24,31 @@ margin-bottom: 20px;
   <main class="hoc container clear">
     <!-- main body -->
     <div id="introblocks">
-        <h4 id="category">친목도모</h4>
+    <c:choose>
+    	<c:when test="${moimKind == 'ENJOY' }">
+        	<h4 id="category">친목도모</h4>    	
+    	</c:when>
+    	<c:otherwise>
+        	<h4 id="category">스터디 및 정보공유</h4>
+    	</c:otherwise>
+    </c:choose>
       <ul class="nospace group">
       
       
-      <c:forEach items="${moim }" var="item">
+      <c:forEach items="${moimlist }" var="item">
         <li class="one_quarter">
          <article>
-           <img src="${item.imgname }" alt="">
+           <img src="img/${item.moimImg }">
            <div>
-             <p>${item.category }<span class="fl_right">${item.sdate }
+             <p>${item.categoryKind }<span class="fl_right">${item.sDate }
 		             
-		             <c:if test="${item.edate == item.sdate }">
-		              ~ ${item.edate } </c:if>
+		             <c:if test="${item.eDate == item.sDate }">
+		              ~ ${item.eDate } </c:if>
 		              
 		              </span></p>
              <h6 class="heading">${item.title }</h6>
            </div>
-           <footer><a href="moim.st?cmd=detail&id=${item.id }">More Detail</a></footer>
+           <footer><a href="moimdetail.st?id=${item.moimId }">More Detail</a></footer>
          </article>
        </li>
       </c:forEach>

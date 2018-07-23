@@ -23,15 +23,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<resultMap type="moim" id="moimList">
+		<result column="moim_id" property="moimId"/>
 		<result column="moim_img" property="moimImg" />
 		<result column="title" property="title" />
 		<result column="sdate" property="sDate" />
 		<result column="edate" property="eDate" />
+		<result column="category_kind" property="categoryKind" />
 	</resultMap>
-	
-	<select id="selectCategory" parameterType="String" resultMap="moimList">
-		SELECT * FROM MOIM WHERE CATEGORY_ID = #{obj}
-	</select>
 
 	<select id="select" parameterType="String"
 		resultMap="moimDetail">
