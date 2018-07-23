@@ -207,8 +207,7 @@ $(function(){
 			sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
 			return;
 		}
-	}
-	;
+	};
 
 	function register(f) {
 		var id = document.querySelector('#id');
@@ -226,8 +225,7 @@ $(function(){
 		} else {
 			sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
 		}
-	}
-	;
+	};
 </script>
 </head>
 <body id="top">
@@ -239,7 +237,6 @@ $(function(){
 				<h1>회원가입</h1>
 			</div>
 			<form action="registerimpl.st" method="post" name="frm" id="frm">
-
 				<div class="form-group">
 					<label style="display: block;">아이디(닉네임) :</label> <input
 						type="text" name="id" id="id" class="form-control"

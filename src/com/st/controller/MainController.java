@@ -58,7 +58,6 @@ public class MainController {
 				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
-				session.setAttribute("userPwd", pwd);
 				System.out.println("로그인 성공!");
 				System.out.println("ID:" + id + "Pwd:" + pwd);
 			} else {
@@ -121,7 +120,6 @@ public class MainController {
 		try {
 			service.register(user);
 			session.setAttribute("userid", user.getId());
-			session.setAttribute("userBirth", user.getBirth());
 			mv.addObject("centerpage", "user/login");
 
 		} catch (Exception e) {
@@ -141,7 +139,6 @@ public class MainController {
 		mv.setViewName("main");
 		User user = null;
 		try {
-			System.out.println(id);
 			user = service.get(id);
 			mv.addObject("user",user);
 			mv.addObject("centerpage","user/detail");
