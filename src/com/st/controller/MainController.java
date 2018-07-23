@@ -133,7 +133,7 @@ public class MainController {
 	public ModelAndView mypage(HttpServletRequest request) {
 		String userId = request.getParameter("id");
 		HttpSession session = request.getSession();
-		session.setAttribute(User , arg1);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		User user = null;
