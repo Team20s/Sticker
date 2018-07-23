@@ -9,10 +9,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="title" property="title" />
 		<result column="sdate" property="sDate" />
 		<result column="edate" property="eDate" />
+		<result column="stime" property="sTime" />
+		<result column="etime" property="eTime" />
 		<result column="reg_date" property="regDate" />
 		<result column="apply_sdate" property="applySDate" />
 		<result column="apply_edate" property="applyEDate" />
+		<result column="apply_stime" property="applySTime" />
+		<result column="apply_etime" property="applyETime" />
 		<result column="place" property="place" />
+		<result column="userid" property="userId"/>
 		<result column="category_kind" property="categoryKind" />
 		<result column="content" property="content" />
 		<result column="detail_img1" property="detailImg1" />
@@ -20,22 +25,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="detail_img3" property="detailImg3" />
 		<result column="detail_img4" property="detailImg4" />
 		<result column="detail_img5" property="detailImg5" />
+		<result column="name" property="userName"/>
 	</resultMap>
 
 	<resultMap type="moim" id="moimList">
+		<result column="moim_id" property="moimId"/>
 		<result column="moim_img" property="moimImg" />
 		<result column="title" property="title" />
 		<result column="sdate" property="sDate" />
 		<result column="edate" property="eDate" />
+		<result column="category_kind" property="categoryKind" />
 	</resultMap>
-	
-	<select id="selectCategory" parameterType="String" resultMap="moimList">
-		SELECT * FROM MOIM WHERE CATEGORY_ID = #{obj}
-	</select>
 
 	<select id="select" parameterType="String"
 		resultMap="moimDetail">
-		SELECT * FROM MOIM WHERE MOIM_ID=#{obj}
+		SELECT MOIM_ID,MOIM_IMG,TITLE,SDATE,EDATE,REG_DATE,APPLY_SDATE,APPLY_EDATE,PLACE,CATEGORY_KIND,U.USER_ID AS USERID,STIME,ETIME,APPLY_STIME,APPLY_ETIME ,CONTENT,DETAIL_IMG1,DETAIL_IMG2,DETAIL_IMG3,DETAIL_IMG4,DETAIL_IMG5,U.NAME FROM MOIM M,CATEGORY C,USERS U WHERE M.USER_ID = U.USER_ID AND M.CATEGORY_ID = C.CATEGORY_ID AND MOIM_ID=#{obj}
 	</select>
 	<select id="selectall" resultMap="moimList">
 		SELECT

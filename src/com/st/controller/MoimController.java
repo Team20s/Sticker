@@ -1,15 +1,19 @@
 package com.st.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.st.frame.Search;
 import com.st.frame.Service;
 import com.st.moim.Moim;
 import com.st.util.FileSave;
@@ -18,6 +22,9 @@ import com.st.util.FileSave;
 public class MoimController {
 	@Resource(name="mservice")
 	Service<String, Moim> service;
+	
+	@Resource(name="mservice")
+	Search<String,Moim> search;
 	
 	@RequestMapping("/createmoim.st")
 	public ModelAndView createmoim() {//move createmoim page
@@ -28,15 +35,27 @@ public class MoimController {
 	}
 
 	@RequestMapping("/createmoimimpl.st")
-	public ModelAndView createmoimimpl(Moim moim) {//moim insert
+	public ModelAndView createmoimimpl(Moim moim,HttpServletRequest request) {//moim insert
 		MultipartFile mp = moim.getMoimMultiImg();
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
 		
-		//test �슜 id �엯�젰
-		moim.setUserId("u1");
+		//주소랑 상세주소 합쳐서 객체에 저장하기.
+		String address = request.getParameter("address");
+		address += request.getParameter("address2");
+		moim.setPlace(address);
 		
-		FileSave.save("C:\\Users\\student\\git\\Sticker\\web\\img\\", mp, moimImg);
+		//session id 가져오기
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		System.out.println(userId);
+		moim.setUserId(userId);
+		
+		//상대경로로 가져오기
+		String path = session.getServletContext().getRealPath("/");
+		path += "img\\";
+		
+		FileSave.save(path, mp, moimImg);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
@@ -47,18 +66,35 @@ public class MoimController {
 			mv.addObject("centerpage","moim/createok");
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv.addObject("centerpage","moim/create");
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","moim/center");
 		}
 		
 		return mv;
 	}
 	
 	@RequestMapping("/moimdetail.st")
-	public ModelAndView moimdetail() {
-		//select(id)로 하는데 moim id 넘겨줘야하는데..
+	public ModelAndView moimdetail(HttpServletRequest request) {
+		//select(id)로 하는데 moim id 넘겨줌
+		
+		String moimId = request.getParameter("id");
+		
+		Moim moim = null;
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","moim/detail");
+		
+		try {
+			moim = service.get(moimId);
+			System.out.println(moim);
+			mv.addObject("moimdetail",moim);
+			mv.addObject("centerpage","moim/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("centerpage","moim/detail");
+		}
+		
 		return mv;
 	}
 	
@@ -76,9 +112,17 @@ public class MoimController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
+		try {
+			list = search.search(cmd);
+			
+			mv.addObject("moimKind",cmd);
+			mv.addObject("moimlist",list);
+			mv.addObject("centerpage","moim/list");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("centerpage","moim/list");			
+		}
 		
-		
-		mv.addObject("centerpage","moim/list");
 		return mv;
 	}
 	

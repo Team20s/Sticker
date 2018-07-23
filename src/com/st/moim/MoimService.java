@@ -4,16 +4,23 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.st.frame.DAO;
+import com.st.frame.Search;
 import com.st.frame.Service;
 
 @org.springframework.stereotype.Service("mservice")
-public class MoimService implements Service<String,Moim>{
+public class MoimService implements Service<String,Moim>, Search<String,Moim>{
 
 	@Resource(name="mdao")
 	DAO<String,Moim> mdao;
 	
+	@Resource(name="mdao")
+	Search<String,Moim> search;
+	
 	@Override
+	@Transactional
 	public void register(Moim v) throws Exception {
 		mdao.insert(v);
 	}
@@ -38,4 +45,8 @@ public class MoimService implements Service<String,Moim>{
 		return mdao.select();
 	}
 
+	@Override
+	public ArrayList<Moim> search(String t) throws Exception {
+		return search.search(t);
+	}
 }

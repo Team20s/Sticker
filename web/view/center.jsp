@@ -81,7 +81,7 @@ margin-bottom: 20px;
     <div id="introblocks">
         <h4>스터디 및 취업정보</h4>
       <ul class="nospace group">
-      
+      <!-- 
              <c:forEach items="${moim }" var="item">
 		        <li class="one_quarter">
 		         <article>
@@ -98,7 +98,7 @@ margin-bottom: 20px;
 		           <footer><a href="moim.st?cmd=detail&id=${item.id }">More Detail</a></footer>
 		         </article>
 		       </li>
-		      </c:forEach>
+		      </c:forEach>  -->
       
       </ul>
     </div>

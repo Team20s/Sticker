@@ -7,8 +7,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet"
-	type="text/css" media="all">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css"
+	media="all">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <title>Insert title here</title>
@@ -32,30 +32,29 @@ h1 {
 }
 
 /* 회원가입 박스 사이즈 조정 */
-@media (min-width: 1200px){
+@media ( min-width : 1200px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-@media (min-width: 992px){
+@media ( min-width : 992px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-@media (min-width: 768px){
+@media ( min-width : 768px) {
 	.container {
-	    max-width: 700px;
+		max-width: 700px;
 	}
 }
 
-.container > div > div > h1{
+.container>div>div>h1 {
 	text-align: center;
 }
 
 /* 박스 안 버튼 색깔 조정 */
-
 .btn-outline-dark:visited, .btn-dark:hover, .btn-outline-dark:active,
 	.btn-outline-dark:hover, .btn-dark, .btn-dark:active, .btn-dark:visited
 	{
@@ -67,66 +66,58 @@ h1 {
 	border-color: #AE32C7;
 }
 
+td {
+	color: black;
+}
 
+.form-control {
+	display: inline;
+	width: 70%;
+}
 </style>
 <script>
+	
 </script>
 </head>
 <body id="top">
-	<!-- Top Navigation -->
-	<!-- ################################################################################################ -->
-	<div class="wrapper row0">
-		<div id="topbar" class="hoc clear">
-			<div class="fl_right">
-				<ul>
-					<li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
-					<c:choose>
-						<c:when test="${userId == null} ">
-							<li><a href="login.st">로그인</a></li>
-							<li><a href="register.st">회원가입</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="logout.st">로그아웃</a></li>
-							<li><a href="mypage.st">마이페이지</a></li>
-						</c:otherwise>
-					</c:choose>
-					<li><a href="#">고객센터</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
 	<!-- Center -->
 	<!-- ################################################################################################ -->
 	<div class="container">
-		<h1>
-			<img src="images/logo.png" id="mainLogo"><a
-				href="main.st"> Sticker</a>
-		</h1>
 		<div>
 			<div>
 				<h1>로그인</h1>
 			</div>
 			<form action="loginimpl.st" method="post">
+				<table>
+					<tr>
+						<td>아이디(닉네임)</td>
+						<td><div class="form-group">
+								<input type="text" name="id" id="id" class="form-control">
+							</div></td>
+					</tr>
+					<tr>
 
+						<td>비밀번호</td>
+						<td><div class="form-group">
+								<input type="password" name="pwd" id="pwd" class="form-control">
+							</div></td>
+
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div id="spwd">
+								<c:if test="${loginStatus == 0 }">
+									<span style="color: red;">ID 혹은 Password를 다시 확인해주세요</span>
+								</c:if>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<br>
 				<div class="form-group">
-					아이디(닉네임) :<input type="text" name="id" id="id" class="form-control">
+					<input type="submit" id="btn_login"
+						class="btn btn-dark btn-lg btn-block" value="로그인">
 				</div>
-
-				<div class="form-group">
-					비밀번호 :<input type="password" name="pwd" id="pwd"
-						class="form-control">
-					<div id="spwd">
-						<c:if test="${loginStatus == 0 }">
-							<span style="color:red;">ID 혹은 Password를 다시 확인해주세요</span>
-						</c:if>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<input type="submit" class="btn btn-dark btn-lg btn-block" value="로그인">
-				</div>
-
 			</form>
 
 		</div>
