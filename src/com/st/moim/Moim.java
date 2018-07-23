@@ -33,6 +33,7 @@ public class Moim {
 	private MultipartFile img3;
 	private MultipartFile img4;
 	private MultipartFile img5;
+	private String userName;
 	
 	public Moim() {
 	}
@@ -40,7 +41,8 @@ public class Moim {
 	public Moim(String moimId, String moimImg, String title, String sDate, String eDate, String sTime, String eTime,
 			Date regDate, String applySDate, String applyEDate, String applySTime, String applyETime, String place,
 			String categoryId, String userId, String categoryKind, String content, String detailImg1, String detailImg2,
-			String detailImg3, String detailImg4, String detailImg5) {
+			String detailImg3, String detailImg4, String detailImg5, String userName) {
+		super();
 		this.moimId = moimId;
 		this.moimImg = moimImg;
 		this.title = title;
@@ -63,6 +65,7 @@ public class Moim {
 		this.detailImg3 = detailImg3;
 		this.detailImg4 = detailImg4;
 		this.detailImg5 = detailImg5;
+		this.userName = userName;
 	}
 
 	public String getMoimId() {
@@ -289,6 +292,14 @@ public class Moim {
 		this.img5 = img5;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		return "Moim [moimId=" + moimId + ", moimImg=" + moimImg + ", title=" + title + ", sDate=" + sDate + ", eDate="
@@ -297,8 +308,7 @@ public class Moim {
 				+ applyETime + ", place=" + place + ", categoryId=" + categoryId + ", userId=" + userId
 				+ ", categoryKind=" + categoryKind + ", content=" + content + ", detailImg1=" + detailImg1
 				+ ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3 + ", detailImg4=" + detailImg4
-				+ ", detailImg5=" + detailImg5 + ", moimMultiImg=" + moimMultiImg + ", img1=" + img1 + ", img2=" + img2
-				+ ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + "]";
+				+ ", detailImg5=" + detailImg5 + ", userName=" + userName + "]";
 	}
 	
 }

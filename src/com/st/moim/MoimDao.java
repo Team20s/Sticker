@@ -22,6 +22,7 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>{
 	
 	@Override
 	public void insert(Moim v) throws Exception {
+		System.out.println(v);
 		mmapper.insert(v);
 	}
 

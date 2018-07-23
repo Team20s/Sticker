@@ -251,8 +251,8 @@ input:focus, textarea:focus, *:required:focus{border-color:#6677BC;}
 .overlay{color:#FFFFFF; background-color:inherit;}
 .overlay::after{color:inherit; background-color:#FFFFFF;}
 
-.btn, .btn.inverse:hover, a .icon, a.inverse:hover .icon{color:#FFFFFF; background-color:#6677BC; border-color:#6677BC;}
-.btn:hover, .btn.inverse, a:hover .icon, a.inverse .icon{color:inherit; background-color:transparent; border-color:inherit;}
+a .icon, a.inverse:hover .icon{color:#FFFFFF; background-color:#6677BC; border-color:#6677BC;}
+a:hover .icon, a.inverse .icon{color:inherit; background-color:transparent; border-color:inherit;}
 
 
 /* Rows */
@@ -264,10 +264,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#6677BC;}
 .row5, .row5 a{color:#474747; background-color:#FFFFFF;}
 
 /*.coloured{color:#FFFFFF; background-color:#6677BC;}*/
-.coloured{color:#AE32C7; background-color:#FFFFFF;}
-.coloured .btn{color:inherit; background-color:transparent; border-color:inherit;}
-.coloured .btn:hover{color:#6677BC; background-color:#FFFFFF;}
-
+.coloured{color:black; background-color:#FFFFFF;}
 
 /* Top Bar */
 #topbar, #topbar ul li{border-color:rgba(255,255,255,.2);}
