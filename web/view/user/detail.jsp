@@ -79,7 +79,7 @@ span, p{
 			</tr>        
 			<tr>
 				<td class="table_title">이름</td>
-				<td>${User.name }</td>
+				<td>${user.name }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">비밀번호</td>
@@ -91,7 +91,7 @@ span, p{
 			</tr>        
 			<tr>
 				<td class="table_title">생년월일</td>
-				<td>${User.birth }</td>
+				<td>${user.birth }</td>
 			</tr>        
         </table>
     </div>
@@ -105,22 +105,18 @@ span, p{
 		        <h4 class="modal-title">비밀번호 수정</h4>
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
-		
+	
 		      <!-- Modal body -->
 		      <div class="modal-body">
 		      
 		      	<table class="table">
 		      		<tr>
-		      			<td class="table_title">비밀번호</td>
-		      			<td><input type="password"></td>
-		      		</tr>
-		      		<tr>
 		      			<td class="table_title">새 비밀번호</td>
-		      			<td><input type="password"></td>
+		      			<td><input type="password" id="pwd" name="pwd"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="table_title">새 비밀번호 확인</td>
-		      			<td><input type="password"></td>
+		      			<td><input type="password" id="pwdCheck" name="pwdCheck"></td>
 		      		</tr>
 		      	</table>
 		      

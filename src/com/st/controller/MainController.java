@@ -58,6 +58,7 @@ public class MainController {
 				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
+				session.setAttribute("userPwd", pwd);
 				System.out.println("로그인 성공!");
 				System.out.println("ID:" + id + "Pwd:" + pwd);
 			} else {
@@ -113,12 +114,14 @@ public class MainController {
 	@RequestMapping("/registerimpl.st")
 	public ModelAndView registerimpl(HttpServletRequest request, User user) {
 		user.setBirth(user.getYear() + user.getMonth() + user.getDay());
+
+		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		HttpSession session = request.getSession();
 		try {
 			service.register(user);
 			session.setAttribute("userid", user.getId());
+			session.setAttribute("userBirth", user.getBirth());
 			mv.addObject("centerpage", "user/login");
 
 		} catch (Exception e) {
@@ -131,14 +134,15 @@ public class MainController {
 
 	@RequestMapping("/mypage.st")
 	public ModelAndView mypage(HttpServletRequest request) {
-		String userId = request.getParameter("id");
 		HttpSession session = request.getSession();
+		String id =(String) session.getAttribute("userId");
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		User user = null;
 		try {
-			user = service.get(userId);
+			System.out.println(id);
+			user = service.get(id);
 			mv.addObject("user",user);
 			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {

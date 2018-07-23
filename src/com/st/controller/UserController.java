@@ -45,7 +45,7 @@ public class UserController {
 		User user = null;
 		try {
 			user = service.get(userId);
-			mv.addObject("User",user);
+			mv.addObject("user",user);
 			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {
 			e.printStackTrace();
