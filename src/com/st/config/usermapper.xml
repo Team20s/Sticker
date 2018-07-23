@@ -8,22 +8,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="pwd" property="pwd"/>
 		<result column="name" property="name"/>
 		<result column="birth" property="birth"/>
+		<result column="userStatus" property="userStatus"/>
 	</resultMap>
 	
 	<select id="select" parameterType="String" resultMap="userResult">
-		SELECT * FROM USERS WHERE ID=#{obj}
+		SELECT * FROM USERS WHERE USER_ID=#{id}
 	</select>
 	<select id="selectall" resultType="user">
 		SELECT * FROM USERS
 	</select>
 	<insert id="insert" parameterType="user">
-		INSERT INTO USERS VALUES (#{id},#{pwd},#{name},#{birth})
+		INSERT INTO USERS VALUES (#{id},#{pwd},#{name},#{birth},DEFAULT)
 	</insert>
 	<update id="update" parameterType="user">
-		UPDATE USERS SET PWD=#{pwd},NAME=#{name},BIRTH=#{birth} WHERE ID=#{id}
+		UPDATE USERS SET PWD=#{pwd} WHERE ID=#{id}
 	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM USERS WHERE ID=#{obj}
+	<delete id="delete" parameterType="user">
+		DELETE FROM USERS WHERE USER_ID=#{id},PWD=#{pwd}
 	</delete>
 	
 </mapper>

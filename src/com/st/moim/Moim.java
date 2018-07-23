@@ -8,23 +8,26 @@ public class Moim {
 	private String moimId;
 	private String moimImg;
 	private String title;
-	private Date sDate;
-	private Date eDate;
+	private String sDate;
+	private String eDate;
+	private String sTime;
+	private String eTime;
 	private Date regDate;
-	private Date applySDate;
-	private Date applyEDate;
+	private String applySDate;
+	private String applyEDate;
+	private String applySTime;
+	private String applyETime;
 	private String place;
 	private String categoryId;
 	private String userId;
 	private String categoryKind;
-	private String detailId;
 	private String content;
 	private String detailImg1;
 	private String detailImg2;
 	private String detailImg3;
 	private String detailImg4;
 	private String detailImg5;
-	private MultipartFile mImg;
+	private MultipartFile moimMultiImg;
 	private MultipartFile img1;
 	private MultipartFile img2;
 	private MultipartFile img3;
@@ -32,27 +35,28 @@ public class Moim {
 	private MultipartFile img5;
 	
 	public Moim() {
-		super();
 	}
 
-	public Moim(String moimId, String moimImg, String title, Date sDate, Date eDate, Date regDate, Date applySDate,
-			Date applyEDate, String place, String categoryId, String userId, String categoryKind, String detailId,
-			String content, String detailImg1, String detailImg2, String detailImg3, String detailImg4,
-			String detailImg5) {
-		super();
+	public Moim(String moimId, String moimImg, String title, String sDate, String eDate, String sTime, String eTime,
+			Date regDate, String applySDate, String applyEDate, String applySTime, String applyETime, String place,
+			String categoryId, String userId, String categoryKind, String content, String detailImg1, String detailImg2,
+			String detailImg3, String detailImg4, String detailImg5) {
 		this.moimId = moimId;
 		this.moimImg = moimImg;
 		this.title = title;
 		this.sDate = sDate;
 		this.eDate = eDate;
+		this.sTime = sTime;
+		this.eTime = eTime;
 		this.regDate = regDate;
 		this.applySDate = applySDate;
 		this.applyEDate = applyEDate;
+		this.applySTime = applySTime;
+		this.applyETime = applyETime;
 		this.place = place;
 		this.categoryId = categoryId;
 		this.userId = userId;
 		this.categoryKind = categoryKind;
-		this.detailId = detailId;
 		this.content = content;
 		this.detailImg1 = detailImg1;
 		this.detailImg2 = detailImg2;
@@ -85,20 +89,36 @@ public class Moim {
 		this.title = title;
 	}
 
-	public Date getsDate() {
+	public String getsDate() {
 		return sDate;
 	}
 
-	public void setsDate(Date sDate) {
+	public void setsDate(String sDate) {
 		this.sDate = sDate;
 	}
 
-	public Date geteDate() {
+	public String geteDate() {
 		return eDate;
 	}
 
-	public void seteDate(Date eDate) {
+	public void seteDate(String eDate) {
 		this.eDate = eDate;
+	}
+
+	public String getsTime() {
+		return sTime;
+	}
+
+	public void setsTime(String sTime) {
+		this.sTime = sTime;
+	}
+
+	public String geteTime() {
+		return eTime;
+	}
+
+	public void seteTime(String eTime) {
+		this.eTime = eTime;
 	}
 
 	public Date getRegDate() {
@@ -109,20 +129,36 @@ public class Moim {
 		this.regDate = regDate;
 	}
 
-	public Date getApplySDate() {
+	public String getApplySDate() {
 		return applySDate;
 	}
 
-	public void setApplySDate(Date applySDate) {
+	public void setApplySDate(String applySDate) {
 		this.applySDate = applySDate;
 	}
 
-	public Date getApplyEDate() {
+	public String getApplyEDate() {
 		return applyEDate;
 	}
 
-	public void setApplyEDate(Date applyEDate) {
+	public void setApplyEDate(String applyEDate) {
 		this.applyEDate = applyEDate;
+	}
+
+	public String getApplySTime() {
+		return applySTime;
+	}
+
+	public void setApplySTime(String applySTime) {
+		this.applySTime = applySTime;
+	}
+
+	public String getApplyETime() {
+		return applyETime;
+	}
+
+	public void setApplyETime(String applyETime) {
+		this.applyETime = applyETime;
 	}
 
 	public String getPlace() {
@@ -155,14 +191,6 @@ public class Moim {
 
 	public void setCategoryKind(String categoryKind) {
 		this.categoryKind = categoryKind;
-	}
-
-	public String getDetailId() {
-		return detailId;
-	}
-
-	public void setDetailId(String detailId) {
-		this.detailId = detailId;
 	}
 
 	public String getContent() {
@@ -213,12 +241,12 @@ public class Moim {
 		this.detailImg5 = detailImg5;
 	}
 
-	public MultipartFile getmImg() {
-		return mImg;
+	public MultipartFile getMoimMultiImg() {
+		return moimMultiImg;
 	}
 
-	public void setmImg(MultipartFile mImg) {
-		this.mImg = mImg;
+	public void setMoimMultiImg(MultipartFile moimMultiImg) {
+		this.moimMultiImg = moimMultiImg;
 	}
 
 	public MultipartFile getImg1() {
@@ -264,11 +292,13 @@ public class Moim {
 	@Override
 	public String toString() {
 		return "Moim [moimId=" + moimId + ", moimImg=" + moimImg + ", title=" + title + ", sDate=" + sDate + ", eDate="
-				+ eDate + ", regDate=" + regDate + ", applySDate=" + applySDate + ", applyEDate=" + applyEDate
-				+ ", place=" + place + ", categoryId=" + categoryId + ", userId=" + userId + ", categoryKind="
-				+ categoryKind + ", detailId=" + detailId + ", content=" + content + ", detailImg1=" + detailImg1
+				+ eDate + ", sTime=" + sTime + ", eTime=" + eTime + ", regDate=" + regDate + ", applySDate="
+				+ applySDate + ", applyEDate=" + applyEDate + ", applySTime=" + applySTime + ", applyETime="
+				+ applyETime + ", place=" + place + ", categoryId=" + categoryId + ", userId=" + userId
+				+ ", categoryKind=" + categoryKind + ", content=" + content + ", detailImg1=" + detailImg1
 				+ ", detailImg2=" + detailImg2 + ", detailImg3=" + detailImg3 + ", detailImg4=" + detailImg4
-				+ ", detailImg5=" + detailImg5 + "]";
+				+ ", detailImg5=" + detailImg5 + ", moimMultiImg=" + moimMultiImg + ", img1=" + img1 + ", img2=" + img2
+				+ ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + "]";
 	}
 	
 }

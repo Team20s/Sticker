@@ -49,7 +49,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <ul>
         <li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
         <c:choose>
-        	<c:when test="${userId == null} ">
+        	<c:when test="${userId == null}">
         		<li><a href="login.st">로그인</a></li>
         		<li><a href="register.st">회원가입</a></li>
         	</c:when>
@@ -85,8 +85,8 @@ Licence URI: http://www.os-templates.com/template-terms
     <nav id="header" class="hoc clear">
       <nav id="mainav" class="fl_left">
         <ul class="clear">
-          <li><a href="moimlist.st">친목도모</a></li>
-          <li><a href="moimlist.st">스터디 및 취업정보</a></li>
+          <li><a href="moimlist.st?cmd=c1">친목도모</a></li>
+          <li><a href="moimlist.st?cmd=c2">스터디 및 취업정보</a></li>
           <li>|</li>
           <li><a href="createmoim.st">모임개설</a></li>
         </ul>

@@ -1,8 +1,9 @@
 package com.st.controller;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,6 @@ import com.st.util.FileSave;
 
 @Controller
 public class MoimController {
-	
 	@Resource(name="mservice")
 	Service<String, Moim> service;
 	
@@ -23,30 +23,31 @@ public class MoimController {
 	public ModelAndView createmoim() {//move createmoim page
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage","moim/createTest");
+		mv.addObject("centerpage","moim/create");
 		return mv;
 	}
 
 	@RequestMapping("/createmoimimpl.st")
 	public ModelAndView createmoimimpl(Moim moim) {//moim insert
-		/*MultipartFile mp = moim.getmImg();
+		MultipartFile mp = moim.getMoimMultiImg();
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
 		
-		FileSave.save("C:\\springs\\Sticker\\web\\img\\", mp, moimImg);
-		*/
+		//test �슜 id �엯�젰
+		moim.setUserId("u1");
+		
+		FileSave.save("C:\\Users\\student\\git\\Sticker\\web\\img\\", mp, moimImg);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
 		try {
-			//moim id = Session에 저장시킨 user id와 sequence로 합쳐서 만들자. 일단 테스트로 user 정보 임의로 넣어놓고 insert 할것. 테스트 완료 후 데이터 삭제.
-			moim = new Moim("moim01","test.jpg","test",new Date(),new Date(),new Date(),new Date(),new Date(),"placeTest","c1","id01","ENJOY","detailId","content","detailImg1","detailImg2","detailImg3","detailImg4","detailImg5");
 			
 			service.register(moim);
-			mv.addObject("centerpage","moim/createTest");
+			mv.addObject("centerpage","moim/createok");
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv.addObject("centerpage","main");
+			mv.addObject("centerpage","moim/create");
 		}
 		
 		return mv;
@@ -54,6 +55,7 @@ public class MoimController {
 	
 	@RequestMapping("/moimdetail.st")
 	public ModelAndView moimdetail() {
+		//select(id)로 하는데 moim id 넘겨줘야하는데..
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		mv.addObject("centerpage","moim/detail");
@@ -61,9 +63,21 @@ public class MoimController {
 	}
 	
 	@RequestMapping("/moimlist.st")
-	public ModelAndView moimlist() {
+	public ModelAndView moimlist(HttpServletRequest request) {
+		//cmd 로 정보를 받아와서 c1,c2 구분 후 리스트 출력 해줘야함.
+		//mapper.xml에서는 select 구문 2개 나눠서 써야할듯.아니면 하나로 써서 파라미터로 넘겨줘서 조건 줘도 될듯.
+		//session에 moimId를 저장해놓거나 hidden으로 detail로 정보를 보내기.
+		
+		//카테고리 구분을 위해 받았다.
+		String cmd = request.getParameter("cmd");
+		
+		ArrayList<Moim> list = null;
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		
+		
+		
 		mv.addObject("centerpage","moim/list");
 		return mv;
 	}
