@@ -26,6 +26,13 @@ span, p {
 	width: 100%;
 	height: auto;
 }
+
+img{
+	width:220px;
+	height:220px;
+}
+
+
 </style>
 <script></script>
 </head>
@@ -47,6 +54,16 @@ span, p {
 	<fmt:parseDate value="${moimdetail.applySTime }" var="applystime" pattern="HH:mm"/>
 	<fmt:parseDate value="${moimdetail.applyETime }" var="applyetime" pattern="HH:mm"/>
 	
+	<!-- date Pattern change -->
+	<fmt:formatDate value="${sdate }" pattern="yyyy-MM-dd" var = "sdate"/>
+	<fmt:formatDate value="${edate }" pattern="yyyy-MM-dd" var = "edate"/>
+	<fmt:formatDate value="${applysdate }" pattern="yyyy-MM-dd" var = "applysdate"/>
+	<fmt:formatDate value="${applyedate }" pattern="yyyy-MM-dd" var = "applyedate"/>
+	<fmt:formatDate value="${stime }" pattern="HH:mm" var = "stime"/>
+	<fmt:formatDate value="${etime }" pattern="HH:mm" var = "etime"/>
+	<fmt:formatDate value="${applystime }" pattern="HH:mm" var = "applystime"/>
+	<fmt:formatDate value="${applyetime }" pattern="HH:mm" var = "applyetime"/>
+	
 	<!-- Section -->
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3 coloured">
@@ -63,12 +80,12 @@ span, p {
 			<ul class="nospace group">
 				<li class="one_quarter first">
 					<div>
-						<img src="C:/img/${moimdetail.moimImg }" id="moim_image">
+						<img src="img/${moimdetail.moimImg }" id="moim_image">
 					</div>
 					<div>
 						<h5>개설자 정보</h5>
 						<hr />
-						<span>${moimdetail.userId }</span>
+						<span>${moimdetail.userName }</span>
 					</div>
 				</li>
 				<li class="three_quarter">
@@ -76,7 +93,7 @@ span, p {
 						<h3 id="title">${moimdetail.title }</h3>
 						<div>
 							<span>모임기간 : </span> <span id="sdate">${sdate }
-								${stime }</span>
+								${stime } ~ ${moimdetail.eTime }</span>
 							<c:if test="${edate != sdate }">
   						 ~ <span id="edate">${edate } ${etime }</span>
 							</c:if>

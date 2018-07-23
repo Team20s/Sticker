@@ -14,6 +14,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d34028354e373bc549b73c7d2ebcfd3&libraries=services,clusterer,drawing"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+	
 <title>Insert title here</title>
 <style>
 
@@ -31,11 +36,19 @@
     border: none;
 }
 
+#introblocks{
+	z-index: 0;
+}
+
+.modal-backdrop{
+z-index: -1;
+}
+
 /* MAP CSS */
 
 .map_wrap, .map_wrap * {margin:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
+.map_wrap {position:relative;width:100%;height:500px;z-index: 0;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
@@ -69,6 +82,22 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+/* Summernote */
+
+#summernote_out{
+	margin-top:10px;
+}
+
+#submit{
+	position: absolute;
+    margin-top: 10px;
+    right: 0;
+}
+
+.note-popover .popover-content, .card-header.note-toolbar{
+	z-index:0;
+}
 
 </style>
 <script>
@@ -111,12 +140,13 @@ $(document).ready(function(){
 	
 	$('#submit').click(function(){
 		
-		$('#hiddenContent').val($('#content').val());
+		//$('#hiddenContent').val($('.note-editable card-block').val());
+		//console.log($('.card-block').val());
 		
 		$('#createForm').attr('method','post');
 		$('#createForm').attr('action','createmoimimpl.st');
 		$('#createForm').attr('enctype','multipart/form-data');
-		$('#createForm').submit();
+ 		$('#createForm').submit();
 	});
 	
 });
@@ -132,12 +162,10 @@ $(document).ready(function(){
 		<form action="createmoimimpl.st" method="post" enctype="multipart/form-data" id="createForm">
 			<ul class="nospace group">
 					<li class="one_quarter first">
-						
 							<div id="image-holder"><img src="images/demo/gallery/01.png" id="moim_image"></div>
 							<div id="wrapper" style="margin-top: 20px;">
 							<input id="fileUpload" multiple="multiple" type="file" name="moimMultiImg"/> 
 							</div>
-						
 					</li>
 					<li class="three_quarter">
 						<div>
@@ -170,7 +198,15 @@ $(document).ready(function(){
 								</tr>
 								<tr>
 									<td>모임장소</td>
-									<td colspan="6"><input type="text" style="width: 100%" name="address" id="address" readonly></td>
+									<td colspan="6">
+										<input type="text" style="width: 100%" name="address" id="address" readonly>
+									</td>
+								</tr>
+								<tr>
+									<td>상세주소</td>
+									<td colspan="6">
+										<input type="text" style="width: 100%" name="address2" id="address2">
+									</td>
 								</tr>
 							</table>
 						</div>
@@ -195,14 +231,26 @@ $(document).ready(function(){
 				        <div id="pagination"></div>
 					</div>
 				</div>
-			<div>
-				<textarea class="form-control" name="content" id="content"></textarea>
+			<div id="summernote_out">
+				<div id="summernote">
+				
+				</div>
 			</div>
 			<input type="button" value="개설하기" class="btn fl-right" id="submit"><br>
 		</div>
 		</main>
 	</div>
 	<script>
+	
+	 $('#summernote').summernote({
+	        placeholder: 'Hello bootstrap 4',
+	        tabsize: 2,
+	        height: 100
+	      });
+	
+	
+// 	MAP
+	
 	var markers = [];
 
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
