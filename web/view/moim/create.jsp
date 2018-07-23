@@ -140,13 +140,13 @@ $(document).ready(function(){
 	
 	$('#submit').click(function(){
 		
-		$('#hiddenContent').val($('.note-editable card-block').val());
-		console.log($('.card-block').val());
+		//$('#hiddenContent').val($('.note-editable card-block').val());
+		//console.log($('.card-block').val());
 		
 		$('#createForm').attr('method','post');
 		$('#createForm').attr('action','createmoimimpl.st');
 		$('#createForm').attr('enctype','multipart/form-data');
-// 		$('#createForm').submit();
+ 		$('#createForm').submit();
 	});
 	
 });

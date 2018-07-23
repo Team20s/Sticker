@@ -40,13 +40,18 @@ public class MoimController {
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
 		
+		//주소랑 상세주소 합쳐서 객체에 저장하기.
+		String address = request.getParameter("address");
+		address += request.getParameter("address2");
+		moim.setPlace(address);
+		
 		//session id 가져오기
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		System.out.println(userId);
 		moim.setUserId(userId);
 		
-		//경로 가져오기
+		//상대경로로 가져오기
 		String path = session.getServletContext().getRealPath("/");
 		path += "img\\";
 		
@@ -82,6 +87,7 @@ public class MoimController {
 		
 		try {
 			moim = service.get(moimId);
+			System.out.println(moim);
 			mv.addObject("moimdetail",moim);
 			mv.addObject("centerpage","moim/detail");
 		} catch (Exception e) {
