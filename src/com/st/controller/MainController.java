@@ -60,12 +60,12 @@ public class MainController {
 				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
-				System.out.println("�α��� ����!");
+				System.out.println("login success!");
 				System.out.println("ID:" + id + "Pwd:" + pwd);
 			} else {
 				request.setAttribute("loginState", loginState);
 				mv.addObject("centerpage", "user/login");
-				System.out.println("�α��� ����!");
+				System.out.println("login failed...");
 				System.out.println("ID:" + id + "Pwd:" + pwd + "loginState:" + loginState);
 			}
 		} catch (Exception e) {
