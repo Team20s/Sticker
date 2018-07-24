@@ -63,6 +63,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM MOIM WHERE
 		MOIM_ID=#{obj}
 	</delete>
+	
+	<insert id="join" parameterType="Map">
+		INSERT INTO USER_MOIM (MOIM_ID, USER_ID) VALUES (#{}, #{})
+	</insert>
 
 </mapper>
 

@@ -213,14 +213,13 @@ public class MoimController {
 		return mv;
 	}
 	
-	@RequestMapping("/insertusermoim.st")
-	public ModelAndView insertusermoim(Moim moim,HttpServletRequest request) {//moim insert
+	@RequestMapping("/joinimpl.st")
+	public ModelAndView joinimpl(Moim moim,HttpServletRequest request) {//moim insert
 		//user가 신청한 moimId와 그 userId를 USER_MOIM 테이블에 값을 넣어야한다.(신청한 모임)
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
 		try {
-			
 			service.register(moim);
 			mv.addObject("centerpage","center");
 		} catch (Exception e) {
@@ -232,4 +231,11 @@ public class MoimController {
 		
 		return mv;
 	}
+	
+	
+	
+	
+	
+	
+	
 }

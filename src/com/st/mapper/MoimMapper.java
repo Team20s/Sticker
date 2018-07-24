@@ -1,6 +1,7 @@
 package com.st.mapper;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,5 @@ public interface MoimMapper {
 	public ArrayList<Moim> selectCategory(String obj);
 	public Moim select(String obj);
 	public ArrayList<Moim> selectall();
+	public void join(Map<String, String> obj);
 }
