@@ -106,7 +106,6 @@ h1 {
 			return;
 		}
 		if (id.value.length > 0) {
-				sid.innerHTML = '<span class="text-success">멋진 아이디네요!</span>'
 				return;
 		}else {
 			sid.innerHTML = '<span class="text-danger">아이디가 너무 짧습니다!</span>'
@@ -201,7 +200,7 @@ h1 {
 			return;
 		} else {
 			sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
-			birthFlag=1;
+			birthFlag = 1;
 			return;
 		}
 	};
@@ -216,6 +215,7 @@ h1 {
 
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
 			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1) {
+			console.log(birthFlag);
 			f.method = 'post';
 			f.action = 'registerimpl.st';
 			f.submit();
@@ -286,15 +286,11 @@ h1 {
 					</div>
 					<div id="sbirth"></div>
 				</div>
-
 				<div class="form-group">
-					<button type="submit" class="btn btn-dark btn-lg btn-block"
-						onclick="register(this.form);">회원가입</button>
+					<button class="btn btn-dark btn-lg btn-block" onclick="register(this.form);">회원가입</button>
 					<div id="sregister"></div>
 				</div>
-
 			</form>
-
 		</div>
 	</div>
 

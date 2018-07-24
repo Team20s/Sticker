@@ -1,7 +1,9 @@
 package com.st.controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -90,16 +92,39 @@ public class MoimController {
 		//select(id)로 하는데 moim id 넘겨줌
 		
 		String moimId = request.getParameter("id");
-		
 		Moim moim = null;
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat today;
+		
+		today = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		
 		try {
 			moim = service.get(moimId);
 			System.out.println(moim);
+			
+			Date moimEdate = today.parse(moim.geteDate()+moim.geteTime());
+			Date moimSdate = today.parse(moim.getsDate()+moim.getsTime());
+			Date moimApplyEdate = today.parse(moim.getApplyEDate()+moim.getApplyETime());
+			Date moimApplySdate = today.parse(moim.getApplySDate()+moim.getApplySTime());
+			
+			boolean eflag = date.getTime() < moimEdate.getTime();
+			boolean sflag = date.getTime() < moimSdate.getTime();
+			boolean aeflag = date.getTime() < moimApplyEdate.getTime();
+			boolean asflag = date.getTime() < moimApplySdate.getTime();
+			
+			mv.addObject("eflag",eflag);
+			mv.addObject("sflag",sflag);
+			mv.addObject("aeflag",aeflag);
+			mv.addObject("asflag",asflag);
+			
 			mv.addObject("moimdetail",moim);
+			mv.addObject("userid",userId);
 			mv.addObject("centerpage","moim/detail");
 		} catch (Exception e) {
 			e.printStackTrace();
