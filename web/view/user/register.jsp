@@ -88,7 +88,7 @@ h1 {
 						$('#sid').html('<span class="text-danger">ID가 중복되었습니다. 다시 입력해주세요!</span>')
 					} else{
 						//alert('사용가능 ID 입니다.');
-						$('#sid').html('<span class="text-success">사용 가능한 아이디입니다.</span>');
+						$('#sid').html('<span class="text-success">멋진 아이디네요!</span>');
 					}
 				}
 			});
@@ -101,29 +101,20 @@ h1 {
 		var id = document.querySelector('#id');
 		var sid = document.querySelector('#sid');
 		
-		
 		if (id.value.length == 0) {
 			sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
 			return;
 		}
-
-		if (id.value.length >= 6) {
-			var exp = /^[a-zA-Z][a-zA-Z0-9]+/; // ^[a-zA-Z] : 알파벳으로 시작해야 하며, [a-zA-Z0-9]+ : 영어나 숫자로 이루어져야 한다
-			
-			if (!exp.test(id.value)) {
-				sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
+		if (id.value.length > 0) {
 				return;
-			} else {				
-				sid.innerHTML = '<span class="text-success">멋진 아이디네요!</span>'
-				return;
-			}
 		}else {
-			sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
+			sid.innerHTML = '<span class="text-danger">아이디가 너무 짧습니다!</span>'
 			return;
 		}
 
 	};
-	
+
+	var pwdFlag = 0;
 	function checkPwd() {
 		// 영어로 시작하고 8자리 이상
 		// 숫자와 특수문자가 반드시 포함
@@ -132,6 +123,7 @@ h1 {
 
 		if (pwd.value.length == 0) {
 			spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+			pwdFlag = 0;
 			return;
 		}
 
@@ -139,18 +131,22 @@ h1 {
 			var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 			if (!exp.test(pwd.value)) {
 				spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+				pwdFlag = 0;
+				checkPwdCheck();
 				return;
 			} else {
 				spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				checkPwdCheck();
 				return;
 			}
 		} else {
 			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+			pwdFlag = 0;
+			checkPwdCheck();
 			return;
 		}
 	};
 	
-	var pwdFlag = 0;
 	function checkPwdCheck(){
 		var pwd = document.querySelector('#pwd');
 		var pwdCheck = document.querySelector('#pwdCheck');
@@ -164,8 +160,7 @@ h1 {
 		
 		if(pwd.value != pwdCheck.value){
 			spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
-			console.log(pwd.value);
-			console.log(pwdCheck.value);
+			pwdFlag = 0;
 			return;
 		}
 		
@@ -186,6 +181,7 @@ h1 {
 	}
 	;
 
+	var birthFlag = 0;
 	function checkBirth() {
 		var year = document.querySelector('#year');
 		var month = document.querySelector('#month');
@@ -194,14 +190,17 @@ h1 {
 
 		if (year.value.length == 0 || month.value.length == 0 || day.value.length == 0) {
 			sbirth.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+			birthFlag = 0;
 			return;
 		}
 
 		if (year.value > 2018 || 1900 > year.value || month.value > 12 || month.value < 1 || day.value > 31 || day.value < 1) {
 			sbirth.innerHTML = '<span class="text-danger">다시 입력해주세요.</span>'
+			birthFlag = 0;
 			return;
 		} else {
 			sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			birthFlag = 1;
 			return;
 		}
 	};
@@ -215,7 +214,8 @@ h1 {
 		var sregister = document.querySelector('#sregister');
 
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
-			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1) {
+			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1) {
+			console.log(birthFlag);
 			f.method = 'post';
 			f.action = 'registerimpl.st';
 			f.submit();
@@ -251,7 +251,6 @@ h1 {
 						class="form-control" onblur="checkPwd();">
 					<div id="spwd"></div>
 				</div>
-
 				<div class="form-group">
 					비밀번호 확인 :<input type="password" name="pwdCheck" id="pwdCheck"
 						class="form-control" onblur="checkPwdCheck();">
@@ -287,15 +286,11 @@ h1 {
 					</div>
 					<div id="sbirth"></div>
 				</div>
-
 				<div class="form-group">
-					<button type="submit" class="btn btn-dark btn-lg btn-block"
-						onclick="register(this.form);">회원가입</button>
+					<button class="btn btn-dark btn-lg btn-block" onclick="register(this.form);">회원가입</button>
 					<div id="sregister"></div>
 				</div>
-
 			</form>
-
 		</div>
 	</div>
 

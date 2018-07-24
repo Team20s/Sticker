@@ -132,9 +132,9 @@ public class MainController {
 		String result="";
 		User user = null;
 		System.out.println(cid);
+		JSONObject jo = new JSONObject();
 		try {
 			out = response.getWriter();
-			JSONObject jo = new JSONObject();
 			user = service.get(cid);
 			if(cid == null) {
 				cid="";
@@ -144,6 +144,10 @@ public class MainController {
 			} else {
 				result="NO";
 			}
+			jo.put("result",result);
+			out.print(jo.toJSONString());
+		} catch (NullPointerException e) {
+			result="NO";
 			jo.put("result",result);
 			out.print(jo.toJSONString());
 		} catch (Exception e) {

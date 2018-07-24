@@ -35,7 +35,7 @@
     <!-- main body -->
     <div id="introblocks">
     <c:choose>
-    	<c:when test="${moimKind == 'ENJOY' }">
+    	<c:when test="${moimKind == 'c1' }">
         	<h4 id="category">친목도모</h4>    	
     	</c:when>
     	<c:otherwise>
@@ -52,7 +52,7 @@
            <div>
              <p>${item.categoryKind }<span class="fl_right">${item.sDate }
 		             
-		             <c:if test="${item.eDate == item.sDate }">
+		             <c:if test="${item.eDate != item.sDate }">
 		              ~ ${item.eDate } </c:if>
 		              
 		              </span></p>
