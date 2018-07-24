@@ -60,9 +60,4 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>{
 		return search.searchJoinMoim(t);
 	}
 
-	@Override
-	public void joinInsert() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }
