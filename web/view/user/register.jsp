@@ -32,26 +32,32 @@ h1 {
 }
 
 /* 회원가입 박스 사이즈 조정 */
+
+.hoc{
+	margin-top: 60px; 
+}
+
 @media ( min-width : 1200px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
 @media ( min-width : 992px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
 @media ( min-width : 768px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
-.container>div>div>h1 {
+.hoc>div>div>h1 {
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 /* 박스 안 버튼 색깔 조정 */
@@ -223,7 +229,7 @@ h1 {
 <body id="top">
 	<!-- Center -->
 	<!-- ################################################################################################ -->
-	<div class="container">
+	<div class="hoc">
 		<div>
 			<div>
 				<h1>회원가입</h1>
@@ -232,7 +238,7 @@ h1 {
 				<div class="form-group">
 					<label style="display: block;">아이디(닉네임) :</label> <input
 						type="text" name="id" id="id" class="form-control"
-						onblur="checkId();" style="width: 80%; display: inline;">
+						onblur="checkId();" style="width: 85%; display: inline;">
 						
 					<!-- ID double check button -->
 					<input type="button" name="idCheck" id="idCheck"

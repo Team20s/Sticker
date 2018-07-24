@@ -56,7 +56,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- Top Navigation -->
 <!-- ################################################################################################ -->
 <div class="wrapper row0">
-  <div id="topbar" class="hoc clear"> 
+  <div id="topbar" class="container clear"> 
     <div class="fl_right">
       <ul>
         <li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
@@ -84,7 +84,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="one_third first"><div id="logo" class="fl_left">
           <h1><a href="main.st"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
         </div></div>
-        <div class="one_third "><div id="logo">
+        <div class="one_third"><div id="logo">
           <div class="input-group mb-3" id="searchDiv">
 			  <input type="text" class="form-control" id="searchInput">
 			  <div class="input-group-append">
