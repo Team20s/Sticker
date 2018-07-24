@@ -10,12 +10,14 @@ import org.springframework.stereotype.Repository;
 import com.st.frame.DAO;
 import com.st.frame.Join;
 import com.st.frame.Search;
+import com.st.frame.UserMoim;
 import com.st.mapper.JoinMapper;
 import com.st.mapper.MoimMapper;
 import com.st.mapper.SearchMapper;
+import com.st.mapper.UserMoimMapper;
 
 @Repository("mdao")
-public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join{
+public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join,UserMoim{
 
 	@Resource(name="mmapper")
 	MoimMapper mmapper;
@@ -25,6 +27,9 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join{
 	
 	@Resource(name="jmapper")
 	JoinMapper jmapper;
+	
+	@Resource(name="ummapper")
+	UserMoimMapper ummapper;
 	
 	@Override
 	public void insert(Moim v) throws Exception {
@@ -39,7 +44,7 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join{
 
 	@Override
 	public void delete(Moim v) throws Exception {
-		mmapper.delete(v.getMoimId());
+		mmapper.delete(v.getUserId());
 	}
 
 	@Override
@@ -70,6 +75,21 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join{
 	@Override
 	public void join(Map<String, Object> map) throws Exception {
 		jmapper.join(map);
+	}
+
+	@Override
+	public void delete(String moimId) throws Exception {
+		ummapper.delete(moimId);
+	}
+
+	@Override
+	public void deleteUser(Map<String,String> map) throws Exception {
+		ummapper.deleteUser(map);
+	}
+
+	@Override
+	public void deleteMoim(Map<String, String> obj) throws Exception {
+		ummapper.deleteMoim(obj);
 	}
 
 

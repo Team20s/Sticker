@@ -11,9 +11,10 @@ import com.st.frame.DAO;
 import com.st.frame.Join;
 import com.st.frame.Search;
 import com.st.frame.Service;
+import com.st.frame.UserMoim;
 
 @org.springframework.stereotype.Service("mservice")
-public class MoimService implements Service<String,Moim>, Search<String,Moim>, Join{
+public class MoimService implements Service<String,Moim>, Search<String,Moim>, Join,UserMoim{
 
 	@Resource(name="mdao")
 	DAO<String,Moim> mdao;
@@ -23,6 +24,9 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>, J
 	
 	@Resource(name="mdao")
 	Join join;
+	
+	@Resource(name="mdao")
+	UserMoim uMoim;
 	
 	@Override
 	@Transactional
@@ -68,6 +72,21 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>, J
 	@Override
 	public void join(Map<String, Object> map) throws Exception {
 		join.join(map);
+	}
+
+	@Override
+	public void delete(String moimId) throws Exception {
+		uMoim.delete(moimId);
+	}
+
+	@Override
+	public void deleteUser(Map<String,String> map) throws Exception {
+		uMoim.deleteUser(map);
+	}
+
+	@Override
+	public void deleteMoim(Map<String, String> obj) throws Exception {
+		uMoim.deleteMoim(obj);
 	}
 
 }
