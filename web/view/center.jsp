@@ -18,7 +18,7 @@ margin-bottom: 20px;
 <script>
 	$(document).ready(function(){
 		//setInterval(function(){},10000)
-		$.ajax({
+		/*$.ajax({
 			url:'enjoylist.st',
 			type:'POST',
 			success:function(data){
@@ -27,7 +27,7 @@ margin-bottom: 20px;
 			error:function (jqXHR, textStatus, errorThrown) {
 			    alert(errorThrown);
 			}
-		});
+		});*/
 		
 		function displayEnjoy(data){
 			
