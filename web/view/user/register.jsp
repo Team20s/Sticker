@@ -88,7 +88,7 @@ h1 {
 						$('#sid').html('<span class="text-danger">ID가 중복되었습니다. 다시 입력해주세요!</span>')
 					} else{
 						//alert('사용가능 ID 입니다.');
-						$('#sid').html('<span class="text-success">사용 가능한 아이디입니다.</span>');
+						$('#sid').html('<span class="text-success">멋진 아이디네요!</span>');
 					}
 				}
 			});
@@ -105,7 +105,6 @@ h1 {
 			sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
 			return;
 		}
-
 		if (id.value.length > 0) {
 				sid.innerHTML = '<span class="text-success">멋진 아이디네요!</span>'
 				return;
