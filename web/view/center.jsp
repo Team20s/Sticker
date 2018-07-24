@@ -6,10 +6,6 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="apple-touch-icon" sizes="180x180" href="images/demo/logo.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/demo/logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/demo/logo.png">
-<link rel="manifest" href="/manifest.json"> <meta name="theme-color" content="#ffffff">
 <style>
 .one_quarter {
 	margin-left: 1%;
