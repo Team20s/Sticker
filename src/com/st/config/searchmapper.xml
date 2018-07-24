@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="search" parameterType="String" resultMap="moimList">
-		SELECT * FROM MOIM M, CATEGORY C WHERE M.CATEGORY_ID = C.CATEGORY_ID AND C.CATEGORY_ID = #{obj}
+		SELECT * FROM MOIM M, CATEGORY C WHERE M.CATEGORY_ID = C.CATEGORY_ID AND C.CATEGORY_ID = #{obj} ORDER BY M.SDATE DESC
 	</select>
 	<!-- Need a test, MyPage's MyMoimList -->
 	<select id="searchMyMoim" parameterType="String" resultMap="moimList">

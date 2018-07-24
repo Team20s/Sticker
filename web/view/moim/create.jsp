@@ -4,25 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d34028354e373bc549b73c7d2ebcfd3&libraries=services,clusterer,drawing"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d34028354e373bc549b73c7d2ebcfd3&libraries=services,clusterer,drawing"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 
 <title>Insert title here</title>
 <style>
@@ -290,12 +280,9 @@ $(document).ready(function(){
 	
 	$('#submit').click(function(){
 		
-		//$('#hiddenContent').val($('.note-editable card-block').val());
-		//console.log($('.card-block').val());
+		$('#hiddenContent').val($('#summernote').val());
+		console.log($('#hiddenContent').val());
 		
-		$('#createForm').attr('method','post');
-		$('#createForm').attr('action','createmoimimpl.st');
-		$('#createForm').attr('enctype','multipart/form-data');
  		$('#createForm').submit();
 	});
 	
@@ -367,7 +354,7 @@ $(document).ready(function(){
 				</ul>
 				<textarea class="form-control" name="content" id="hiddenContent"
 					hidden></textarea>
-				<input type="button" value="개설하기" class="btn fl-right" id="submit"><br>
+					<button class="btn fl-right" id="submit">개설하기</button>
 			</form>
 			<div class="map_wrap">
 				<div id="map"
@@ -388,7 +375,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<div id="summernote_out">
-				<div id="summernote"></div>
+				<textarea id="summernote"></textarea>
 			</div>
 
 		</div>
