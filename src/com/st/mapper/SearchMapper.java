@@ -8,7 +8,7 @@ import com.st.moim.Moim;
 
 @Repository("smapper")
 public interface SearchMapper {
-	public ArrayList<Moim> search(String id);
-	public ArrayList<Moim> searchMyMoim(String userId);
-	public ArrayList<Moim> searchJoinMoim(String userId);
+	public ArrayList<Moim> search(String obj);
+	public ArrayList<Moim> searchMyMoim(String id);
+	public ArrayList<Moim> searchJoinMoim(String id);
 }

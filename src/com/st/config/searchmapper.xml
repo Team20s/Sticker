@@ -18,11 +18,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<!-- Need a test, MyPage's MyMoimList -->
 	<select id="searchMyMoim" parameterType="String" resultMap="moimList">
-		SELECT * FROM MOIM M, CATEGORY C WHERE M.CATEGORY_ID = C.CATEGORY_ID AND M.USER_ID=${userId}
+		SELECT * FROM MOIM M, CATEGORY C WHERE M.CATEGORY_ID = C.CATEGORY_ID AND M.USER_ID=#{id}
 	</select>
 	<!-- Need a test, MyPage's JoinMoimList -->
 	<select id="searchJoinMoim" parameterType="String" resultMap="moimList">
-		SELECT * FROM USER_MOIM UM, MOIM M WHERE UM.MOIM_ID = M.MOIM_ID
+		SELECT * FROM USER_MOIM UM, MOIM M WHERE UM.MOIM_ID = M.MOIM_ID AND UM.USER_ID = #{id}
 	</select>
 	<!-- USER_MOIM INSERT, Need a parameter update(userId, moimId) -->
 </mapper>
