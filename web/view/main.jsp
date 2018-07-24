@@ -15,8 +15,15 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style>
+/*   Global */
+	a:hover{
+		text-decoration: none;
+	}
+  
+  
 /* Header */
     #subnav{
       height: 20px;
@@ -26,13 +33,15 @@ Licence URI: http://www.os-templates.com/template-terms
     	width: 40px;
     	height: 40px;
     }
-    #search{
-      width: 90%;
-      float: left;
+    #searchDiv{
+    border: 1px solid #ced4da;;
     }
-    #search_btn{
-      width: 10%;
-      float: left;
+    #searchInput{
+    border-color: white;
+    }
+    #searchBtn{
+    background: white;
+    border-color: white;
     }
 /* Section */
     #btn_more{
@@ -73,8 +82,12 @@ Licence URI: http://www.os-templates.com/template-terms
           <h1><a href="main.st"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
         </div></div>
         <div class="one_third "><div id="logo">
-          <input id="search"  type="text">
-          <input id="search_btn" type="button" value="go">
+          <div class="input-group mb-3" id="searchDiv">
+			  <input type="text" class="form-control" id="searchInput">
+			  <div class="input-group-append">
+			    <button class="btn btn-link" type="submit" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button> 
+			  </div>
+			</div>
         </div></div>
       </div>
     </header>
