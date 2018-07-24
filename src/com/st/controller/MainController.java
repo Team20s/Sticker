@@ -1,6 +1,10 @@
 package com.st.controller;
 
 import java.io.PrintWriter;
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+>>>>>>> branch 'master' of https://github.com/Team20s/Sticker.git
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.st.frame.Search;
 import com.st.frame.Service;
+import com.st.moim.Moim;
 import com.st.user.User;
 
 @Controller
@@ -24,11 +30,42 @@ public class MainController {
 
 	@Resource(name = "uservice")
 	Service<String, User> service;
+	
+	@Resource(name="mservice")
+	Search<String,Moim> search;
 
 	@RequestMapping("/main.st")
 	public ModelAndView mm() {
+		//enjoy, study all list
+		ArrayList<Moim> enjoyList = null;
+		ArrayList<Moim> studyList = null;
+
+		//enjoy, study 4개 항목만 넣기
+		ArrayList<Moim> enjoyFour = new ArrayList<>();
+		ArrayList<Moim> studyFour = new ArrayList<>();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		
+		try {
+			enjoyList = search.search("c1");
+			studyList = search.search("c2");
+			
+			//최근 4개의 정보만 가져오게 하기 위함.
+			for(int i=0;i<4;i++) {
+				enjoyFour.add(enjoyList.get(i));
+			}
+			for(int i=0;i<4;i++) {
+				studyFour.add(studyList.get(i));
+			}
+			
+			mv.addObject("enjoyList",enjoyFour);
+			mv.addObject("studyList",studyFour);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return mv; // main.jsp
 	}
 
@@ -150,17 +187,17 @@ public class MainController {
 	@RequestMapping("/mypage.st")
 	public ModelAndView mypage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String id =(String) session.getAttribute("userId");
-		
+		String id = (String) session.getAttribute("userId");
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		User user = null;
 		try {
 			user = service.get(id);
-			mv.addObject("user",user);
-			mv.addObject("centerpage","user/detail");
+			mv.addObject("user", user);
+			mv.addObject("centerpage", "user/detail");
 		} catch (Exception e) {
-			mv.addObject("centerpage","user/detail");
+			mv.addObject("centerpage", "user/detail");
 			e.printStackTrace();
 		}
 		return mv;
