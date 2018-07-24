@@ -1,8 +1,8 @@
 package com.st.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.st.frame.Join;
 import com.st.frame.Search;
 import com.st.frame.Service;
 import com.st.moim.Moim;
@@ -29,6 +30,9 @@ public class MoimController {
 	
 	@Resource(name="mservice")
 	Search<String,Moim> search;
+	
+	@Resource(name="mservice")
+	Join join;
 	
 	@RequestMapping("/createmoim.st")
 	public ModelAndView createmoim() {//move createmoim page
@@ -65,7 +69,6 @@ public class MoimController {
 		mv.setViewName("main");
 		
 		try {
-			
 			service.register(moim);
 			mv.addObject("centerpage","center");
 		} catch (Exception e) {
@@ -232,7 +235,6 @@ public class MoimController {
 		mv.setViewName("main");
 		
 		try {
-			
 			service.register(moim);
 			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {
@@ -245,23 +247,36 @@ public class MoimController {
 		return mv;
 	}
 	
-	@RequestMapping("/insertusermoim.st")
-	public ModelAndView insertusermoim(Moim moim,HttpServletRequest request) {//moim insert
+	@RequestMapping("/joinimpl.st")
+	public String joinimpl(Map<String, Object> map,HttpServletRequest request) {//moim insert
 		//user가 신청한 moimId와 그 userId를 USER_MOIM 테이블에 값을 넣어야한다.(신청한 모임)
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
+		HttpSession session = request.getSession();
+		String user_id =(String) session.getAttribute("userId");
+		String moim_id =(String) request.getParameter("moimId");
+		
+		map.put("user_id", user_id);
+		map.put("moim_id", moim_id);
+		
 		try {
-			
-			service.register(moim);
-			mv.addObject("centerpage","center");
+			System.out.println("start");
+			join.join(map);
+			System.out.println("success");
+			return "redirect:main.st";
 		} catch (Exception e) {
+			System.out.println("fail");
 			e.printStackTrace();
 			//fail 이면 조건 줘서 alert 뛰우기
-			mv.addObject("fail","joinfail");
-			mv.addObject("centerpage","center");
+			return "redirect:main.st";
 		}
-		
-		return mv;
 	}
+	
+	
+	
+	
+	
+	
+	
 }
