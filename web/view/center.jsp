@@ -19,7 +19,7 @@ margin-bottom: 20px;
 	$(document).ready(function(){
 		//setInterval(function(){},10000)
 		$.ajax({
-			url:'mainlist.st',
+			url:'enjoylist.st',
 			type:'POST',
 			success:function(data){
 				alert(data);
