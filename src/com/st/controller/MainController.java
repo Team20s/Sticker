@@ -1,12 +1,15 @@
 package com.st.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,16 +100,31 @@ public class MainController {
 
 	@RequestMapping("/idCheck.st")
 	@ResponseBody
-	public Map<String, Integer> idCheck(@RequestBody String userId) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+	public void idCheck(String id,HttpServletResponse response) {
+		response.setContentType("text/json;charset=utf-8");
+		PrintWriter out = null;
+		String cid = id;
+		String result="";
+		User user = null;
+		System.out.println(cid);
 		try {
-			service.get(userId);
-			map.put("cnt", 1);
+			out = response.getWriter();
+			JSONObject jo = new JSONObject();
+			user = service.get(cid);
+			if(cid == null) {
+				cid="";
+			}
+			if(cid.equals(user.getId())){
+				result="YES";
+			} else {
+				result="NO";
+			}
+			jo.put("result",result);
+			out.print(jo.toJSONString());
 		} catch (Exception e) {
-			map.put("cnt", 0);
 			e.printStackTrace();
 		}
-		return map;
+		out.close();
 	}
 
 	@RequestMapping("/registerimpl.st")

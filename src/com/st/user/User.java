@@ -162,5 +162,13 @@ public class User {
 
 
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", year=" + year + ", month=" + month + ", day="
+				+ day + ", birth=" + birth + ", userStatus=" + userStatus + ", moim=" + moim + "]";
+	}
+
+
+
 	
 }

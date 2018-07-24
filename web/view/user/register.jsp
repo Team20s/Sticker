@@ -66,38 +66,29 @@ h1 {
 </style>
 <script>
 
-//아이디 체크여부 확인 (중복=0,중복X=1)
-var idck=0;
-$(function(){
-	$("#idCheck").click(function(){		
-			//userid를 param
-			var userId = $("#id").val();
-			
+	//ID double check
+	$(document).ready(function(){
+		$('#idCheck').click(function(){
+			//alert($('#id').val());
 			$.ajax({
-				async: true,
-				type: 'POST',
-				data: userId,
+				type:"POST",
 				url:"idCheck.st",
-				dataType: "JSON",
-				contentType="application/json; charset=UTF-8",
-				success : function(data) {
-					if(data.cnt > 0) {
-						alert("ID가 존재합니다. 다른 아이디를 입력하세요.");
-						$("#id").focus();
-					} else{
-						alert("사용가능한 ID입니다.");
-						$("#pwd").focus();
-						idck = 1;
-					}
+				data:{
+					"id": $('#id').val()
 				},
-				error : function(error) {
-					alert("error : " + error);
+				success:function(data){
+					if($.trim(data.result)=="YES"){
+						//alert('ID가 중복되었습니다. 다시 입력해주세요!');
+						$('#sid').html('<span class="text-danger">ID가 중복되었습니다. 다시 입력해주세요!</span>')
+					} else{
+						//alert('사용가능 ID 입니다.');
+						$('#sid').html('<span class="text-success">사용 가능한 아이디입니다.</span>');
+					}
 				}
-				
 			});
-		});	
-});
-
+		});
+	});
+	
 	function checkId() {
 		// 영어로 시작하고 6자리 이상
 		// 영문과 숫자가 반드시 입력
@@ -226,6 +217,7 @@ $(function(){
 			sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
 		}
 	};
+	
 </script>
 </head>
 <body id="top">
@@ -241,8 +233,11 @@ $(function(){
 					<label style="display: block;">아이디(닉네임) :</label> <input
 						type="text" name="id" id="id" class="form-control"
 						onblur="checkId();" style="width: 80%; display: inline;">
+						
+					<!-- ID double check button -->
 					<input type="button" name="idCheck" id="idCheck"
-						class="btn btn-link" value="ID중복체크" style="display: inline;">
+						class="btn btn-link" value="ID 중복체크" style="display: inline;">
+						
 					<div id="sid"></div>
 				</div>
 				<div class="form-group">
@@ -288,7 +283,7 @@ $(function(){
 				</div>
 
 				<div class="form-group">
-					<button type="button" class="btn btn-dark btn-lg btn-block"
+					<button type="submit" class="btn btn-dark btn-lg btn-block"
 						onclick="register(this.form);">회원가입</button>
 					<div id="sregister"></div>
 				</div>
