@@ -290,12 +290,6 @@ $(document).ready(function(){
 	
 	$('#submit').click(function(){
 		
-		//$('#hiddenContent').val($('.note-editable card-block').val());
-		//console.log($('.card-block').val());
-		
-		$('#createForm').attr('method','post');
-		$('#createForm').attr('action','createmoimimpl.st');
-		$('#createForm').attr('enctype','multipart/form-data');
  		$('#createForm').submit();
 	});
 	
@@ -367,7 +361,7 @@ $(document).ready(function(){
 				</ul>
 				<textarea class="form-control" name="content" id="hiddenContent"
 					hidden></textarea>
-				<input type="button" value="개설하기" class="btn fl-right" id="submit"><br>
+					<button class="btn fl-right" id="submit">개설하기</button>
 			</form>
 			<div class="map_wrap">
 				<div id="map"
