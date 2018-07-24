@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<mapper resource="com/st/config/moimmapper.xml"/>
 		<mapper resource="com/st/config/searchmapper.xml"/>
 		<mapper resource="com/st/config/joinmapper.xml"/>
+		<mapper resource="com/st/config/usermoimmapper.xml"/>
 	</mappers>
 	
 </configuration>
