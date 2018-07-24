@@ -49,4 +49,15 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>{
 	public ArrayList<Moim> search(String t) throws Exception {
 		return search.search(t);
 	}
+
+	@Override
+	public ArrayList<Moim> searchMyMoim(String t) throws Exception {
+		return search.searchMyMoim(t);
+	}
+
+	@Override
+	public ArrayList<Moim> searchJoinMoim(String t) throws Exception {
+		return search.searchJoinMoim(t);
+	}
+
 }
