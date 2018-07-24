@@ -1,60 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt2" uri="http://java.sun.com/jstl/fmt_rt"%>
+<%@ taglib prefix="fmt3" uri="http://java.sun.com/jstl/fmt_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style>
-td{
-	width:60%;
+td {
+	width: 60%;
 }
-td > input{
-	width:100%;
+
+td>input {
+	width: 100%;
 }
-.table_title{
-	width:30%;
+
+.table_title {
+	width: 30%;
 }
-.table_content{
+
+.table_content {
 	position: relative;
 	height: 240px;
 }
 
-span, p{
-	color:black;
+span, p {
+	color: black;
 }
-#moim_image{
-	width:100%;
+
+#moim_image {
+	width: 100%;
 	height: auto;
 }
-#btn_cancel{
+
+#btn_cancel {
 	position: absolute;
 	background: red;
 	color: white;
-	right:10px;
-	bottom:10px;
+	right: 10px;
+	bottom: 10px;
 }
-#btn_close{
+
+#btn_close {
 	background: red;
 	color: white;
 	border-color: red;
 }
-#btn_edit{
+
+#btn_edit {
 	background: green;
 	color: white;
 	border-color: green;
 }
 
-.btn-group{
+.btn-group {
 	margin-left: 8px;
 	margin-bottom: 10px;
-    height: 40px;
+	height: 40px;
 }
 </style>
 <script>
@@ -136,147 +151,193 @@ function register(f) {
 </script>
 </head>
 <body>
-<!-- 친목도모 Section -->
-<!-- ################################################################################################ -->
-<div class="wrapper row3 coloured">
-  <main class="hoc container clear">
-    <!-- main body -->
-    <div class="container">
-    	<h4>My Page</h4>
-        <table class="table">
-			<tr>
-				<td class="table_title">아이디(닉네임)</td>
-				<td>${userId }</td>
-			</tr>        
-			<tr>
-				<td class="table_title">이름</td>
-				<td>${user.name }</td>
-			</tr>        
-			<tr>
-				<td class="table_title">비밀번호</td>
-				<td>
-					<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
-						수정하기
-					</button>
-				</td>
-			</tr>        
-			<tr>
-				<td class="table_title">생년월일</td>
-				<td>${user.birth }</td>
-			</tr>        
-        </table>
-    </div>
-    
-    <div class="modal" id="myModal">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	
-		      <!-- Modal Header -->
-		      <div class="modal-header">
-		        <h4 class="modal-title">비밀번호 수정</h4>
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		      </div>
-	
-		      <!-- Modal body -->
-		      <form action="pwdupdateimpl.st" method="post" name="frm" id="frm">
-		      <div class="modal-body">
-		      	
-		      	<table class="table">
-		      		<tr>
-		      			<td class="table_title">새 비밀번호</td>
-		      			<td><input type="password" id="pwd" name="pwd" onblur="checkPwd();"></td>
-		      		</tr>
-		      		<tr>
-		      			<td class="table_title">새 비밀번호 확인</td>
-		      			<td><input type="password" id="pwdCheck" name="pwdCheck"
-		      			onblur="checkPwdCheck();"></td>
-		      		</tr>
-		      	</table>
-		      	<div id="spwd"></div>
-		      </div>
-		
-		      <!-- Modal footer -->
-		      <div class="modal-footer">
-		        <input id="btn_edit" type="submit" class="btn btn-success" data-dismiss="modal" 
-		        value="수정" onclick="register(this.form);">
-		        <button id="btn_close" type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-		      </div>
-		      
-		      </form>
-		      
-		    </div>
-		  </div>
-		</div>
-    
-	<div class="container">
-		<div class="btn-group">
-			<div class="form-group">
-					<div class="row">
-						<div class="btn-group">
-						  <button id="apply" type="button" class="btn"> 신청한 모임 내역 </button>
-						  <button id="create" type="button" class="btn"> 개설한 모임 내역 </button>
-						</div>
-					</div>
-				</div>		  
-		</div>
-		<table class="table">
-			<c:forEach items="${moim }" var="item">
+	<!-- current day and time -->
+	<jsp:useBean id="today" class="java.util.Date" />
+	<jsp:useBean id="systime" class="java.util.Date" />
+
+	<fmt2:formatDate value="${today }" pattern="yyyy-MM-dd" var="today" />
+	<fmt3:formatDate value="${systime }" pattern="HH:mm:ss" var="systime" />
+
+	<!-- 친목도모 Section -->
+	<!-- ################################################################################################ -->
+	<div class="wrapper row3 coloured">
+		<main class="hoc container clear"> <!-- main body -->
+		<div class="container">
+			<h4>My Page</h4>
+			<table class="table">
 				<tr>
-					<td class="table_title"><a href="#"><img src="${item.imgname }" id="moim_image"></a></td>
+					<td class="table_title">아이디(닉네임)</td>
+					<td>${userId }</td>
+				</tr>
+				<tr>
+					<td class="table_title">이름</td>
+					<td>${user.name }</td>
+				</tr>
+				<tr>
+					<td class="table_title">비밀번호</td>
 					<td>
-						<div class="table_content">
-							<div>
-								<button type="button" class="btn" disabled>
-									<c:choose>
-										<c:when test="${item.edate == item.sdate }">
-											<c:choose>
-												<c:when test="${item.edate > item.sdate }">
-													모임종료
-												</c:when>
-												<c:when test="${item.sdate > currentDate }">
-													진행 전
-												</c:when>
-												<c:otherwise>
-													진행 중
-												</c:otherwise>
-											</c:choose>
-										</c:when>
-										<c:otherwise>
-											<c:choose>
-												<c:when test="${item.sdate > currentDate }">
-													진행 전
-												</c:when>
-												<c:otherwise>
-													모임종료
-												</c:otherwise>
-											</c:choose>
-										</c:otherwise>
-									</c:choose>
-								</button>
-							</div>
-							<div>
-								<span>모임기간 : </span>
-		  						<span id="sdate">${item.sdate } ${item.stime }</span> 
-		  						
-		  						<c:if test="${item.edate == item.sdate }">
-		  						~ <span id="edate">${item.edate } ${item.etime }</span>
-		  						</c:if>
-		  						
-							</div>
-							<div>
-		  						<span>모임장소 : </span><span>${item.place }</span>
-		  					</div>
-							<input id="btn_cancel" type="button" class="btn btn_danger" value="신청취소">
-						</div>
+						<button type="button" class="btn" data-toggle="modal"
+							data-target="#myModal">수정하기</button>
 					</td>
 				</tr>
-			</c:forEach>
-		</table>
+				<tr>
+					<td class="table_title">생년월일</td>
+					<td>${user.birth }</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="modal" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">비밀번호 수정</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<form action="pwdupdateimpl.st" method="post" name="frm" id="frm">
+						<div class="modal-body">
+
+							<table class="table">
+								<tr>
+									<td class="table_title">새 비밀번호</td>
+									<td><input type="password" id="pwd" name="pwd"
+										onblur="checkPwd();"></td>
+								</tr>
+								<tr>
+									<td class="table_title">새 비밀번호 확인</td>
+									<td><input type="password" id="pwdCheck" name="pwdCheck"
+										onblur="checkPwdCheck();"></td>
+								</tr>
+							</table>
+							<div id="spwd"></div>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<input id="btn_edit" type="submit" class="btn btn-success"
+								data-dismiss="modal" value="수정" onclick="register(this.form);">
+							<button id="btn_close" type="button" class="btn btn-danger"
+								data-dismiss="modal">닫기</button>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="btn-group">
+				<div class="form-group">
+					<div class="row">
+						<div class="btn-group">
+							<a id="apply" class="btn" href="mypage.st?cmd=join"> 신청한 모임내역 </a> 
+							<a id="create" class="btn" href="mypage.st?cmd=my"> 개설한 모임 내역 </a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<table class="table">
+				<c:forEach items="${list }" var="item">
+					<!-- String date format change Date. -->
+
+					<fmt:parseDate value="${item.sDate }" var="sdate"
+						pattern="yyyy-MM-dd" />
+					<fmt:parseDate value="${item.eDate }" var="edate"
+						pattern="yyyy-MM-dd" />
+					<fmt:parseDate value="${item.applySDate }" var="applysdate"
+						pattern="yyyy-MM-dd" />
+					<fmt:parseDate value="${item.applyEDate }" var="applyedate"
+						pattern="yyyy-MM-dd" />
+					<fmt:parseDate value="${item.sTime }" var="stime"
+						pattern="HH:mm" />
+					<fmt:parseDate value="${item.eTime }" var="etime"
+						pattern="HH:mm" />
+					<fmt:parseDate value="${item.applySTime }" var="applystime"
+						pattern="HH:mm" />
+					<fmt:parseDate value="${item.applyETime }" var="applyetime"
+						pattern="HH:mm" />
+
+					<!-- date Pattern change -->
+					<fmt:formatDate value="${sdate }" pattern="yyyy-MM-dd" var="sdate" />
+					<fmt:formatDate value="${edate }" pattern="yyyy-MM-dd" var="edate" />
+					<fmt:formatDate value="${applysdate }" pattern="yyyy-MM-dd"
+						var="applysdate" />
+					<fmt:formatDate value="${applyedate }" pattern="yyyy-MM-dd"
+						var="applyedate" />
+					<fmt:formatDate value="${stime }" pattern="HH:mm" var="stime" />
+					<fmt:formatDate value="${etime }" pattern="HH:mm" var="etime" />
+					<fmt:formatDate value="${applystime }" pattern="HH:mm"
+						var="applystime" />
+					<fmt:formatDate value="${applyetime }" pattern="HH:mm"
+						var="applyetime" />
+					<tr>
+						<td class="table_title"><a href="#"><img
+								src="img/${item.moimImg }" id="moim_image"></a></td>
+						<td>
+							<div class="table_content">
+								<div>
+									<button type="button" class="btn" disabled>
+										<c:choose>
+											<c:when test="${edate != sdate}">
+												<c:choose>
+													<c:when test="${edate > today }">
+													모임종료
+												</c:when>
+													<c:when test="${sdate > today }">
+													진행 전
+												</c:when>
+													<c:otherwise>
+													진행 중
+												</c:otherwise>
+												</c:choose>
+											</c:when>
+											<c:otherwise>
+												<c:choose>
+													<c:when test="${stime > systime }">
+													진행 전
+												</c:when>
+													<c:otherwise>
+													모임종료
+												</c:otherwise>
+												</c:choose>
+											</c:otherwise>
+										</c:choose>
+									</button>
+								</div>
+								<div>
+									<span>모임기간 : </span> <span id="sdate">${sdate }
+										${stime }</span>
+									<c:choose>
+										<c:when test="${edate == sdate }">
+										 ~ <span id="edate">${etime }</span>
+										</c:when>
+										<c:otherwise>
+										 ~ <span id="edate">${edate } ${etime }</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								<div>
+									<span>모임장소 : </span><span>${item.place }</span>
+								</div>
+								<input id="btn_cancel" type="button" class="btn btn_danger"
+									value="신청취소">
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<p class="center" id="btn_more">
+			<a class="btn inverse" href="#">더 보기</a>
+		</p>
+		<div class="clear"></div>
+		</main>
 	</div>
-    <p class="center" id="btn_more"><a class="btn inverse" href="#">더 보기</a></p>
-    <div class="clear"></div>
-  </main>
-</div>
 
 </body>
 </html>

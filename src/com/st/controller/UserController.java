@@ -22,8 +22,8 @@ public class UserController {
 
 	@RequestMapping("/pwdupdateimpl.st")
 	public ModelAndView pwdupdateimpl(HttpServletRequest request,User user) {
-		//ÇØ´ç ID userÀÇ µ¥ÀÌÅÍ¸¦ °Ë»öÇØ¼­
-		//pwd¸¦ º¯°æÇÏ¿© DB¿¡ ÀúÀå
+		//ï¿½Ø´ï¿½ ID userï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ë»ï¿½ï¿½Ø¼ï¿½
+		//pwdï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		HttpSession session = request.getSession();
 		String id =(String) session.getAttribute("userId");
 		String newPwd = request.getParameter("pwd");
@@ -42,6 +42,15 @@ public class UserController {
 			mv.addObject("centerpage", "user/detail");
 			e.printStackTrace();
 		}
+		return mv;
+	}
+	
+	@RequestMapping("/customerservice.st")
+	public ModelAndView customerservice() {
+		// model
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		mv.addObject("centerpage", "customerservice");
 		return mv;
 	}
 
