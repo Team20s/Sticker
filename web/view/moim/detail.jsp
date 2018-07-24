@@ -186,17 +186,7 @@ img {
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 		
 		map.setDraggable(false);
-		
-		var markerPosition  = new daum.maps.LatLng(37.501529, 127.039643); 
-
-		// 마커를 생성합니다
-		var marker = new daum.maps.Marker({
-		    position: markerPosition
-		});
-
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
-		
+	
 		// 주소-좌표 변환 객체를 생성합니다
 		var geocoder = new daum.maps.services.Geocoder();
 
@@ -216,7 +206,7 @@ img {
 
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+ '${moimdetail.title }' +'</div>'
 		        });
 		        infowindow.open(map, marker);
 
