@@ -1,6 +1,5 @@
 package com.st.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,10 +44,10 @@ public class MainController {
 		String pwd = request.getParameter("pwd");
 		String loginState = "0";
 
-		// ÇØ´ç ID¸¦ ¼­¹ö¿¡ ¿äÃ»ÇÏ¿© User Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ
-		// Á¸Àç ÇÑ´Ù¸é
-		// UserÁ¤º¸ÀÇ PWD¿Í ÀÔ·Â ÇÑ PWD¸¦ ºñ±³ ÇÏ¿©
-		// ·Î±×ÀÎ Ã³¸®, session¿¡ login Á¤º¸¸¦ ³ÖÀ½.
+		// ï¿½Ø´ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½Ï¿ï¿½ User ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´Ù¸ï¿½
+		// Userï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PWDï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ PWDï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¿ï¿½
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½, sessionï¿½ï¿½ login ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		User user = null;
@@ -58,12 +57,12 @@ public class MainController {
 				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
-				System.out.println("·Î±×ÀÎ ¼º°ø!");
+				System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
 				System.out.println("ID:" + id + "Pwd:" + pwd);
 			} else {
 				request.setAttribute("loginState", loginState);
 				mv.addObject("centerpage", "user/login");
-				System.out.println("·Î±×ÀÎ ½ÇÆÐ!");
+				System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
 				System.out.println("ID:" + id + "Pwd:" + pwd + "loginState:" + loginState);
 			}
 		} catch (Exception e) {
