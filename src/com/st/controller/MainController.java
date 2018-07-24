@@ -52,7 +52,6 @@ public class MainController {
 			for(int i=0;i<4;i++) {
 				studyFour.add(studyList.get(i));
 			}
-			
 			mv.addObject("enjoyList",enjoyFour);
 			mv.addObject("studyList",studyFour);
 		} catch (Exception e) {
@@ -73,42 +72,38 @@ public class MainController {
 	}
 
 	@RequestMapping("/loginimpl.st")
-	public ModelAndView loginimpl(HttpServletRequest request) {
+	public String loginimpl(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String loginState = "0";
 
-		// �ش� ID�� ������ ��û�Ͽ� User ������ �ִ��� Ȯ��
-		// ���� �Ѵٸ�
-		// User������ PWD�� �Է� �� PWD�� �� �Ͽ�
-		// �α��� ó��, session�� login ������ ����.
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		User user = null;
 		try {
 			user = service.get(id);
 			if (pwd.equals(user.getPwd())) {
-				mv.addObject("centerpage", "center");
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
 				System.out.println("login success!");
 				System.out.println("ID:" + id + "Pwd:" + pwd);
+				return "redirect:/main.st"; 
 			} else {
 				request.setAttribute("loginState", loginState);
 				mv.addObject("centerpage", "user/login");
 				System.out.println("login failed...");
 				System.out.println("ID:" + id + "Pwd:" + pwd + "loginState:" + loginState);
+				return "redirect:/main.st"; 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("loginState", loginState);
-			mv.addObject("centerpage", "user/login");
+			return "redirect:/main.st"; 
 		}
-		return mv;
 	}
 
 	@RequestMapping("/logout.st")
-	public ModelAndView logout(HttpServletRequest request) {
+	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 
 		if (session != null) {
@@ -117,8 +112,7 @@ public class MainController {
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		mv.addObject("centerpage", "center");
-		return mv;
+		return "redirect:/main.st"; 
 	}
 
 	@RequestMapping("/register.st")
@@ -182,12 +176,22 @@ public class MainController {
 	public ModelAndView mypage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("userId");
-
+		String cmd = request.getParameter("cmd");
+		System.out.println(cmd);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
+		ArrayList<Moim> list = null;
 		User user = null;
 		try {
 			user = service.get(id);
+			
+			if(cmd.equals("my")) {
+				list = search.searchMyMoim(id);
+			}else if(cmd.equals("join")) {
+				list = search.searchJoinMoim(id);
+			}
+			
+			mv.addObject("list",list);
 			mv.addObject("user", user);
 			mv.addObject("centerpage", "user/detail");
 		} catch (Exception e) {

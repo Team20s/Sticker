@@ -64,7 +64,7 @@ Licence URI: http://www.os-templates.com/template-terms
         	</c:when>
         	<c:otherwise>
         		<li><a href="logout.st">로그아웃</a></li>
-        		<li><a href="mypage.st">마이페이지</a></li>
+        		<li><a href="mypage.st?cmd=join">마이페이지</a></li>
         	</c:otherwise>
         </c:choose>
         <li><a href="#">고객센터</a></li>
