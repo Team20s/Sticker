@@ -1,24 +1,30 @@
 package com.st.moim;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
 import com.st.frame.DAO;
+import com.st.frame.Join;
 import com.st.frame.Search;
+import com.st.mapper.JoinMapper;
 import com.st.mapper.MoimMapper;
 import com.st.mapper.SearchMapper;
 
 @Repository("mdao")
-public class MoimDao implements DAO<String,Moim>,Search<String,Moim>{
+public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join{
 
 	@Resource(name="mmapper")
 	MoimMapper mmapper;
 	
 	@Resource(name="smapper")
 	SearchMapper smapper;
+	
+	@Resource(name="jmapper")
+	JoinMapper jmapper;
 	
 	@Override
 	public void insert(Moim v) throws Exception {
@@ -59,6 +65,11 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>{
 	@Override
 	public ArrayList<Moim> searchJoinMoim(String t) throws Exception {
 		return smapper.searchJoinMoim(t);
+	}
+
+	@Override
+	public void join(Map<String, Object> map) throws Exception {
+		jmapper.join(map);
 	}
 
 
