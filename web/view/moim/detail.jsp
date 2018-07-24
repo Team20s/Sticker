@@ -38,6 +38,25 @@ img {
 	height: 220px;
 }
 
+#ul {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+#categoryId{
+	margin-bottom: 40px;
+}
+
+#detail_div{
+	padding: 30px 0;
+}
+
+#apply_btn{
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+}
+
 </style>
 <script></script>
 </head>
@@ -83,7 +102,7 @@ img {
 	<div class="wrapper row3 coloured">
 		<main class="hoc container clear">
 		<form action="joinimpl.st?moimId=${moimdetail.moimId }" method="post">
-			<div id="introblocks">
+			<div class="container" id="detail_div">
 				<c:choose>
 					<c:when test="${moimdetail.categoryKind == 'ENJOY' }">
 						<h5 id="categoryId">친목도모</h5>
@@ -92,26 +111,26 @@ img {
 						<h5 id="categoryId">스터디 및 정보공유</h5>
 					</c:otherwise>
 				</c:choose>
-				<ul class="nospace group">
+				<ul class="nospace group" id="ul">
 					<li class="one_quarter first">
 						<div>
 							<img src="img/${moimdetail.moimImg }" id="moim_image">
-						</div>
-						<div>
-							<h5>개설자 정보</h5>
-							<hr />
-							<span>${moimdetail.userName }</span>
 						</div>
 					</li>
 					<li class="three_quarter">
 						<div>
 							<h3 id="title">${moimdetail.title }</h3>
+							<h5>${moimdetail.userName }님의 모임</h5>
 							<div>
-								<span>모임기간 : </span> <span id="sdate">${sdate } ${stime }
-									~ ${moimdetail.eTime }</span>
-								<c:if test="${edate != sdate }">
-  						 ~ <span id="edate">${edate } ${etime }</span>
-								</c:if>
+								<span>모임기간 : </span> <span id="sdate">${sdate } ${stime }</span>
+								<c:choose>
+									<c:when test="${edate == sdate }">
+										<span>~ ${moimdetail.eTime }</span>
+									</c:when>
+									<c:otherwise>
+	  									<span id="edate">~ ${edate } ${etime }</span>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div>
 								<span>모임장소 : </span><span>${moimdetail.place }</span>
@@ -125,23 +144,23 @@ img {
 								<c:when test="${edate != sdate }">
 									<c:choose>
 										<c:when test="${applyedate < today && applyetime < systime}">
-											<button type="button" class="btn" disabled>신청종료</button>
+											<button type="button" class="btn"  id="apply_btn" disabled>신청종료</button>
 										</c:when>
 										<c:when test="${applysdate > today && applystime > systime}">
-											<button type="button" class="btn" disabled>신청기간 전</button>
+											<button type="button" class="btn" id="apply_btn" disabled>신청기간 전</button>
 										</c:when>
 										<c:otherwise>
-											<button type="submit" class="btn">신청하기</button>
+											<button type="submit" class="btn" id="apply_btn" >신청하기</button>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${moim.applyETime < systime }">
-											<button type="button" class="btn" disabled>신청종료</button>
+											<button type="button" class="btn" id="apply_btn" disabled>신청종료</button>
 										</c:when>
 										<c:otherwise>
-											<button type="submit" class="btn" disabled>신청하기</button>
+											<button type="submit" class="btn" id="apply_btn" >신청하기</button>
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>
