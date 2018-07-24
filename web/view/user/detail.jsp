@@ -46,6 +46,14 @@ span, p {
 	height: auto;
 }
 
+#btn_cancel1 {
+	position: absolute;
+	background: red;
+	color: white;
+	right: 110px;
+	bottom: 10px;
+}
+
 #btn_cancel {
 	position: absolute;
 	background: red;
@@ -311,7 +319,8 @@ function register(f) {
 								</div>
 								<c:choose>
 									<c:when test="${check == 'my' }">
-										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=my&moimId=${item.moimId }">개설취소</a>
+										<a id="btn_cancel1" class="btn btn_danger" href="deletemoim.st?cmd=my&moimId=${item.moimId }">개설취소</a>
+										<a id="btn_cancel" class="btn btn_danger" href="updatemoim.st?moimId=${item.moimId }">정보수정</a>
 									</c:when>
 									<c:otherwise>
 										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=join&moimId=${item.moimId }">신청취소</a>
