@@ -59,9 +59,80 @@ span, p{
 </style>
 <script>
 
+function checkPwd() {
+	// 영어로 시작하고 8자리 이상
+	// 숫자와 특수문자가 반드시 포함
+	var pwd = document.querySelector('#pwd');
+	var spwd = document.querySelector('#spwd');
+
+	if (pwd.value.length == 0) {
+		spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+		return;
+	}
+
+	if (pwd.value.length >= 8) {
+		var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+		if (!exp.test(pwd.value)) {
+			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+			return;
+		} else {
+			spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			return;
+		}
+	} else {
+		spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+		return;
+	}
+};
+
+var pwdFlag = 0;
+function checkPwdCheck(){
+	var pwd = document.querySelector('#pwd');
+	var pwdCheck = document.querySelector('#pwdCheck');
+	var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+	
+	if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
+		spwd.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
+		pwdFlag = 1;
+		return;
+	}
+	
+	if(pwd.value != pwdCheck.value){
+		spwd.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
+		console.log(pwd.value);
+		console.log(pwdCheck.value);
+		return;
+	}
+	
+}
+
+function register(f) {
+	var pwd = document.querySelector('#pwd');
+	var pwdCheck = document.querySelector('#pwdCheck');
+
+	if (pwdCheck.value.length != 0 && pwd.value.length != 0 && pwdFlag == 1) {
+		f.method = 'post';
+		f.action = 'pwdupdateimpl.st';
+		f.submit();
+	} 
+};
 
 
+<!--
+	function check() {
+		if (confirm("비밀번호를 변경하시겠습니까?")) {
+			if (pwdFlag == 0) {
+				alert("비밀번호를 다시 확인해주세요");
+				return false;
+			} else {
+				alert("비밀번호가 변경되었습니다.");
+				$("#frm").submit();
+			}
+		}
 
+	}
+	-->
+	
 </script>
 </head>
 <body>
@@ -75,7 +146,7 @@ span, p{
         <table class="table">
 			<tr>
 				<td class="table_title">아이디(닉네임)</td>
-				<td>${user.id }</td>
+				<td>${userId }</td>
 			</tr>        
 			<tr>
 				<td class="table_title">이름</td>
@@ -105,33 +176,34 @@ span, p{
 		        <h4 class="modal-title">비밀번호 수정</h4>
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
-		
+	
 		      <!-- Modal body -->
+		      <form action="pwdupdateimpl.st" method="post" name="frm" id="frm">
 		      <div class="modal-body">
-		      
+		      	
 		      	<table class="table">
 		      		<tr>
-		      			<td class="table_title">비밀번호</td>
-		      			<td><input type="password"></td>
-		      		</tr>
-		      		<tr>
 		      			<td class="table_title">새 비밀번호</td>
-		      			<td><input type="password"></td>
+		      			<td><input type="password" id="pwd" name="pwd" onblur="checkPwd();"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="table_title">새 비밀번호 확인</td>
-		      			<td><input type="password"></td>
+		      			<td><input type="password" id="pwdCheck" name="pwdCheck"
+		      			onblur="checkPwdCheck();"></td>
 		      		</tr>
 		      	</table>
-		      
+		      	<div id="spwd"></div>
 		      </div>
 		
 		      <!-- Modal footer -->
 		      <div class="modal-footer">
-		        <button id="btn_edit" type="button" class="btn btn-success" data-dismiss="modal">수정</button>
+		        <input id="btn_edit" type="submit" class="btn btn-success" data-dismiss="modal" 
+		        value="수정" onclick="register(this.form);">
 		        <button id="btn_close" type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
 		      </div>
-		
+		      
+		      </form>
+		      
 		    </div>
 		  </div>
 		</div>

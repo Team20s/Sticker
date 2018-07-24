@@ -1,15 +1,19 @@
 package com.st.controller;
 
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,12 +67,12 @@ public class MoimController {
 		try {
 			
 			service.register(moim);
-			mv.addObject("centerpage","moim/createok");
+			mv.addObject("centerpage","center");
 		} catch (Exception e) {
 			e.printStackTrace();
 			//fail 이면 조건 줘서 alert 뛰우기
-			mv.addObject("fail","fail");
-			mv.addObject("centerpage","moim/center");
+			mv.addObject("fail","createfail");
+			mv.addObject("centerpage","center");
 		}
 		
 		return mv;
@@ -126,4 +130,106 @@ public class MoimController {
 		return mv;
 	}
 	
+	@RequestMapping("/enjoylist.st")
+	@ResponseBody
+	public void enjoylist(HttpServletResponse response) {
+		//카테고리 구분 객체 하기.				
+		ArrayList<Moim> enjoyList = null;
+		
+		//JSON과 AJAX data 넘겨주기
+		response.setContentType("text/json");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			//Data : from DB
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();		
+		}
+		
+		
+		out.close();
+	}
+	
+	@RequestMapping("/studylist.st")
+	@ResponseBody
+	public void studylist(HttpServletResponse response) {
+		//카테고리 구분 객체 하기.				
+		ArrayList<Moim> studyList = null;
+		
+		//JSON과 AJAX data 넘겨주기
+		response.setContentType("text/json");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			//Data : from DB
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();		
+		}
+		
+		
+		out.close();
+	}
+	
+	@RequestMapping("/deletemoim.st")
+	public ModelAndView deletemoim(Moim moim,HttpServletRequest request) {//moim insert
+		//delete는 user/detail에서 실행해서 하는게 좋을 거 같다.
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","user/detail");
+		}
+		
+		return mv;
+	}
+	@RequestMapping("/updatemoim.st")
+	public ModelAndView updatemoim(Moim moim,HttpServletRequest request) {//moim insert
+		//delete와 마찬가지
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","user/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","user/detail");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("/insertusermoim.st")
+	public ModelAndView insertusermoim(Moim moim,HttpServletRequest request) {//moim insert
+		//user가 신청한 moimId와 그 userId를 USER_MOIM 테이블에 값을 넣어야한다.(신청한 모임)
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+			
+			service.register(moim);
+			mv.addObject("centerpage","center");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","joinfail");
+			mv.addObject("centerpage","center");
+		}
+		
+		return mv;
+	}
 }

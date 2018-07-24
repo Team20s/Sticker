@@ -49,6 +49,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO MOIM (MOIM_ID, MOIM_IMG,TITLE,SDATE,EDATE,REG_DATE,APPLY_SDATE,APPLY_EDATE,PLACE,CATEGORY_ID,USER_ID,STIME,ETIME,APPLY_STIME,APPLY_ETIME,CONTENT) VALUES
 		(SEQ_MOIM.NEXTVAL,#{moimImg},#{title},#{sDate},#{eDate},DEFAULT,#{applySDate},#{applyEDate},#{place},#{categoryId},#{userId},#{sTime},#{eTime},#{applySTime},#{applyETime},#{content})
 	</insert>
+	<!-- Need a update -->
 	<update id="update" parameterType="moim">
 		UPDATE MOIM SET
 		MOIM_IMG=#{moimImg},TITLE=#{title},SDATE=#{sDate},EDATE=#{eDate},
@@ -57,6 +58,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE
 		MOIM_ID=#{moimId}
 	</update>
+	<!-- Need a update -->
 	<delete id="delete" parameterType="String">
 		DELETE FROM MOIM WHERE
 		MOIM_ID=#{obj}
