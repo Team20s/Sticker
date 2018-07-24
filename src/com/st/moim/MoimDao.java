@@ -87,5 +87,10 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join,UserM
 		ummapper.deleteUser(map);
 	}
 
+	@Override
+	public void deleteMoim(Map<String, String> obj) throws Exception {
+		ummapper.deleteMoim(obj);
+	}
+
 
 }
