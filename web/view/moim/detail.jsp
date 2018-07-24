@@ -104,7 +104,7 @@ img {
 		<form action="joinimpl.st?moimId=${moimdetail.moimId }" method="post">
 			<div class="container" id="detail_div">
 				<c:choose>
-					<c:when test="${moimdetail.categoryKind == 'ENJOY' }">
+					<c:when test="${moimdetail.categoryKind == 'c1' }">
 						<h5 id="categoryId">친목도모</h5>
 					</c:when>
 					<c:otherwise>
@@ -148,6 +148,9 @@ img {
 										</c:when>
 										<c:when test="${applysdate > today && applystime > systime}">
 											<button type="button" class="btn" id="apply_btn" disabled>신청기간 전</button>
+										</c:when>
+										<c:when test="${moimdetail.user_id == userid}">
+											<button type="button" class="btn" id="apply_btn" disabled>내가 개설한 모임</button>
 										</c:when>
 										<c:otherwise>
 											<button type="submit" class="btn" id="apply_btn" >신청하기</button>
