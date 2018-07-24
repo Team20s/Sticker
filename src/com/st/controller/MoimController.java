@@ -256,20 +256,84 @@ public class MoimController {
 	}
 	@RequestMapping("/updatemoim.st")
 	public ModelAndView updatemoim(Moim moim,HttpServletRequest request) {//moim insert
-		//delete와 마찬가지
+		//update 수정
+		//select 해와서 정보를 뿌려주고, 그걸로 세팅한다.
+		//수정한 객체를 받아와서 바꿔준다.
+		String moimId = request.getParameter("moimId");
+		//origin Moim의 값을 저장해줌 => 이유: 수정할 때 이미지를 바꾸지 않을 때 원래의 값을 넣어주기 위함.
+		HttpSession session = request.getSession();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
-		
+	
 		try {
-			service.register(moim);
-			mv.addObject("centerpage","user/detail");
+			moim = service.get(moimId);
+			session.setAttribute("originMoim", moim);
+			mv.addObject("moimdetail",moim);
+			mv.addObject("centerpage","moim/create");
 		} catch (Exception e) {
 			e.printStackTrace();
 			//fail 이면 조건 줘서 alert 뛰우기
 			mv.addObject("fail","fail");
-			mv.addObject("centerpage","user/detail");
+			mv.addObject("centerpage","moim/create");
 		}
 		
+		return mv;
+	}
+	
+	@RequestMapping("/updatemoimimpl.st")
+	public ModelAndView updatemoimimpl(Moim moim,HttpServletRequest request) {//moim update
+		
+		HttpSession session = request.getSession();
+		//origin Moim 객체 불러오기
+		Moim originMoim = (Moim) session.getAttribute("originMoim");
+		MultipartFile mp = moim.getMoimMultiImg();
+		String moimImg= mp.getOriginalFilename();
+		if(moimImg.equals("")) {
+			moim.setMoimImg(originMoim.getMoimImg());
+		}else {
+			moim.setMoimImg(moimImg);	
+			//상대경로로 가져오기
+			String path = session.getServletContext().getRealPath("/");
+			path += "img\\";
+			
+			FileSave.save(path, mp, moimImg);
+		}
+		
+		
+		//주소랑 상세주소 합쳐서 객체에 저장하기.
+		String address = request.getParameter("address")+" ";
+		address += request.getParameter("address2");
+		moim.setPlace(address);
+		
+		//session id 가져오기
+
+		String userId = (String)session.getAttribute("userId");
+		System.out.println(userId);
+		moim.setUserId(userId);
+
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+	
+		try {
+			System.out.println(moim);
+			if(originMoim.getMoimImg() != null) {//update Photo
+				moim.setMoimId(originMoim.getMoimId());
+				service.modify(moim);
+			}else {//변경하지 않을때
+				System.out.println(moim);
+				service.modify(moim);				
+			}
+			mv.addObject("moimdetail",moim);
+			mv.addObject("centerpage","moim/detail");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//fail 이면 조건 줘서 alert 뛰우기
+			mv.addObject("fail","fail");
+			mv.addObject("centerpage","moim/detail");
+		}
+		session.removeAttribute("originMoim");
 		return mv;
 	}
 	
@@ -280,6 +344,7 @@ public class MoimController {
 		mv.setViewName("main");
 		
 		HttpSession session = request.getSession();
+
 		String user_id =(String) session.getAttribute("userId");
 		String moim_id =(String) request.getParameter("moimId");
 		
