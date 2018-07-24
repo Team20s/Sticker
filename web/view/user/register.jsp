@@ -101,24 +101,16 @@ h1 {
 		var id = document.querySelector('#id');
 		var sid = document.querySelector('#sid');
 		
-		
 		if (id.value.length == 0) {
 			sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
 			return;
 		}
 
-		if (id.value.length >= 6) {
-			var exp = /^[a-zA-Z][a-zA-Z0-9]+/; // ^[a-zA-Z] : 알파벳으로 시작해야 하며, [a-zA-Z0-9]+ : 영어나 숫자로 이루어져야 한다
-			
-			if (!exp.test(id.value)) {
-				sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
-				return;
-			} else {				
+		if (id.value.length > 0) {
 				sid.innerHTML = '<span class="text-success">멋진 아이디네요!</span>'
 				return;
-			}
 		}else {
-			sid.innerHTML = '<span class="text-danger">6자리 이상의 영문과 숫자만 사용 가능합니다.</span>'
+			sid.innerHTML = '<span class="text-danger">아이디가 너무 짧습니다!</span>'
 			return;
 		}
 
@@ -146,6 +138,7 @@ h1 {
 				return;
 			} else {
 				spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				checkPwdCheck();
 				return;
 			}
 		} else {
@@ -169,8 +162,7 @@ h1 {
 		
 		if(pwd.value != pwdCheck.value){
 			spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
-			console.log(pwd.value);
-			console.log(pwdCheck.value);
+			pwdFlag = 0;
 			return;
 		}
 		
@@ -260,7 +252,6 @@ h1 {
 						class="form-control" onblur="checkPwd();">
 					<div id="spwd"></div>
 				</div>
-
 				<div class="form-group">
 					비밀번호 확인 :<input type="password" name="pwdCheck" id="pwdCheck"
 						class="form-control" onblur="checkPwdCheck();">
