@@ -84,4 +84,9 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>, J
 		uMoim.deleteUser(map);
 	}
 
+	@Override
+	public void deleteMoim(Map<String, String> obj) throws Exception {
+		uMoim.deleteMoim(obj);
+	}
+
 }

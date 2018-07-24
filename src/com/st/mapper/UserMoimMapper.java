@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UserMoimMapper {
 	public void delete(String moimId);
 	public void deleteUser(Map<String, String> obj);
+	public void deleteMoim(Map<String, String> obj);
 }

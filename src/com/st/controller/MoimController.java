@@ -232,9 +232,16 @@ public class MoimController {
 		
 		try {
 			if(cmd.equals("my")) {//개설한 모임 취소
-				uMoim.delete(moimId);
-				service.remove(deleteMoim);
-				return "redirect:/mypage.st?cmd=my";
+				try {
+					search.searchJoinMoim(userId);
+
+					uMoim.delete(moimId);
+					uMoim.deleteMoim(map);
+					return "redirect:/mypage.st?cmd=my";
+				}catch(Exception e) {					
+					uMoim.deleteMoim(map);
+					return "redirect:/mypage.st?cmd=my";
+				}
 			}else if(cmd.equals("join")) {//신청한 모임 취소
 				System.out.println(userId);
 				uMoim.deleteUser(map);
