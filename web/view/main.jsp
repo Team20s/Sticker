@@ -18,13 +18,11 @@ Licence URI: http://www.os-templates.com/template-terms
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style>
-/*   Global */
-	a:hover{
-		text-decoration: none;
-	}
-  
   
 /* Header */
+	#header{
+		padding: 0
+	}
     #subnav{
       height: 20px;
       background: #CBCBCB;
@@ -43,17 +41,22 @@ Licence URI: http://www.os-templates.com/template-terms
     background: white;
     border-color: white;
     }
+    
+    a:hover{
+    	text-decoration: none;
+    }
 /* Section */
     #btn_more{
-      padding-top: 50px;
+      padding-top: 30px;
     }
+    
   </style>
 </head>
 <body id="top">
 <!-- Top Navigation -->
 <!-- ################################################################################################ -->
 <div class="wrapper row0">
-  <div id="topbar" class="hoc clear"> 
+  <div id="topbar" class="container clear"> 
     <div class="fl_right">
       <ul>
         <li><a href="main.st"><i class="fa fa-lg fa-home"></i></a></li>
@@ -67,7 +70,7 @@ Licence URI: http://www.os-templates.com/template-terms
         		<li><a href="mypage.st?cmd=join">마이페이지</a></li>
         	</c:otherwise>
         </c:choose>
-        <li><a href="#">고객센터</a></li>
+        <li><a href="customerservice.st">고객센터</a></li>
       </ul>
     </div>
   </div>
@@ -76,12 +79,12 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <div class="bgded overlay">
   <div class="wrapper row1">
-    <header id="header" class="hoc clear"> 
+    <header id="header" class="container clear"> 
       <div class="group demo">
         <div class="one_third first"><div id="logo" class="fl_left">
           <h1><a href="main.st"><img src="images/logo.png" id="mainLogo"> Sticker</a></h1>
         </div></div>
-        <div class="one_third "><div id="logo">
+        <div class="one_third"><div id="logo">
           <div class="input-group mb-3" id="searchDiv">
 			  <input type="text" class="form-control" id="searchInput">
 			  <div class="input-group-append">
@@ -95,7 +98,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- Sub Navigation -->
 <!-- ################################################################################################ -->
   <div class="wrapper row1">
-    <nav id="header" class="hoc clear">
+    <nav id="header" class="container clear">
       <nav id="mainav" class="fl_left">
         <ul class="clear">
           <li><a href="moimlist.st?cmd=c1">친목도모</a></li>

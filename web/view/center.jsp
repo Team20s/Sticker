@@ -8,21 +8,26 @@
 <title>Insert title here</title>
 <style>
 .one_quarter {
-	margin-left: 0;
-	margin-right: 2%;
+	margin-left: 1%;
+	margin-right: 1%;
 	margin-bottom: 20px;
 }
 
 .one_quarter img{
-	width:251px;
-	height:220px;
+	width: 100%;
+	height: 220px;
 }
+
+#main{
+	padding : 30px 0;
+}
+
 </style>
 <script>
 </script>
 </head>
 <body>
-	<div id="pageintro" class="hoc clear">
+	<div id="pageintro" class="container clear">
 		<div class="flexslider basicslider">
 			<ul class="slides">
 				<li>
@@ -46,8 +51,8 @@
 	<!-- 친목도모 Section -->
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3 coloured">
-		<main class="hoc container clear"> <!-- main body -->
-		<div id="enjoy">
+		<main class="hoc container clear" id="main"> <!-- main body -->
+		<div id="introblocks">
 			<ul class="nospace group">
 				<c:forEach items="${enjoyList }" var="item">
 					<li class="one_quarter">
@@ -81,8 +86,8 @@
 	<!-- 스터디 및 취업정보 Section -->
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3 coloured">
-		<main class="hoc container clear">
-		<div id="study">
+		<main class="hoc container clear" id="main">
+		<div id="introblocks">
 			<ul class="nospace group">
 
 

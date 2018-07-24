@@ -33,25 +33,35 @@ h1 {
 
 /* 회원가입 박스 사이즈 조정 */
 @media ( min-width : 1200px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
 @media ( min-width : 992px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
 @media ( min-width : 768px) {
-	.container {
+	.hoc {
 		max-width: 700px;
 	}
 }
 
-.container>div>div>h1 {
+.hoc>div>div>h1 {
 	text-align: center;
+	margin-bottom: 50px;
+}
+
+.hoc{
+	margin-top: 60px; 
+	position: relative;
+}
+
+.hoc input{
+	width:100%;
 }
 
 /* 박스 안 버튼 색깔 조정 */
@@ -74,6 +84,18 @@ td {
 	display: inline;
 	width: 70%;
 }
+
+.table{
+	border-color: white;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+#btn_div{
+	right: 10px;
+	width: 20%;
+	position: absolute;
+}
 </style>
 <script>
 	
@@ -82,22 +104,22 @@ td {
 <body id="top">
 	<!-- Center -->
 	<!-- ################################################################################################ -->
-	<div class="container">
+	<div class="hoc">
 		<div>
 			<div>
-				<h1>로그인</h1>
+				<h1>Welcome!</h1>
 			</div>
 			<form action="loginimpl.st" method="post">
-				<table>
+				<table class="table table-borderless">
 					<tr>
-						<td>아이디(닉네임)</td>
+						<td class="td1">아이디(닉네임)</td>
 						<td><div class="form-group">
 								<input type="text" name="id" id="id" class="form-control">
 							</div></td>
 					</tr>
 					<tr>
 
-						<td>비밀번호</td>
+						<td class="td1">비밀번호</td>
 						<td><div class="form-group">
 								<input type="password" name="pwd" id="pwd" class="form-control">
 							</div></td>
@@ -113,8 +135,7 @@ td {
 						</td>
 					</tr>
 				</table>
-				<br>
-				<div class="form-group">
+				<div class="form-group" id="btn_div">
 					<input type="submit" id="btn_login"
 						class="btn btn-dark btn-lg btn-block" value="로그인">
 				</div>
