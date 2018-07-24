@@ -8,15 +8,19 @@
 <title>Insert title here</title>
 <style>
 
-.one_quarter{
-margin-left: 0;
-margin-right: 2%;
-margin-bottom: 20px;
+.one_quarter {
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 20px;
 }
 
-img{
-	width:220px;
+.one_quarter img{
+	width:100%;
 	height:220px;
+}
+
+.container{
+	padding: 20px 0;
 }
 
 </style>
