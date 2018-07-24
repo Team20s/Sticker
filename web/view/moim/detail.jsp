@@ -104,7 +104,7 @@ img {
 		<form action="joinimpl.st?moimId=${moimdetail.moimId }" method="post">
 			<div class="container" id="detail_div">
 				<c:choose>
-					<c:when test="${moimdetail.categoryKind == 'ENJOY' }">
+					<c:when test="${moimdetail.categoryKind == 'c1' }">
 						<h5 id="categoryId">친목도모</h5>
 					</c:when>
 					<c:otherwise>
@@ -141,12 +141,15 @@ img {
 									${applyetime }</span>
 							</div>
 							<c:choose>
-								<c:when test="${edate != sdate }">
+								<c:when test="${eflag}">
 									<c:choose>
-										<c:when test="${applyedate < today && applyetime < systime}">
+										<c:when test="${moimdetail.userId == userid}">
+											<button type="button" class="btn" id="apply_btn" disabled>내가 개설한 모임</button>
+										</c:when>
+										<c:when test="${!aeflag}">
 											<button type="button" class="btn"  id="apply_btn" disabled>신청종료</button>
 										</c:when>
-										<c:when test="${applysdate > today && applystime > systime}">
+										<c:when test="${asflag}">
 											<button type="button" class="btn" id="apply_btn" disabled>신청기간 전</button>
 										</c:when>
 										<c:otherwise>
@@ -155,14 +158,7 @@ img {
 									</c:choose>
 								</c:when>
 								<c:otherwise>
-									<c:choose>
-										<c:when test="${moim.applyETime < systime }">
-											<button type="button" class="btn" id="apply_btn" disabled>신청종료</button>
-										</c:when>
-										<c:otherwise>
-											<button type="submit" class="btn" id="apply_btn" >신청하기</button>
-										</c:otherwise>
-									</c:choose>
+									<button type="button" class="btn" id="apply_btn" disabled>모임종료</button>
 								</c:otherwise>
 							</c:choose>
 						</div>
