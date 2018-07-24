@@ -45,7 +45,7 @@ public class MoimController {
 		moim.setMoimImg(moimImg);
 		
 		//주소랑 상세주소 합쳐서 객체에 저장하기.
-		String address = request.getParameter("address");
+		String address = request.getParameter("address")+" ";
 		address += request.getParameter("address2");
 		moim.setPlace(address);
 		
@@ -137,11 +137,28 @@ public class MoimController {
 		ArrayList<Moim> enjoyList = null;
 		
 		//JSON과 AJAX data 넘겨주기
-		response.setContentType("text/json");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
 			//Data : from DB
+			enjoyList = search.search("c1");
+			
+			JSONObject jo = null;
+			JSONArray js = new JSONArray();
+			
+			for(int i=0;i<4;i++) {
+				jo = new JSONObject();
+				jo.put("moimId", enjoyList.get(i).getMoimId());
+				jo.put("moimImg", enjoyList.get(i).getMoimImg());
+				jo.put("title", enjoyList.get(i).getTitle());
+				jo.put("sdate", enjoyList.get(i).getsDate());
+				jo.put("edate", enjoyList.get(i).geteDate());
+				jo.put("categoryKind", enjoyList.get(i).getCategoryKind());
+				js.add(jo);
+			}
+
+			out.print(js.toJSONString());
 			
 			
 		} catch (Exception e) {
@@ -159,12 +176,27 @@ public class MoimController {
 		ArrayList<Moim> studyList = null;
 		
 		//JSON과 AJAX data 넘겨주기
-		response.setContentType("text/json");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
 			//Data : from DB
+			studyList = search.search("c2");
+			JSONObject jo = null;
+			JSONArray js = new JSONArray();
 			
+			for(int i=0;i<4;i++) {
+				jo = new JSONObject();
+				jo.put("moimId", studyList.get(i).getMoimId());
+				jo.put("moimImg", studyList.get(i).getMoimImg());
+				jo.put("title", studyList.get(i).getTitle());
+				jo.put("sdate", studyList.get(i).getsDate());
+				jo.put("edate", studyList.get(i).geteDate());
+				jo.put("categoryKind", studyList.get(i).getCategoryKind());
+				js.add(jo);
+			}
+			
+			out.print(js.toJSONString());
 			
 		} catch (Exception e) {
 			e.printStackTrace();		
