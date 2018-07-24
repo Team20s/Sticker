@@ -60,8 +60,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	<!-- Need a update -->
 	<delete id="delete" parameterType="String">
-		DELETE FROM MOIM WHERE
-		MOIM_ID=#{obj}
+		DELETE FROM MOIM WHERE USER_ID = #{userId}
 	</delete>
 
 </mapper>

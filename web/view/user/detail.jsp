@@ -132,21 +132,6 @@ function register(f) {
 	} 
 };
 
-
-<!--
-	function check() {
-		if (confirm("비밀번호를 변경하시겠습니까?")) {
-			if (pwdFlag == 0) {
-				alert("비밀번호를 다시 확인해주세요");
-				return false;
-			} else {
-				alert("비밀번호가 변경되었습니다.");
-				$("#frm").submit();
-			}
-		}
-
-	}
-	-->
 	
 </script>
 </head>
@@ -324,17 +309,20 @@ function register(f) {
 								<div>
 									<span>모임장소 : </span><span>${item.place }</span>
 								</div>
-								<input id="btn_cancel" type="button" class="btn btn_danger"
-									value="신청취소">
+								<c:choose>
+									<c:when test="${check == 'my' }">
+										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=my&moimId=${item.moimId }">개설취소</a>
+									</c:when>
+									<c:otherwise>
+										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=join&moimId=${item.moimId }">신청취소</a>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
-		<p class="center" id="btn_more">
-			<a class="btn inverse" href="#">더 보기</a>
-		</p>
 		<div class="clear"></div>
 		</main>
 	</div>

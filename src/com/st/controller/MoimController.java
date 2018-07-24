@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.st.frame.Join;
 import com.st.frame.Search;
 import com.st.frame.Service;
+import com.st.frame.UserMoim;
 import com.st.moim.Moim;
 import com.st.util.FileSave;
 
@@ -33,6 +34,9 @@ public class MoimController {
 	
 	@Resource(name="mservice")
 	Join join;
+	
+	@Resource(name="mservice")
+	UserMoim uMoim;
 	
 	@RequestMapping("/createmoim.st")
 	public ModelAndView createmoim() {//move createmoim page
@@ -210,23 +214,38 @@ public class MoimController {
 	}
 	
 	@RequestMapping("/deletemoim.st")
-	public ModelAndView deletemoim(Moim moim,HttpServletRequest request) {//moim insert
+	public String deletemoim(Moim moim,HttpServletRequest request,Map<String,String> map) {//moim insert
 		//delete는 user/detail에서 실행해서 하는게 좋을 거 같다.
+		HttpSession session = request.getSession();
+		
+		String userId = (String)session.getAttribute("userId");
+		String cmd = request.getParameter("cmd");
+		String moimId = request.getParameter("moimId");
+		
+		map.put("userId", userId);
+		map.put("moimId", moimId);
+		
+		Moim deleteMoim = new Moim();
+		deleteMoim.setUserId(userId);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
 		try {
+			if(cmd.equals("my")) {//개설한 모임 취소
+				uMoim.delete(moimId);
+				service.remove(deleteMoim);
+				return "redirect:/mypage.st?cmd=my";
+			}else if(cmd.equals("join")) {//신청한 모임 취소
+				System.out.println(userId);
+				uMoim.deleteUser(map);
+				return "redirect:/mypage.st?cmd=join";
+			}
 			
-			service.register(moim);
-			mv.addObject("centerpage","user/detail");
 		} catch (Exception e) {
 			e.printStackTrace();
-			//fail 이면 조건 줘서 alert 뛰우기
-			mv.addObject("fail","fail");
-			mv.addObject("centerpage","user/detail");
+			return "redirect:/main.st";
 		}
-		
-		return mv;
+		return "redirect:/main.st";
 	}
 	@RequestMapping("/updatemoim.st")
 	public ModelAndView updatemoim(Moim moim,HttpServletRequest request) {//moim insert

@@ -191,6 +191,7 @@ public class MainController {
 				list = search.searchJoinMoim(id);
 			}
 			
+			mv.addObject("check",cmd);
 			mv.addObject("list",list);
 			mv.addObject("user", user);
 			mv.addObject("centerpage", "user/detail");
