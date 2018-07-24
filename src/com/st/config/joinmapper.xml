@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.st.mapper.JoinMapper">
+
+	<insert id="join" parameterType="map">
+		INSERT INTO USER_MOIM (MOIM_ID, USER_ID) VALUES (#{moim_id}, #{user_id})
+	</insert>
+	
+</mapper>

@@ -1,23 +1,28 @@
 package com.st.moim;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import com.st.frame.DAO;
+import com.st.frame.Join;
 import com.st.frame.Search;
 import com.st.frame.Service;
 
 @org.springframework.stereotype.Service("mservice")
-public class MoimService implements Service<String,Moim>, Search<String,Moim>{
+public class MoimService implements Service<String,Moim>, Search<String,Moim>, Join{
 
 	@Resource(name="mdao")
 	DAO<String,Moim> mdao;
 	
 	@Resource(name="mdao")
 	Search<String,Moim> search;
+	
+	@Resource(name="mdao")
+	Join join;
 	
 	@Override
 	@Transactional
@@ -58,6 +63,11 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>{
 	@Override
 	public ArrayList<Moim> searchJoinMoim(String t) throws Exception {
 		return search.searchJoinMoim(t);
+	}
+
+	@Override
+	public void join(Map<String, Object> map) throws Exception {
+		join.join(map);
 	}
 
 }
