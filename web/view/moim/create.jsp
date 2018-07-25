@@ -250,7 +250,7 @@
 	font-size:20px;
 }
 </style>
-<script>f
+<script>
 $(document).ready(function(){
 	
 	$('#searchP').click(function(){
