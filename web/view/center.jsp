@@ -36,12 +36,12 @@
 				</li>
 				<li>
 					<article>
-						<img src="images/demo/banner.png">
+						<img src="images/demo/blockchain.png">
 					</article>
 				</li>
 				<li>
 					<article>
-						<img src="images/demo/banner.png">
+						<img src="images/demo/fintech2.png">
 					</article>
 				</li>
 			</ul>
