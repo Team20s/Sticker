@@ -50,6 +50,10 @@ Licence URI: http://www.os-templates.com/template-terms
     #btn_more{
       padding-top: 30px;
     }    
+    
+    #footer{
+    	margin-top: 300px;
+    }
   </style>
 </head>
 <body id="top">
@@ -129,7 +133,7 @@ Licence URI: http://www.os-templates.com/template-terms
 	</c:choose>
 <!-- Footer -->
 <!-- ################################################################################################ -->
-<div class="wrapper row5">
+<div class="wrapper row5" id="footer">
   <div id="copyright" class="hoc clear"> 
     <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">STICKER</a></p>
     <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">TEAM 20's</a></p>
