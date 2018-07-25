@@ -13,15 +13,14 @@
 	margin-bottom: 20px;
 }
 
-.one_quarter img{
+.one_quarter img {
 	width: 100%;
 	height: 220px;
 }
 
-#main{
-	padding : 30px 0;
+#main {
+	padding: 30px 0;
 }
-
 </style>
 <script>
 </script>
@@ -59,11 +58,14 @@
 						<article>
 							<img src="img/${item.moimImg }">
 							<div>
-								<p>${item.categoryKind }<span class="fl_right">${item.sDate }
-
-										<c:if test="${item.eDate == item.sDate }">
-		              ~ ${item.eDate } </c:if>
-
+								<p>${item.categoryKind }<span class="fl_right"> <c:choose>
+											<c:when test="${item.eDate == item.sDate }">
+											${item.sDate } ${item.sTime } ~ ${item.eTime }
+										</c:when>
+											<c:otherwise>
+											${item.sDate } ~ ${item.eDate } 
+										</c:otherwise>
+										</c:choose>
 									</span>
 								</p>
 								<h6 class="heading">${item.title }</h6>
@@ -96,11 +98,15 @@
 						<article>
 							<img src="img/${item.moimImg }">
 							<div>
-								<p>${item.categoryKind }<span class="fl_right">${item.sDate }
-
-										<c:if test="${item.eDate == item.sDate }">
-		              ~ ${item.eDate } </c:if>
-
+								<p>${item.categoryKind }<span class="fl_right">
+										<c:choose>
+											<c:when test="${item.eDate == item.sDate }">
+											${item.sDate } ${item.sTime } ~ ${item.eTime }
+										</c:when>
+											<c:otherwise>
+											${item.sDate } ~ ${item.eDate } 
+										</c:otherwise>
+										</c:choose>
 									</span>
 								</p>
 								<h6 class="heading">${item.title }</h6>
