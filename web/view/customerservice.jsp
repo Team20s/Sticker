@@ -17,29 +17,26 @@
 	margin:0 auto;
 }
 img{
-	width:20%;
-	heigh:20%;
+	width:80%;
 }
 #photo_area div{
-	display:inline;
-	margin-left:4%;
-	
+text-align: center;
 }
-#name_area{
-	padding-top:1%;
+.name_area{
+margin-top: 30px;
 }
-#name_area div{
-	width:20%;
-	height:20%;
-	background-color:black;
-	margin-left:4%;
-	display:inline;
-}
+
 h1,h6{
 	text-align:center;
 	color:#4C4C4C;
 }
 
+.quarter {
+    width: 22%;
+    margin-right: 1%;
+    margin-left: 1%;
+    display: inline-block;
+}
 </style>
 <script>
 </script>
@@ -48,29 +45,35 @@ h1,h6{
 	<div id="title">
 	<h1><strong>20's </strong>팀을 만나보세요.</h1>
 	</div>
-	<div id="content">
+	<div id="content">  
 		<div id="photo_area">
-			<div><img src="img/kde.jpg"></div>
-			<div><img src="img/ksj.jpg"></div>
-			<div><img src="img/lgw.jpg"></div>
-			<div><img src="img/cdh.jpg"></div>
-		</div>
-		<div id="name_area">
-			<div id="pro1">
-				<h6><strong>Da-eun Kim</strong></h6>
-				<h6>Model part</h6>
+			<div class="quarter">
+				<img src="img/kde.jpg">
+				<div class="name_area">
+					<h6><strong>Da-eun Kim</strong></h6>
+					<h6>Model part</h6>
+				</div>
 			</div>
-			<div id="pro2">
-				<h6><strong>Sun-jae Kim</strong></h6>
-				<h6>View part</h6>
+			<div class="quarter">
+				<img src="img/ksj.jpg">
+				<div class="name_area">
+					<h6><strong>Sun-jae Kim</strong></h6>
+					<h6>View part</h6>
+				</div>
 			</div>
-			<div id="pro3">
-				<h6><strong>Gu-won La</strong></h6>
-				<h6>Controller part</h6>
+			<div class="quarter">
+				<img src="img/lgw.jpg">
+				<div class="name_area">
+					<h6><strong>Gu-won La</strong></h6>
+					<h6>Controller part</h6>
+				</div>
 			</div>
-			<div id="pro4">
-				<h6><strong>Da-hoon Choi</strong></h6>
-				<h6>Controller part</h6>
+			<div class="quarter">
+				<img src="img/cdh.jpg">
+				<div class="name_area">
+					<h6><strong>Da-hoon Choi</strong></h6>
+					<h6>Controller part</h6>
+				</div>
 			</div>
 		</div>
 	</div>
