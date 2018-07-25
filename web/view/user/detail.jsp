@@ -43,7 +43,7 @@ span, p {
 
 #moim_image {
 	width: 100%;
-	height: auto;
+	height: 220px;
 }
 
 #btn_cancel1 {
@@ -82,6 +82,7 @@ span, p {
 </style>
 <script>
 
+var pwdFlag = 0;
 function checkPwd() {
 	// 영어로 시작하고 8자리 이상
 	// 숫자와 특수문자가 반드시 포함
@@ -90,6 +91,7 @@ function checkPwd() {
 
 	if (pwd.value.length == 0) {
 		spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+		pwdFlag = 0;
 		return;
 	}
 
@@ -97,33 +99,36 @@ function checkPwd() {
 		var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 		if (!exp.test(pwd.value)) {
 			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+			pwdFlag = 0;
+			checkPwdCheck();
 			return;
 		} else {
 			spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			checkPwdCheck();
 			return;
 		}
 	} else {
 		spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+		pwdFlag = 0;
+		checkPwdCheck();
 		return;
 	}
 };
 
-var pwdFlag = 0;
 function checkPwdCheck(){
 	var pwd = document.querySelector('#pwd');
 	var pwdCheck = document.querySelector('#pwdCheck');
 	var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
 	
 	if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
-		spwd.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
+		spwdCheck.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
 		pwdFlag = 1;
 		return;
 	}
 	
 	if(pwd.value != pwdCheck.value){
-		spwd.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
-		console.log(pwd.value);
-		console.log(pwdCheck.value);
+		spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
+		pwdFlag = 0;
 		return;
 	}
 	
@@ -235,9 +240,10 @@ function register(f) {
 				</div>
 			</div>
 			<table class="table">
-				<c:forEach items="${list }" var="item">
+				<% int count = 0; %>
+				<c:forEach items="${list }" var="item" varStatus="forStatus">
 					<!-- String date format change Date. -->
-
+					
 					<fmt:parseDate value="${item.sDate }" var="sdate"
 						pattern="yyyy-MM-dd" />
 					<fmt:parseDate value="${item.eDate }" var="edate"
@@ -275,34 +281,22 @@ function register(f) {
 							<div class="table_content">
 								<div>
 									<button type="button" class="btn" disabled>
+									
 										<c:choose>
-											<c:when test="${edate != sdate}">
-												<c:choose>
-													<c:when test="${edate > today }">
-													모임종료
-												</c:when>
-													<c:when test="${sdate > today }">
-													진행 전
-												</c:when>
-													<c:otherwise>
-													진행 중
-												</c:otherwise>
-												</c:choose>
+											<c:when test="${sdate > today}">
+												진행 전
+											</c:when>
+											<c:when test="${edate < today}">
+												모임종료
 											</c:when>
 											<c:otherwise>
-												<c:choose>
-													<c:when test="${stime > systime }">
-													진행 전
-												</c:when>
-													<c:otherwise>
-													모임종료
-												</c:otherwise>
-												</c:choose>
+												진행 중
 											</c:otherwise>
 										</c:choose>
 									</button>
 								</div>
 								<div>
+									<h3>${title }</h3>
 									<span>모임기간 : </span> <span id="sdate">${sdate }
 										${stime }</span>
 									<c:choose>
@@ -322,13 +316,14 @@ function register(f) {
 										<a id="btn_cancel1" class="btn btn_danger" href="deletemoim.st?cmd=my&moimId=${item.moimId }">개설취소</a>
 										<a id="btn_cancel" class="btn btn_danger" href="updatemoim.st?moimId=${item.moimId }">정보수정</a>
 									</c:when>
-									<c:otherwise>
+									<c:when test="${sdate > today}">
 										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=join&moimId=${item.moimId }">신청취소</a>
-									</c:otherwise>
+									</c:when>
 								</c:choose>
 							</div>
 						</td>
 					</tr>
+					<% count++;%>
 				</c:forEach>
 			</table>
 		</div>
