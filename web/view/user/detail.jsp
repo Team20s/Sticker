@@ -275,7 +275,7 @@ function register(f) {
 					<fmt:formatDate value="${applyetime }" pattern="HH:mm"
 						var="applyetime" />
 					<tr>
-						<td class="table_title"><a href="#"><img
+						<td class="table_title"><a href="moimdetail.st?id=${item.moimId }"><img
 								src="img/${item.moimImg }" id="moim_image"></a></td>
 						<td>
 							<div class="table_content">
@@ -296,7 +296,7 @@ function register(f) {
 									</button>
 								</div>
 								<div>
-									<h3>${title }</h3>
+									<h3>${item.title }</h3>
 									<span>모임기간 : </span> <span id="sdate">${sdate }
 										${stime }</span>
 									<c:choose>
