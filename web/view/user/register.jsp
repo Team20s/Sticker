@@ -344,13 +344,14 @@ h1 {
 			var sregister = document.querySelector('#sregister');
 
 			if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
-				month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1 &&birthFlag == 1) {
+				month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 &&birthFlag == 1) {
 				$('#frm').attr('action','registerimpl.st');
 		 		$('#frm').submit();
-			}else if(birthFlag == 0){
-				alert('생년월일을 다시 확인해주세요.');
-			} else {
+			}else if(id.value.length == 0 || pwd.value.length == 0 || year.value.length == 0 ||
+					month.value.length == 0 || day.value.length == 0 || pwdFlag == 0 || birthFlag ==0){
 				alert('필수 항목을 모두 입력해주세요.');
+			} else {				
+				alert('생년월일을 다시 확인해주세요.');
 			}
 		});
 	});
