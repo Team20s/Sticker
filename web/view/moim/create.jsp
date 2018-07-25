@@ -243,8 +243,9 @@
 #create, #update{
 	position:absolute;
 	display:block;
-	margin-top:70%;
+	margin-top:68%;
 	margin-left:40%;
+	margin-bottom:10%;
 	width:20%;
 	height:5%;
 	font-size:20px;
@@ -483,7 +484,7 @@ $(document).ready(function(){
 				<textarea class="form-control" name="content" id="hiddenContent" hidden></textarea>
 					<c:choose>
 						<c:when test="${moimdetail != null }">
-							<button class="btn fl-right" id="update">수정하기</button>
+							<button class="btn btn-dark" id="update">수정하기</button>
 						</c:when>
 						<c:otherwise>
 							<button class="btn btn-dark" id="create">개설하기</button>

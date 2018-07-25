@@ -33,6 +33,7 @@ img{
 	height:20%;
 	background-color:black;
 	margin-left:4%;
+	display:inline;
 }
 h1,h6{
 	text-align:center;
