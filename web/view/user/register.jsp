@@ -32,9 +32,8 @@ h1 {
 }
 
 /* 회원가입 박스 사이즈 조정 */
-
-.hoc{
-	margin-top: 60px; 
+.hoc {
+	margin-top: 60px;
 }
 
 @media ( min-width : 1200px) {
@@ -93,148 +92,269 @@ h1 {
 				}
 			});
 		});
-	});
-	
-	function checkId() {
-		// 영어로 시작하고 6자리 이상
-		// 영문과 숫자가 반드시 입력
-		var id = document.querySelector('#id');
-		var sid = document.querySelector('#sid');
 		
-		if (id.value.length == 0) {
-			sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
-			return;
-		}
-		if (id.value.length > 0) {
+		function checkId() {
+			// 영어로 시작하고 6자리 이상
+			// 영문과 숫자가 반드시 입력
+			var id = document.querySelector('#id');
+			var sid = document.querySelector('#sid');
+			
+			if (id.value.length == 0) {
+				sid.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
 				return;
-		}else {
-			sid.innerHTML = '<span class="text-danger">아이디가 너무 짧습니다!</span>'
-			return;
-		}
+			}
+			if (id.value.length > 0) {
+					return;
+			}else {
+				sid.innerHTML = '<span class="text-danger">아이디가 너무 짧습니다!</span>'
+				return;
+			}
 
-	};
+		};
 
-	var pwdFlag = 0;
-	function checkPwd() {
-		// 영어로 시작하고 8자리 이상
-		// 숫자와 특수문자가 반드시 포함
-		var pwd = document.querySelector('#pwd');
-		var spwd = document.querySelector('#spwd');
+		var pwdFlag = 0;
+		/*
+		function checkPwd() {
+			// 영어로 시작하고 8자리 이상
+			// 숫자와 특수문자가 반드시 포함
+			var pwd = document.querySelector('#pwd');
+			var spwd = document.querySelector('#spwd');
 
-		if (pwd.value.length == 0) {
-			spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
-			pwdFlag = 0;
-			return;
-		}
+			if (pwd.value.length == 0) {
+				spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+				pwdFlag = 0;
+				return;
+			}
 
-		if (pwd.value.length >= 8) {
-			var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
-			if (!exp.test(pwd.value)) {
+			if (pwd.value.length >= 8) {
+				var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+				if (!exp.test(pwd.value)) {
+					spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+					pwdFlag = 0;
+					checkPwdCheck();
+					return;
+				} else {
+					spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+					checkPwdCheck();
+					return;
+				}
+			} else {
 				spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
 				pwdFlag = 0;
 				checkPwdCheck();
 				return;
-			} else {
-				spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
-				checkPwdCheck();
+			}
+		};
+		
+		function checkPwdCheck(){
+			var pwd = document.querySelector('#pwd');
+			var pwdCheck = document.querySelector('#pwdCheck');
+			var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+			
+			if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
+				spwdCheck.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
+				pwdFlag = 1;
 				return;
 			}
-		} else {
-			spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
-			pwdFlag = 0;
-			checkPwdCheck();
-			return;
+			
+			if(pwd.value != pwdCheck.value){
+				spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
+				pwdFlag = 0;
+				return;
+			}
+			
 		}
-	};
-	
-	function checkPwdCheck(){
-		var pwd = document.querySelector('#pwd');
-		var pwdCheck = document.querySelector('#pwdCheck');
-		var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+
+		function checkName() {
+			var name = document.querySelector('#name');
+			var sname = document.querySelector('#sname');
+
+			if (name.value.length == 0) {
+				sname.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+				return;
+			} else {
+				sname.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				return;
+			}
+
+		}
+		;*/
+
+		var birthFlag = 0;
+		/*function checkBirth() {
+			var year = document.querySelector('#year');
+			var month = document.querySelector('#month');
+			var day = document.querySelector('#day');
+			var sbirth = document.querySelector('#sbirth');
+
+			if (year.value > 2018 || 1900 > year.value) {
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지 않는 년도 입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			} else if(month.value > 12 || month.value < 1){
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 월입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			} else if(day.value > 31 || day.value < 1){
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 일 수 입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			}
+			
+			else {
+				sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				birthFlag = 1;
+				return;
+			}
+			
+			if (year.value.length == 0 || month.value.length == 0 || day.value.length == 0) {
+				sbirth.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+				birthFlag = 0;
+				return;
+			}
+		};*/
+
+		/*function register(f) {
+			var id = document.querySelector('#id');
+			var pwd = document.querySelector('#pwd');
+			var year = document.querySelector('#year');
+			var month = document.querySelector('#month');
+			var day = document.querySelector('#day');
+			var sregister = document.querySelector('#sregister');
+
+			if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
+				month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1) {
+				console.log(birthFlag);
+				f.method = 'post';
+				f.action = 'registerimpl.st';
+				f.submit();
+			} else {
+				sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
+			}
+		};*/
+		$('#pwd').blur(function(){
+			// 영어로 시작하고 8자리 이상
+						// 숫자와 특수문자가 반드시 포함
+						var pwd = document.querySelector('#pwd');
+						var spwd = document.querySelector('#spwd');
+
+						if (pwd.value.length == 0) {
+							spwd.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+							pwdFlag = 0;
+							return;
+						}
+
+						if (pwd.value.length >= 8) {
+							var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+							if (!exp.test(pwd.value)) {
+								spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+								pwdFlag = 0;
+								checkPwdCheck();
+								return;
+							} else {
+								spwd.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+								checkPwdCheck();
+								return;
+							}
+						} else {
+							spwd.innerHTML = '<span class="text-danger">8자리 이상의 영문, 숫자, 특수문자를 사용하세요.</span>'
+							pwdFlag = 0;
+							checkPwdCheck();
+							return;
+						}
+		});
 		
-		if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
-			spwdCheck.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
-			pwdFlag = 1;
-			return;
-		}
+		$('#pwdCheck').blur(function(){
+			var pwd = document.querySelector('#pwd');
+			var pwdCheck = document.querySelector('#pwdCheck');
+			var exp = /(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])/;
+			
+			if(pwd.value == pwdCheck.value && exp.test(pwd.value)){
+				spwdCheck.innerHTML = '<span class="text-success">비밀번호가 확인되었습니다.</span>'
+				pwdFlag = 1;
+				return;
+			}
+			
+			if(pwd.value != pwdCheck.value){
+				spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
+				pwdFlag = 0;
+				return;
+			}
+		});
 		
-		if(pwd.value != pwdCheck.value){
-			spwdCheck.innerHTML = '<span class="text-danger">비밀번호를 다시 확인해주세요.</span>'
-			pwdFlag = 0;
-			return;
-		}
+		$('#name').blur(function(){
+			var name = document.querySelector('#name');
+			var sname = document.querySelector('#sname');
+
+			if (name.value.length == 0) {
+				sname.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+				return;
+			} else {
+				sname.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				return;
+			}
+		});
 		
-	}
-
-	function checkName() {
-		var name = document.querySelector('#name');
-		var sname = document.querySelector('#sname');
-
-		if (name.value.length == 0) {
-			sname.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
-			return;
-		} else {
-			sname.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
-			return;
-		}
-
-	}
-	;
-
-	var birthFlag = 0;
-	function checkBirth() {
-		var year = document.querySelector('#year');
-		var month = document.querySelector('#month');
-		var day = document.querySelector('#day');
-		var sbirth = document.querySelector('#sbirth');
-
-		if (year.value > 2018 || 1900 > year.value) {
-			sbirth.innerHTML = '<span class="text-danger"> 존재하지 않는 년도 입니다. 다시 입력해주세요 </span>'
-			birthFlag = 0;
-			return;
-		} else if(month.value > 12 || month.value < 1){
-			sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 월입니다. 다시 입력해주세요 </span>'
-			birthFlag = 0;
-			return;
-		} else if(day.value > 31 || day.value < 1){
-			sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 일 수 입니다. 다시 입력해주세요 </span>'
-			birthFlag = 0;
-			return;
-		}
+		$('#year').blur(function(){
+			var year = document.querySelector('#year');
+			
+			if (year.value > 2018 || 1900 > year.value) {
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지 않는 년도 입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			}else {
+				sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+			}
+		});
 		
-		else {
-			sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
-			birthFlag = 1;
-			return;
-		}
+		$('#month').blur(function(){
+			var month = document.querySelector('#month');
+			
+			if(month.value > 12 || month.value < 1){
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 월입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			}else {
+				sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				birthFlag = 1;
+				return;
+			}
+		});
 		
-		if (year.value.length == 0 || month.value.length == 0 || day.value.length == 0) {
-			sbirth.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
-			birthFlag = 0;
-			return;
-		}
-	};
+		$('#day').blur(function(){
+			var day = document.querySelector('#day');
+			
+			if(day.value > 31 || day.value < 1){
+				sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 일 수 입니다. 다시 입력해주세요 </span>'
+				birthFlag = 0;
+				return;
+			}else {
+				sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
+				birthFlag = 1;
+				return;
+			}
+		});
+		
+		$('#registerBtn').click(function(){
+			var id = document.querySelector('#id');
+			var pwd = document.querySelector('#pwd');
+			var year = document.querySelector('#year');
+			var month = document.querySelector('#month');
+			var day = document.querySelector('#day');
+			var sregister = document.querySelector('#sregister');
 
-	function register(f) {
-		var id = document.querySelector('#id');
-		var pwd = document.querySelector('#pwd');
-		var year = document.querySelector('#year');
-		var month = document.querySelector('#month');
-		var day = document.querySelector('#day');
-		var sregister = document.querySelector('#sregister');
+			if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
+				month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1 &&birthFlag == 1) {
+				$('#frm').attr('action','registerimpl.st');
+		 		$('#frm').submit();
+			}else if(birthFlag == 0){
+				alert('생년월일을 다시 확인해주세요.');
+			} else {
+				alert('필수 항목을 모두 입력해주세요.');
+			}
+		});
+	});
 
-		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
-			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1) {
-			alert("되냐");
-			console.log(birthFlag);
-			f.method = 'post';
-			f.action = 'registerimpl.st';
-			f.submit();
-		} else {
-			sregister.innerHTML = '<span class="text-danger">필수항목을 모두 입력해주세요.</span>'
-		}
-	};
-	
 </script>
 </head>
 <body id="top">
@@ -245,16 +365,16 @@ h1 {
 			<div>
 				<h1>회원가입</h1>
 			</div>
-			<form action="registerimpl.st" method="post" name="frm" id="frm">
+			<form method="post" name="frm" id="frm">
 				<div class="form-group">
 					<label style="display: block;">아이디(닉네임) :</label> <input
 						type="text" name="id" id="id" class="form-control"
 						onblur="checkId();" style="width: 85%; display: inline;">
-						
+
 					<!-- ID double check button -->
 					<input type="button" name="idCheck" id="idCheck"
 						class="btn btn-link" value="ID 중복체크" style="display: inline;">
-						
+
 					<div id="sid"></div>
 				</div>
 				<div class="form-group">
@@ -298,7 +418,7 @@ h1 {
 					<div id="sbirth"></div>
 				</div>
 				<div class="form-group">
-					<button class="btn btn-dark btn-lg btn-block" onclick="register(this.form);">회원가입</button>
+					<button class="btn btn-dark btn-lg btn-block" id="registerBtn">회원가입</button>
 					<div id="sregister"></div>
 				</div>
 			</form>
