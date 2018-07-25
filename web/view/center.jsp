@@ -21,6 +21,9 @@
 #main {
 	padding: 30px 0;
 }
+#pageintro{
+	margin-bottom:2%;
+}
 </style>
 <script>
 </script>
