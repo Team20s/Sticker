@@ -188,19 +188,29 @@ h1 {
 		var day = document.querySelector('#day');
 		var sbirth = document.querySelector('#sbirth');
 
-		if (year.value.length == 0 || month.value.length == 0 || day.value.length == 0) {
-			sbirth.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+		if (year.value > 2018 || 1900 > year.value) {
+			sbirth.innerHTML = '<span class="text-danger"> 존재하지 않는 년도 입니다. 다시 입력해주세요 </span>'
+			birthFlag = 0;
+			return;
+		} else if(month.value > 12 || month.value < 1){
+			sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 월입니다. 다시 입력해주세요 </span>'
+			birthFlag = 0;
+			return;
+		} else if(day.value > 31 || day.value < 1){
+			sbirth.innerHTML = '<span class="text-danger"> 존재하지않는 일 수 입니다. 다시 입력해주세요 </span>'
 			birthFlag = 0;
 			return;
 		}
-
-		if (year.value > 2018 || 1900 > year.value || month.value > 12 || month.value < 1 || day.value > 31 || day.value < 1) {
-			sbirth.innerHTML = '<span class="text-danger">다시 입력해주세요.</span>'
-			birthFlag = 0;
-			return;
-		} else {
+		
+		else {
 			sbirth.innerHTML = '<span class="text-success">정상 입력되었습니다.</span>'
 			birthFlag = 1;
+			return;
+		}
+		
+		if (year.value.length == 0 || month.value.length == 0 || day.value.length == 0) {
+			sbirth.innerHTML = '<span class="text-danger">필수 정보입니다.</span>'
+			birthFlag = 0;
 			return;
 		}
 	};
@@ -215,6 +225,7 @@ h1 {
 
 		if (id.value.length != 0 && pwd.value.length != 0 && year.value.length != 0 &&
 			month.value.length != 0 && day.value.length != 0 && pwdFlag == 1 && birthFlag == 1) {
+			alert("되냐");
 			console.log(birthFlag);
 			f.method = 'post';
 			f.action = 'registerimpl.st';

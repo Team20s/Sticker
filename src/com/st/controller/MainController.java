@@ -46,12 +46,18 @@ public class MainController {
 			studyList = search.search("c2");
 			
 			//최근 4개의 정보만 가져오게 하기 위함.
-			for(int i=0;i<4;i++) {
-				enjoyFour.add(enjoyList.get(i));
+			if(enjoyList.size() >= 4) {
+				for(int i=0;i<4;i++) {
+					enjoyFour.add(enjoyList.get(i));
+				}
 			}
-			for(int i=0;i<4;i++) {
-				studyFour.add(studyList.get(i));
+			
+			if(studyList.size() >= 4) {
+				for(int i=0;i<4;i++) {
+					studyFour.add(studyList.get(i));
+				}
 			}
+			
 			mv.addObject("enjoyList",enjoyFour);
 			mv.addObject("studyList",studyFour);
 		} catch (Exception e) {

@@ -109,12 +109,14 @@ public class MoimController {
 			moim = service.get(moimId);
 			System.out.println(moim);
 			
-			//신청 했는지 안했는지 검사하기. userId와 moimId 넘겨주기.
-			map.put("userId", userId);
-			map.put("moimId", moim.getMoimId());
-			
-			joinMoim = uMoim.checkJoin(map);
-			
+			if(userId != null) {
+				//신청 했는지 안했는지 검사하기. userId와 moimId 넘겨주기.
+				map.put("userId", userId);
+				map.put("moimId", moim.getMoimId());
+				
+				joinMoim = uMoim.checkJoin(map);
+			}
+
 			// Catch the data, time bug
 			Date moimEdate = today.parse(moim.geteDate()+moim.geteTime());
 			Date moimSdate = today.parse(moim.getsDate()+moim.getsTime());
