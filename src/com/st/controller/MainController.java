@@ -1,7 +1,9 @@
 package com.st.controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -185,7 +187,13 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		ArrayList<Moim> list = null;
+		ArrayList<Long> slist = null;
+		ArrayList<Long> elist = null;
 		User user = null;
+		Date date = new Date(System.currentTimeMillis());
+		
+		SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-ddHH:mm");
+		
 		try {
 			user = service.get(id);
 			
@@ -195,8 +203,16 @@ public class MainController {
 				list = search.searchJoinMoim(id);
 			}
 			
+			for(int i = 0 ; i < list.size(); i++) {
+				slist.add(today.parse(list.get(i).getsDate()+list.get(i).getsTime()).getTime());
+				elist.add(today.parse(list.get(i).geteDate()+list.get(i).geteTime()).getTime());
+			}
+			
+			mv.addObject("today",date.getTime());
 			mv.addObject("check",cmd);
 			mv.addObject("list",list);
+			mv.addObject("slist",slist);
+			mv.addObject("elist",elist);
 			mv.addObject("user", user);
 			mv.addObject("centerpage", "user/detail");
 		} catch (Exception e) {

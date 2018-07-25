@@ -43,7 +43,7 @@ span, p {
 
 #moim_image {
 	width: 100%;
-	height: auto;
+	height: 220px;
 }
 
 #btn_cancel1 {
@@ -235,9 +235,10 @@ function register(f) {
 				</div>
 			</div>
 			<table class="table">
+				<% int count = 0; %>
 				<c:forEach items="${list }" var="item">
 					<!-- String date format change Date. -->
-
+					
 					<fmt:parseDate value="${item.sDate }" var="sdate"
 						pattern="yyyy-MM-dd" />
 					<fmt:parseDate value="${item.eDate }" var="edate"
@@ -275,34 +276,22 @@ function register(f) {
 							<div class="table_content">
 								<div>
 									<button type="button" class="btn" disabled>
+									
 										<c:choose>
-											<c:when test="${edate != sdate}">
-												<c:choose>
-													<c:when test="${edate > today }">
-													모임종료
-												</c:when>
-													<c:when test="${sdate > today }">
-													진행 전
-												</c:when>
-													<c:otherwise>
-													진행 중
-												</c:otherwise>
-												</c:choose>
+											<c:when test="${slist[count] > today}">
+												진행 전
+											</c:when>
+											<c:when test="${elist[count] < today}">
+												모임종료
 											</c:when>
 											<c:otherwise>
-												<c:choose>
-													<c:when test="${stime > systime }">
-													진행 전
-												</c:when>
-													<c:otherwise>
-													모임종료
-												</c:otherwise>
-												</c:choose>
+												진행 중
 											</c:otherwise>
 										</c:choose>
 									</button>
 								</div>
 								<div>
+									<h3>${title }</h3>
 									<span>모임기간 : </span> <span id="sdate">${sdate }
 										${stime }</span>
 									<c:choose>
@@ -322,13 +311,14 @@ function register(f) {
 										<a id="btn_cancel1" class="btn btn_danger" href="deletemoim.st?cmd=my&moimId=${item.moimId }">개설취소</a>
 										<a id="btn_cancel" class="btn btn_danger" href="updatemoim.st?moimId=${item.moimId }">정보수정</a>
 									</c:when>
-									<c:otherwise>
+									<c:when test="${slist[count] > today}">
 										<a id="btn_cancel" class="btn btn_danger" href="deletemoim.st?cmd=join&moimId=${item.moimId }">신청취소</a>
-									</c:otherwise>
+									</c:when>
 								</c:choose>
 							</div>
 						</td>
 					</tr>
+					<% count++; %>
 				</c:forEach>
 			</table>
 		</div>
