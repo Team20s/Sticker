@@ -1,7 +1,9 @@
 package com.st.controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +36,7 @@ public class MainController {
 		ArrayList<Moim> enjoyList = null;
 		ArrayList<Moim> studyList = null;
 
-		//enjoy, study 4개 항목만 넣기
+		//enjoy, study 4媛� �빆紐⑸쭔 �꽔湲�
 		ArrayList<Moim> enjoyFour = new ArrayList<>();
 		ArrayList<Moim> studyFour = new ArrayList<>();
 		
@@ -44,7 +46,7 @@ public class MainController {
 		try {
 			enjoyList = search.search("c1");
 			studyList = search.search("c2");
-			
+		
 			//최근 4개의 정보만 가져오게 하기 위함.
 			if(enjoyList.size() >= 4) {
 				for(int i=0;i<4;i++) {
@@ -192,6 +194,7 @@ public class MainController {
 		mv.setViewName("main");
 		ArrayList<Moim> list = null;
 		User user = null;
+		
 		try {
 			user = service.get(id);
 			
