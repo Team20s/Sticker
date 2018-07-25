@@ -92,5 +92,9 @@ public class MoimDao implements DAO<String,Moim>,Search<String,Moim>, Join,UserM
 		ummapper.deleteMoim(obj);
 	}
 
+	@Override
+	public Moim checkJoin(Map<String, String> obj) throws Exception {
+		return ummapper.checkJoin(obj);
+	}
 
 }

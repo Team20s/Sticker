@@ -88,11 +88,12 @@ public class MoimController {
 	}
 	
 	@RequestMapping("/moimdetail.st")
-	public ModelAndView moimdetail(HttpServletRequest request) {
+	public ModelAndView moimdetail(HttpServletRequest request,Map<String, String> map) {
 		//select(id)로 하는데 moim id 넘겨줌
 		
 		String moimId = request.getParameter("id");
 		Moim moim = null;
+		Moim joinMoim = null;
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		
@@ -108,6 +109,15 @@ public class MoimController {
 			moim = service.get(moimId);
 			System.out.println(moim);
 			
+			if(userId != null) {
+				//신청 했는지 안했는지 검사하기. userId와 moimId 넘겨주기.
+				map.put("userId", userId);
+				map.put("moimId", moim.getMoimId());
+				
+				joinMoim = uMoim.checkJoin(map);
+			}
+
+			// Catch the data, time bug
 			Date moimEdate = today.parse(moim.geteDate()+moim.geteTime());
 			Date moimSdate = today.parse(moim.getsDate()+moim.getsTime());
 			Date moimApplyEdate = today.parse(moim.getApplyEDate()+moim.getApplyETime());
@@ -123,6 +133,7 @@ public class MoimController {
 			mv.addObject("aeflag",aeflag);
 			mv.addObject("asflag",asflag);
 			
+			mv.addObject("joinCheckMoim",joinMoim);
 			mv.addObject("moimdetail",moim);
 			mv.addObject("userid",userId);
 			mv.addObject("centerpage","moim/detail");
@@ -279,6 +290,33 @@ public class MoimController {
 		}
 		return "redirect:/main.st";
 	}
+	
+	@RequestMapping("/deleteusermoim.st")
+	public String deleteusermoim(Moim moim,HttpServletRequest request,Map<String,String> map) {//moim insert
+		//delete는 user/detail에서 실행해서 하는게 좋을 거 같다.
+		HttpSession session = request.getSession();
+		
+		String userId = (String)session.getAttribute("userId");
+		String moimId = request.getParameter("moimId");
+		
+		map.put("userId", userId);
+		map.put("moimId", moimId);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		
+		try {
+				//신청한 모임 취소
+				System.out.println(userId);
+				uMoim.deleteUser(map);
+				return "redirect:main.st";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:main.st";
+		}
+		
+	}
+	
 	@RequestMapping("/updatemoim.st")
 	public ModelAndView updatemoim(Moim moim,HttpServletRequest request) {//moim insert
 		//update 수정
