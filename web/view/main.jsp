@@ -48,8 +48,7 @@ Licence URI: http://www.os-templates.com/template-terms
 /* Section */
     #btn_more{
       padding-top: 30px;
-    }
-    
+    }    
   </style>
 </head>
 <body id="top">
@@ -131,8 +130,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <div class="wrapper row5">
   <div id="copyright" class="hoc clear"> 
-    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">STICKER</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">TEAM 20's</a></p>
   </div>
 </div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
