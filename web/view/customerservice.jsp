@@ -15,7 +15,6 @@
 #content{
 	width:80%;
 	margin:0 auto;
-	margin-bottom:15%;
 }
 img{
 	width:80%;
