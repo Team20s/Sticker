@@ -49,7 +49,7 @@ public class MoimController {
 	}
 
 	@RequestMapping("/createmoimimpl.st")
-	public ModelAndView createmoimimpl(Moim moim,HttpServletRequest request) {//moim insert
+	public String createmoimimpl(Moim moim,HttpServletRequest request) {//moim insert
 		MultipartFile mp = moim.getMoimMultiImg();
 		String moimImg= mp.getOriginalFilename();
 		moim.setMoimImg(moimImg);
@@ -71,20 +71,15 @@ public class MoimController {
 		
 		FileSave.save(path, mp, moimImg);
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
 		
 		try {
 			service.register(moim);
-			mv.addObject("centerpage","center");
+			return "redirect:main.st";
 		} catch (Exception e) {
 			e.printStackTrace();
-			//fail 이면 조건 줘서 alert 뛰우기
-			mv.addObject("fail","createfail");
-			mv.addObject("centerpage","center");
+			return "redirect:main.st";
 		}
 		
-		return mv;
 	}
 	
 	@RequestMapping("/moimdetail.st")
