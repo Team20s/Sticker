@@ -240,8 +240,15 @@
 .note-popover .popover-content, .card-header.note-toolbar {
 	z-index: 0;
 }
+#create, #update{
+	display:block;
+	margin:5% auto;
+	width:20%;
+	height:20%;
+	font-size:20px;
+}
 </style>
-<script>
+<script>f
 $(document).ready(function(){
 	
 	$('#searchP').click(function(){
@@ -470,16 +477,7 @@ $(document).ready(function(){
 						</div>
 					</li>
 				</ul>
-				<textarea class="form-control" name="content" id="hiddenContent" hidden></textarea>
-					<c:choose>
-						<c:when test="${moimdetail != null }">
-							<button class="btn fl-right" id="update">수정하기</button>
-						</c:when>
-						<c:otherwise>
-							<button class="btn fl-right" id="create">개설하기</button>
-						</c:otherwise>
-					</c:choose>
-			</form>
+				
 			<div class="map_wrap">
 				<c:choose>
 					<c:when test="${moimdetail != null }">
@@ -514,7 +512,18 @@ $(document).ready(function(){
 					</c:otherwise>
 				</c:choose>
 			</div>
-
+			
+			<textarea class="form-control" name="content" id="hiddenContent" hidden></textarea>
+					<c:choose>
+						<c:when test="${moimdetail != null }">
+							<button class="btn fl-right" id="update">수정하기</button>
+						</c:when>
+						<c:otherwise>
+							<button class="btn btn-dark" id="create">개설하기</button>
+						</c:otherwise>
+					</c:choose>
+			</form>
+			
 		</div>
 
 		</main>
