@@ -4,6 +4,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.mapper.UserMoimMapper">
 
+	<resultMap type="moim" id="userMoim">
+		<result column="moim_id" property="moimId"/>
+		<result column="user_id" property="userId" />
+	</resultMap>
+
 	<delete id="delete" parameterType="String">
 		DELETE FROM USER_MOIM WHERE MOIM_ID = #{moimId}
 	</delete>
@@ -15,4 +20,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="deleteMoim" parameterType="Map">
 		DELETE FROM MOIM WHERE USER_ID = #{userId} AND MOIM_ID = #{moimId}
 	</delete>
+	
+	<select id="checkJoin" parameterType="Map" resultMap="userMoim">
+		SELECT * FROM USER_MOIM WHERE USER_ID=#{userId} AND MOIM_ID = #{moimId}
+	</select>
 </mapper>

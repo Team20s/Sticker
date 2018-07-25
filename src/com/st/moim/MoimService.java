@@ -89,4 +89,9 @@ public class MoimService implements Service<String,Moim>, Search<String,Moim>, J
 		uMoim.deleteMoim(obj);
 	}
 
+	@Override
+	public Moim checkJoin(Map<String, String> obj) throws Exception {
+		return uMoim.checkJoin(obj);
+	}
+
 }

@@ -57,8 +57,26 @@ img {
 	bottom: 0;
 }
 
+#cancel_btn{
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+}
+
 </style>
-<script></script>
+<script>
+	$(document).ready(function(){
+		$('#apply_btn').click(function(){
+			$('#createForm').attr('action','joinimpl.st?moimId=${moimdetail.moimId }');
+	 		$('#createForm').submit();
+		});
+		
+		$('#cancel_btn').click(function(){
+			$('#createForm').attr('action','deleteusermoim.st?moimId=${moimdetail.moimId }');
+	 		$('#createForm').submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<!-- current day and time -->
@@ -101,7 +119,7 @@ img {
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3 coloured">
 		<main class="hoc container clear">
-		<form action="joinimpl.st?moimId=${moimdetail.moimId }" method="post">
+		<form method="post" id="createForm">
 			<div class="container" id="detail_div">
 				<c:choose>
 					<c:when test="${moimdetail.categoryKind == 'c1' }">
@@ -153,7 +171,14 @@ img {
 											<button type="button" class="btn" id="apply_btn" disabled>신청기간 전</button>
 										</c:when>
 										<c:otherwise>
-											<button type="submit" class="btn" id="apply_btn" >신청하기</button>
+											<c:choose>
+												<c:when test="${joinCheckMoim != null }">
+													<button type="button" class="btn" id="cancel_btn" >취소하기</button>
+												</c:when>
+												<c:otherwise>
+													<button type="button" class="btn" id="apply_btn" >신청하기</button>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
