@@ -15,6 +15,7 @@
 #content{
 	width:80%;
 	margin:0 auto;
+	margin-bottom:15%;
 }
 img{
 	width:80%;
@@ -65,7 +66,7 @@ h1,h6{
 				<img src="img/lgw.jpg">
 				<div class="name_area">
 					<h6><strong>Gu-won La</strong></h6>
-					<h6>Controller part</h6>
+					<h6>BUG fixer</h6>
 				</div>
 			</div>
 			<div class="quarter">
