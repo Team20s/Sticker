@@ -241,14 +241,17 @@
 	z-index: 0;
 }
 #create, #update{
+	position:absolute;
 	display:block;
-	margin:5% auto;
+	margin-top:68%;
+	margin-left:40%;
+	margin-bottom:10%;
 	width:20%;
-	height:20%;
+	height:5%;
 	font-size:20px;
 }
 </style>
-<script>f
+<script>
 $(document).ready(function(){
 	
 	$('#searchP').click(function(){
@@ -478,6 +481,17 @@ $(document).ready(function(){
 					</li>
 				</ul>
 				
+				<textarea class="form-control" name="content" id="hiddenContent" hidden></textarea>
+					<c:choose>
+						<c:when test="${moimdetail != null }">
+							<button class="btn btn-dark" id="update">수정하기</button>
+						</c:when>
+						<c:otherwise>
+							<button class="btn btn-dark" id="create">개설하기</button>
+						</c:otherwise>
+					</c:choose>
+			</form>
+				
 			<div class="map_wrap">
 				<c:choose>
 					<c:when test="${moimdetail != null }">
@@ -512,20 +526,7 @@ $(document).ready(function(){
 					</c:otherwise>
 				</c:choose>
 			</div>
-			
-			<textarea class="form-control" name="content" id="hiddenContent" hidden></textarea>
-					<c:choose>
-						<c:when test="${moimdetail != null }">
-							<button class="btn fl-right" id="update">수정하기</button>
-						</c:when>
-						<c:otherwise>
-							<button class="btn btn-dark" id="create">개설하기</button>
-						</c:otherwise>
-					</c:choose>
-			</form>
-			
 		</div>
-
 		</main>
 	</div>
 	<script>

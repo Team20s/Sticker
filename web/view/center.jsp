@@ -56,7 +56,7 @@
 				<c:forEach items="${enjoyList }" var="item">
 					<li class="one_quarter">
 						<article>
-							<img src="img/${item.moimImg }">
+							<a href="moimdetail.st?id=${item.moimId }"><img src="img/${item.moimImg }"></a>
 							<div>
 								<p>${item.categoryKind }<span class="fl_right"> <c:choose>
 											<c:when test="${item.eDate == item.sDate }">
@@ -96,7 +96,7 @@
 				<c:forEach items="${studyList }" var="item">
 					<li class="one_quarter">
 						<article>
-							<img src="img/${item.moimImg }">
+							<a href="moimdetail.st?id=${item.moimId }"><img src="img/${item.moimImg }"></a>
 							<div>
 								<p>${item.categoryKind }<span class="fl_right">
 										<c:choose>

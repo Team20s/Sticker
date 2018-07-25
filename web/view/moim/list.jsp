@@ -48,7 +48,7 @@
       <c:forEach items="${moimlist }" var="item">
         <li class="one_quarter">
          <article>
-           <img src="img/${item.moimImg }">
+           <a href="moimdetail.st?id=${item.moimId }"><img src="img/${item.moimImg }"></a>
            <div>
              <p>${item.categoryKind }<span class="fl_right">${item.sDate }
 		             
