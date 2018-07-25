@@ -36,7 +36,7 @@ public class MainController {
 		ArrayList<Moim> enjoyList = null;
 		ArrayList<Moim> studyList = null;
 
-		//enjoy, study 4개 항목만 넣기
+		//enjoy, study 4媛� �빆紐⑸쭔 �꽔湲�
 		ArrayList<Moim> enjoyFour = new ArrayList<>();
 		ArrayList<Moim> studyFour = new ArrayList<>();
 		
@@ -47,7 +47,7 @@ public class MainController {
 			enjoyList = search.search("c1");
 			studyList = search.search("c2");
 			
-			//최근 4개의 정보만 가져오게 하기 위함.
+			//理쒓렐 4媛쒖쓽 �젙蹂대쭔 媛��졇�삤寃� �븯湲� �쐞�븿.
 			for(int i=0;i<4;i++) {
 				enjoyFour.add(enjoyList.get(i));
 			}
@@ -187,12 +187,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		ArrayList<Moim> list = null;
-		ArrayList<Long> slist = null;
-		ArrayList<Long> elist = null;
 		User user = null;
-		Date date = new Date(System.currentTimeMillis());
-		
-		SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		
 		try {
 			user = service.get(id);
@@ -203,16 +198,8 @@ public class MainController {
 				list = search.searchJoinMoim(id);
 			}
 			
-			for(int i = 0 ; i < list.size(); i++) {
-				slist.add(today.parse(list.get(i).getsDate()+list.get(i).getsTime()).getTime());
-				elist.add(today.parse(list.get(i).geteDate()+list.get(i).geteTime()).getTime());
-			}
-			
-			mv.addObject("today",date.getTime());
 			mv.addObject("check",cmd);
 			mv.addObject("list",list);
-			mv.addObject("slist",slist);
-			mv.addObject("elist",elist);
 			mv.addObject("user", user);
 			mv.addObject("centerpage", "user/detail");
 		} catch (Exception e) {
