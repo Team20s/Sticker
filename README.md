@@ -27,4 +27,7 @@ Spring과 MyBatis를 연습하고 웹에 더 익숙해고자 진행한 프로젝
 - 김다은 : Model 구현
 - 김선재 : View 구현
 - 최다훈 : Controller 구현
-- 라구원 : QA 및 관리자
+- 라구원 : QA 및 aws 서버 구축
+
+## 주소
+<http://sticker.ap-northeast-1.elasticbeanstalk.com/>
