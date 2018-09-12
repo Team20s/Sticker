@@ -23,6 +23,19 @@ Spring과 MyBatis를 연습하고 웹에 더 익숙해고자 진행한 프로젝
 - 모임 생성, 수정
 - 모임 신청, 취소
 
+## 구현 화면
+![](img/1.png)
+![](img/2.png)
+![](img/3.png)
+![](img/4.png)
+![](img/5.png)
+![](img/6.png)
+![](img/7.png)
+![](img/8.png)
+![](img/9.png)
+![](img/10.png)
+![](img/11.png)
+
 ## 역할분담
 - 김다은 : Model 구현
 - 김선재 : View 구현
